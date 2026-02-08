@@ -1,0 +1,12 @@
+
+{
+  "type": "number",
+  "title": { "en": "Odometer", "nl": "Kilometerstand" },
+  "desc":  { "en": "Total distance travelled", "nl": "Totale afgelegde afstand" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": "km",
+  "icon": "/assets/icons/ev_odometer.svg"
+}

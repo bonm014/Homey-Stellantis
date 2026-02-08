@@ -1,0 +1,10 @@
+{
+  "type": "number",
+  "title": { "en": "Maintenance days", "nl": "Onderhoud dagen" },
+  "desc":  { "en": "Next maintenance in days", "nl": "Volgende onderhoudsbeurt in dagen" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "icon": "/assets/icons/maintenance.svg"
+}

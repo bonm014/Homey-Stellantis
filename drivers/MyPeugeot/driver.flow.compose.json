@@ -1,0 +1,13 @@
+{
+  "actions": [
+    {
+      "id": "updateVehicleStatus",
+      "title": {
+        "en": "updateVehicleStatus"
+      },
+      "hint": {
+        "en": "updateVehicleStatus"
+      }
+    }
+  ]
+}

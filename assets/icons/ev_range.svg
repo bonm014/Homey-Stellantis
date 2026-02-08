@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24"
+     fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Accu behuizing -->
+  <rect x="3" y="7" width="16" height="10" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+  <!-- Accu nippel -->
+  <rect x="19" y="10" width="2" height="4" rx="1" fill="currentColor"/>
+  <!-- Route-stijl: bochtige lijn -->
+  <path d="M6.5 15c1.2-1.2 2.3-1.8 3.5-1.8 1.2 0 2.3.6 3.5 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- Locatie pin (gecentreerd binnen de accu) -->
+  <path d="M13 11.25c0 1.24-1 2.25-2.25 2.25S8.5 12.49 8.5 11.25a2.25 2.25 0 1 1 4.5 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="10.75" cy="11.25" r="0.75" fill="currentColor"/>
+</svg>

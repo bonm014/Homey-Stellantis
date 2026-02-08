@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": { "en": "Range", "nl": "Actieradius" },
+  "desc":  { "en": "Estimated remaining distance", "nl": "Geschatte resterende afstand" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": "km",
+  "icon": "/assets/icons/ev_range.svg"
+}

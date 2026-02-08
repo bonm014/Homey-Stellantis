@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": { "en": "Maintenance milage", "nl": "Onderhoud km" },
+  "desc":  { "en": "Next maintenance in milages", "nl": "Volgende onderhoudsbeurt in kilometers" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": "km",
+  "icon": "/assets/icons/maintenance.svg"
+}

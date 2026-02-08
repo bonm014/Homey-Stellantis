@@ -1,0 +1,40 @@
+{
+  "name": "@stellantis/api",
+  "version": "1.0.0",
+  "description": "TypeScript module for Stellantis/PSA vehicles API (Peugeot, Citroen, DS, Opel, Vauxhall)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "stellantis",
+    "psa",
+    "peugeot",
+    "citroen",
+    "opel",
+    "ds",
+    "vauxhall",
+    "car",
+    "vehicle",
+    "api",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

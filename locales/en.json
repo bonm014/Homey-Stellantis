@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "title": "Stellantis Vehicles",
+    "subtitle": "",
+    "registration": "Car registration",
+    "OAuthCode": "OAuth Code",
+    "Pincode": "Pincode",
+    "VIN": "Vehicle Identification Number",
+    "login": "Sign in",
+    "confirm": "Confirm"
+  }
+}

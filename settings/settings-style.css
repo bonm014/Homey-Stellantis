@@ -1,0 +1,167 @@
+/* Stellantis Homey Settings - Styles */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Steps */
+.step {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff;
+}
+
+.step.completed {
+    border-left-color: #28a745;
+    opacity: 0.7;
+}
+
+.step.active {
+    border-left-color: #007bff;
+}
+
+.step-number {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.step.completed .step-number {
+    background: #28a745;
+}
+
+h3 {
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Form Elements */
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 80px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+/* Buttons */
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button.secondary {
+    background: #6c757d;
+}
+
+button.secondary:hover {
+    background: #5a6268;
+}
+
+/* Display Elements */
+.url-display {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 11px;
+    word-break: break-all;
+    margin: 10px 0;
+}
+
+/* Messages */
+.message {
+    padding: 12px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Instructions */
+.instructions {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 13px;
+}
+
+.instructions ol {
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.instructions li {
+    margin: 5px 0;
+}
+
+/* Utility */
+.hidden {
+    display: none;
+}
+
+code {
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 12px;
+}
