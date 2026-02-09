@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.martech.stellantisvehicles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "compatibility": ">=12.4.5",
   "sdk": 3,
   "platforms": [
@@ -11,48 +11,193 @@
     "en": "Stellantis Vehicles"
   },
   "description": {
-    "en": "Adds support for PSA vehicles"
+    "en": "Connect your Stellantis car and give insight to you"
   },
   "category": [
     "appliances"
   ],
+  "brandColor": "#243882",
   "api": {
-    "testVehicles": {
-      "method": "GET",
-      "path": "/testVehicles"
-    },
     "exchangeToken": {
       "method": "POST",
       "path": "/exchangeToken"
-    },
-    "exchangeTokenOTP": {
-      "method": "POST",
-      "path": "/otp"
-    },
-    "refreshToken": {
-      "method": "POST",
-      "path": "/refresh"
     }
   },
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg"
   },
   "author": {
     "name": "Martijn de Bont",
     "email": "mkdebont@gmail.com"
   },
+  "homepage": "https://github.com/bonm014/Homey-Stellantis",
+  "supportUrl": "https://github.com/bonm014/Homey-Stellantis/issues",
+  "bugs": {
+    "url": "https://github.com/bonm014/Homey-Stellantis/issues"
+  },
   "flow": {
+    "triggers": [
+      {
+        "id": "newtrip_mycitroen",
+        "title": {
+          "en": "New trip available"
+        },
+        "titleFormatted": {
+          "en": "New trip available"
+        },
+        "tokens": [
+          {
+            "name": "duration",
+            "title": {
+              "en": "duration seconds"
+            },
+            "type": "number"
+          },
+          {
+            "name": "distance",
+            "title": {
+              "en": "distance"
+            },
+            "type": "number"
+          },
+          {
+            "name": "startedAt",
+            "title": {
+              "en": "startedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "stoppedAt",
+            "title": {
+              "en": "stoppedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "energyConsumption",
+            "title": {
+              "en": "energyConsumption"
+            },
+            "type": "number"
+          },
+          {
+            "name": "energyConsumptionAvg",
+            "title": {
+              "en": "energyConsumptionAvg"
+            },
+            "type": "number"
+          },
+          {
+            "name": "SpeedAvg",
+            "title": {
+              "en": "SpeedAvg"
+            },
+            "type": "number"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "newtrip_mypeugeot",
+        "title": {
+          "en": "New trip available"
+        },
+        "titleFormatted": {
+          "en": "New trip available"
+        },
+        "tokens": [
+          {
+            "name": "duration",
+            "title": {
+              "en": "duration seconds"
+            },
+            "type": "number"
+          },
+          {
+            "name": "distance",
+            "title": {
+              "en": "distance"
+            },
+            "type": "number"
+          },
+          {
+            "name": "startedAt",
+            "title": {
+              "en": "startedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "stoppedAt",
+            "title": {
+              "en": "stoppedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "energyConsumption",
+            "title": {
+              "en": "energyConsumption"
+            },
+            "type": "number"
+          },
+          {
+            "name": "energyConsumptionAvg",
+            "title": {
+              "en": "energyConsumptionAvg"
+            },
+            "type": "number"
+          },
+          {
+            "name": "SpeedAvg",
+            "title": {
+              "en": "SpeedAvg"
+            },
+            "type": "number"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      }
+    ],
     "actions": [
       {
-        "id": "updateVehicleStatus",
+        "id": "updateVehicleStatus_MyCitroen",
         "title": {
-          "en": "updateVehicleStatus"
+          "en": "Update Vehicle Status"
         },
         "hint": {
-          "en": "updateVehicleStatus"
+          "en": "Force an update if you need the update now"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "updateVehicleStatus_MyPeugeot",
+        "title": {
+          "en": "Update Vehicle Status"
+        },
+        "hint": {
+          "en": "Force an update if you need the update now"
         },
         "args": [
           {
@@ -67,17 +212,21 @@
   "drivers": [
     {
       "name": {
-        "en": "Peugeot"
+        "en": "Citroën"
       },
       "class": "car",
       "capabilities": [
-        "measure_battery",
-        "ev_charging_state",
-        "measure_temperature",
         "measure_odometer_km",
         "measure_range_km",
+        "measure_battery",
+        "ev_charging_state",
         "measure_voltage"
       ],
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
       "platforms": [
         "local"
       ],
@@ -98,9 +247,50 @@
         }
       ],
       "images": {
-        "small": "/drivers/MyPeugeot/assets/images/small.png",
-        "large": "/drivers/MyPeugeot/assets/images/large.png",
-        "xlarge": "/drivers/MyPeugeot/assets/images/xlarge.png"
+        "small": "/drivers/MyCitroen/assets/images/small.jpg",
+        "large": "/drivers/MyCitroen/assets/images/large.jpg"
+      },
+      "id": "MyCitroen"
+    },
+    {
+      "name": {
+        "en": "Peugeot"
+      },
+      "class": "car",
+      "capabilities": [
+        "measure_odometer_km",
+        "measure_range_km",
+        "measure_battery",
+        "ev_charging_state",
+        "measure_voltage"
+      ],
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/MyPeugeot/assets/images/small.jpg",
+        "large": "/drivers/MyPeugeot/assets/images/large.jpg"
       },
       "id": "MyPeugeot"
     }

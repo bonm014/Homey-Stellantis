@@ -1,6 +1,6 @@
 {
   "id": "com.martech.stellantisvehicles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "compatibility": ">=12.4.5",
   "sdk": 3,
   "platforms": [
@@ -20,24 +20,20 @@
     "exchangeToken": {
       "method": "POST",
       "path": "/exchangeToken"
-    },
-    "exchangeTokenOTP": {
-      "method": "POST",
-      "path": "/otp"
-    },
-    "refreshToken": {
-      "method": "POST",
-      "path": "/refresh"
     }
   },
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg"
   },
   "author": {
     "name": "Martijn de Bont",
     "email": "mkdebont@gmail.com"
+  },
+  "homepage": "https://github.com/bonm014/Homey-Stellantis",
+  "supportUrl": "https://github.com/bonm014/Homey-Stellantis/issues",
+  "bugs": {
+    "url": "https://github.com/bonm014/Homey-Stellantis/issues"
   }
 }
