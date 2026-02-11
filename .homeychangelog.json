@@ -4,5 +4,8 @@
   },
   "1.1.0": {
     "en": "Refactor code to be ready for more brands. Citroen added as vehicle"
+  },
+  "1.2.0": {
+    "en": "Opel added, token for each brand, trips trigger fix,fixed crashes due to capabilities"
   }
 }
