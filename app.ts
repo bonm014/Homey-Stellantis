@@ -14,23 +14,31 @@ class StellantisApp extends Homey.App {
         
         // Start token refresh checker (every hour)
         this.tokenRefreshInterval = setInterval(() => {
-            this.checkAndRefreshTokens();
+            this.checkAndRefreshTokens('MyPeugeot');
+            this.checkAndRefreshTokens('MyCitroen');
+            this.checkAndRefreshTokens('MyOpel');
         }, 60 * 15 * 1000);
 
-        this.checkAndRefreshTokens();
+        this.checkAndRefreshTokens('MyPeugeot');
+        this.checkAndRefreshTokens('MyCitroen');
+        this.checkAndRefreshTokens('MyOpel');
     }
 
     /**
      * Check tokens and refresh if needed
      * Runs every hour
      */
-    async checkAndRefreshTokens(): Promise<void> {
-        this.log('Checking if tokens need refresh');
+    async checkAndRefreshTokens(brand:string): Promise<void> {
+        this.log(`${brand} Checking if tokens need refresh`);
         
-        const tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+        let tokens = this.homey.settings.get('stellantis_tokens_' + brand.toLowerCase()) as TokenData | undefined;
         
         if (!tokens) {
-            this.log('No tokens found');
+            tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+        }
+        
+        if (!tokens) {
+            this.log(`${brand} No tokens found`);
             return;
         }
         
@@ -39,24 +47,29 @@ class StellantisApp extends Homey.App {
         const needsRefresh = tokens.expiresAt - Date.now() < fiveMinutes;
         
         if (needsRefresh) {
-            this.log('Token needs refresh, refreshing...');
-            await this.refreshTokens();
+            this.log(`${brand} Token needs refresh, refreshing...`);
+            await this.refreshTokens(brand);
         } else {
-            this.log('Token still valid');
+            this.log(`${brand} Token still valid`);
         }
     }
 
     /**
      * Refresh tokens (internal use)
      */
-    async refreshTokens(): Promise<void> {
+    async refreshTokens(brand:string): Promise<void> {
         try {
-            const tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+            let tokens = this.homey.settings.get('stellantis_tokens_' + brand.toLowerCase()) as TokenData | undefined;
             
             if (!tokens || !tokens.refreshToken) {
-                throw new Error('No refresh token found');
+                //try the iold token storage
+                tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
             }
             
+            if (!tokens || !tokens.refreshToken) {
+                throw new Error(`${brand} No refresh token found`);
+            }
+
             // Create Basic Auth header
             const credentials = Buffer.from(`${tokens.client_id}:${tokens.client_secret}`).toString('base64');
             
@@ -87,11 +100,11 @@ class StellantisApp extends Homey.App {
             tokens.expiresAt = Date.now() + (data.expires_in * 1000);
             tokens.lastRefresh = Date.now();
             
-            this.homey.settings.set('stellantis_tokens', tokens);
-            this.log('Token refreshed successfully');
+            this.homey.settings.set('stellantis_tokens_' + brand.toLowerCase(), tokens);
+            this.log(`${brand} Token refreshed successfully`);
             
         } catch (error) {
-            this.error('Error refreshing token:', error);
+            this.error(`${brand} Error refreshing token:`, error);
         }
     }
 
@@ -99,20 +112,25 @@ class StellantisApp extends Homey.App {
      * Get current valid access token
      * For use by drivers
      */
-    async getAccessToken(): Promise<string> {
-        const tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
-        
+    async getAccessToken(brand:string): Promise<string> {
+        let tokens = this.homey.settings.get('stellantis_tokens_' + brand.toLowerCase()) as TokenData | undefined;
+
+        //Try the old cached token
         if (!tokens) {
-            throw new Error('No tokens available. Please configure your account in settings.');
+            tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+        }
+        if (!tokens) {
+            throw new Error(`${brand} No tokens available. Please configure your account in settings.`);
         }
         
         // Check if token needs refresh
         const fiveMinutes = 5 * 60 * 1000;
         if (tokens.expiresAt - Date.now() < fiveMinutes) {
-            this.log('Token expired or expiring soon, refreshing...');
-            await this.refreshTokens();
-            const updatedTokens = this.homey.settings.get('stellantis_tokens') as TokenData;
-            return updatedTokens.accessToken;
+            this.log(`${brand} Token expired or expiring soon, refreshing...`);
+            await this.refreshTokens(brand);
+
+            //Get the latest token
+            return await this.getAccessToken(brand);
         }
         
         return tokens.accessToken;
@@ -122,11 +140,15 @@ class StellantisApp extends Homey.App {
      * Get Stellantis API client info
      * For use by drivers
      */
-    getStellantisClient(): StellantisClient {
-        const tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+    getStellantisClient(brand:string): StellantisClient {
+        let tokens = this.homey.settings.get('stellantis_tokens_' + brand.toLowerCase()) as TokenData | undefined;
+
+        if (!tokens) {
+            tokens = this.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+        }
         
         if (!tokens) {
-            throw new Error('No tokens available');
+            throw new Error(`${brand} No tokens available`);
         }
         
         return {
@@ -134,7 +156,7 @@ class StellantisApp extends Homey.App {
             country: tokens.country,
             oauth_url: tokens.oauth_url,
             clientid: tokens.client_id,
-            getAccessToken: () => this.getAccessToken()
+            getAccessToken: () => this.getAccessToken(brand.toLowerCase())
         };
     }
 

@@ -1,7 +1,7 @@
 {
   "actions": [
     {
-      "id": "updatevehiclestatus_mypeugeot",
+      "id": "updatevehiclestatus_myopel",
       "title": {
         "en": "Update Vehicle Status"
       },
@@ -12,7 +12,7 @@
   ],
   "triggers": [
     {
-      "id": "newtrip_mypeugeot",
+      "id": "newtrip_myopel",
       "title": {
         "en": "New trip available"
       },

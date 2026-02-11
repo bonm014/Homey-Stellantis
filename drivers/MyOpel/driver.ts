@@ -1,8 +1,8 @@
 import Homey, { App } from 'homey';
 import DriverUtils from './../DriverUtils'
 
-module.exports = class MyPeugeotDriver extends Homey.Driver {
-  private brandName:string = "MyPeugeot";
+module.exports = class MyOpelDriver extends Homey.Driver {
+  private brandName:string = "MyOpel";
 
   /**
    * onInit is called when the driver is initialized.

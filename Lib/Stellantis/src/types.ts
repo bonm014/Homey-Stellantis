@@ -75,6 +75,57 @@ export interface TokenManagerOptions extends ClientOptions {
 }
 
 // Vehicle Types
+export interface TripDetail {
+    id: string;
+    startedAt: Date;
+    stoppedAt: Date;
+    duration: number;
+    distance: number;
+    createdAt: Date;
+    updatedAt: Date;
+    startPosition: {
+      geometry?: { type: string; coordinates: [number,number] };
+      properties: { heading: number; type: string }
+    };
+    //startPosition: any;//{ type: 'Feature', geometry: [Object], properties: [Object] },
+    done: boolean;
+    startEnergies: [
+      {
+        type: string;
+        subType: string;
+        level: number;
+        autonomy: number;
+      }
+    ];
+    endEnergies: [
+      {
+        type: string;
+        subType: string;
+        level: number;
+        autonomy: number;
+      }
+    ];
+    energyConsumptions: [
+      {
+        consumption: number;
+        avgConsumption: number;
+        type: string;
+        subType: string;
+      }
+    ];
+    kinetic: { avgSpeed: number; maxSpeed: number };
+    startMileage: number;
+    stopPosition: {
+      geometry?: { type: string; coordinates: [number,number] };
+      properties: { heading: number; type: string }
+    };
+  }
+
+export interface Trips {
+    total: number;
+    _embedded: {trips: TripDetail[]};
+}
+
 export interface Vehicle {
     id: string;
     vin: string;

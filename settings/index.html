@@ -45,17 +45,19 @@
         <div class="instructions">
             <strong>Follow these steps:</strong>
             <ol>
-                <li>Click the "Open Login Page" button below</li>
+                <li>Copy the link below</li>
+                <li>Open a new window and navigate to the link</li>
                 <li>Login with your Stellantis account credentials</li>
                 <li>The browser will show an error page (this is normal!)</li>
-                <li>Copy the <strong>complete URL</strong> from the address bar</li>
+                <li>Open Developer Tools, and open the Network tab</li>
+                <li>Copy the <strong>complete URL</strong> from the network trace (mymap://oauth2redirect/nl?code=...&state=...)</li>
                 <li>Paste it in the field below</li>
             </ol>
         </div>
         
-        <div class="url-display" id="authUrlDisplay"></div>
-        <button onclick="openAuthUrl()">Open Login Page</button>
-        
+        <label for="authUrlDisplay">Stellantis login:</label>
+        <textarea id="authUrlDisplay" placeholder="" readonly></textarea>
+
         <label for="redirectUrl">Paste the redirect URL here:</label>
         <textarea id="redirectUrl" placeholder="mymap://oauth2redirect/nl?code=...&state=..."></textarea>
         
@@ -293,13 +295,7 @@
                     return;
                 }
 
-                console.log(result);
-                
-                if (result.otp_required) {
-                    // OTP needed
-                    showMessage('tokenStatus', '📱 SMS verification required', 'info');
-                    document.getElementById('otpSection').classList.remove('hidden');
-                } else if (result.success) {
+                if (result.success) {
                     // Success!
                     onTokenReceived(result);
                 } else {

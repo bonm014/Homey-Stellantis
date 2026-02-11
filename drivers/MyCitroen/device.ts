@@ -1,9 +1,9 @@
 import Homey from 'homey';
 import DeviceUtils from './../DeviceUtils'
 
-module.exports = class MyPeugeotDevice extends Homey.Device {
+module.exports = class MyCitroenDevice extends Homey.Device {
   private tokenRefreshInterval?:NodeJS.Timeout;
-  private brandName:string = "MyPeugeot";
+  private brandName:string = "MyCitroen";
 
   /**
    * onInit is called when the device is initialized.
@@ -18,19 +18,12 @@ module.exports = class MyPeugeotDevice extends Homey.Device {
 
     //Wait 15 seconds before request data in order to get the correct token available
     setTimeout(() => {this.checkAndRefreshData();}, 1000 * 15)    
-
-    this.registerCapabilityListener('evcharger_charging', this.StartStopCharging.bind(this));
-
     
-    let actionUpdateVehicle = this.homey.flow.getActionCard('updatevehiclestatus_' + this.brandName.toLowerCase());
+    let actionUpdateVehicle = this.homey.flow.getActionCard('updatevehiclestatus_' + this.brandName);
     actionUpdateVehicle.registerRunListener(async (args) => {
       await this.checkAndRefreshData();
       return true;
     });
-  }
-
-  async StartStopCharging(value:boolean, opts:any) {
-    DeviceUtils.StartStopCharging(this, this.brandName, value);
   }
 
   async checkAndRefreshData() {

@@ -6,6 +6,7 @@
  */
 
 export { StellantisApiClient } from './client';
+export { StellantisRemoteClient } from './remote';
 
 export * from './types';
 

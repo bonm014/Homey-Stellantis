@@ -2,7 +2,7 @@
 // Complete Stellantis API client with Axios
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import type { Vehicle, VehicleStatus, Maintenance } from './types'
+import type { Vehicle, VehicleStatus, Maintenance, Trips } from './types'
 
 interface HomeyApp {
     log: (...args: any[]) => void;
@@ -99,8 +99,9 @@ export class StellantisApiClient {
 
         // Add client_id as query parameter (API requires it in URL, not header)
         const separator = endpoint.includes('?') ? '&' : '?';
-        const urlWithClientId = `${endpoint}${separator}client_id=1eebc2d5-5df3-459b-a624-20abfcf82530`;
+        const urlWithClientId = `${endpoint}${separator}client_id=${this.brandConfig.client_id}`;
 
+        //console.log(`${urlWithClientId}`);
 
         const config: AxiosRequestConfig = {
             method,
@@ -125,9 +126,11 @@ export class StellantisApiClient {
     async getVehicles(): Promise<Vehicle[]> {
         try {
             const response = await this.request<any>('GET', '/user/vehicles');
-            
+
             // Response can be in different formats
             const vehicles = response._embedded.vehicles || [];
+
+            //console.log(vehicles);
             
             return vehicles.map((v: Vehicle) => ({
                 id: v.id,
@@ -148,6 +151,20 @@ export class StellantisApiClient {
     }
     
     /**
+     * Get vehicle last position (if available)
+     */
+    async getVehiclePosition(vehicleId: string): Promise<any> {
+        try
+        {
+            return await this.request('GET', `/user/vehicles/${vehicleId}/lastPosition`);
+        }
+        catch (error)
+        {
+            return null;
+        }
+    }
+
+    /**
      * Get vehicle status
      */
     async getVehicleStatus(vehicleId: string): Promise<VehicleStatus> {
@@ -161,9 +178,16 @@ export class StellantisApiClient {
         return this.request('GET', `/user/vehicles/${vehicleId}`);
     }
     
-    
-    async getVehicleTelemetry(vehicleId: string): Promise<any> {
-        return this.request('GET', `/user/vehicles/${vehicleId}/telemetry`);
+    async getVehicleLastTrips(vehicleId: string): Promise<Trips> {
+        var tripsFirstPage:any = await this.request('GET', `/user/vehicles/${vehicleId}/trips`);
+
+        let lastPageUrl = (tripsFirstPage._links.last.href as string).replace(this.brandConfig.baseUrl,"");
+
+        return this.request('GET', lastPageUrl);
+    }
+
+    async getVehicleAlarms(vehicleId: string): Promise<any> {
+        return this.request('GET', `/user/vehicles/${vehicleId}/alarms`);
     }
 
     async getVehicleMaintenance(vehicleId: string): Promise<Maintenance> {
