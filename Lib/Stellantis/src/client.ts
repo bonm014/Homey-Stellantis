@@ -2,7 +2,7 @@
 // Complete Stellantis API client with Axios
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import type { Vehicle, VehicleStatus, Maintenance, Trips } from './types'
+import type { Vehicle, VehicleStatus, Maintenance, Trips, User } from './types'
 
 interface HomeyApp {
     log: (...args: any[]) => void;
@@ -174,7 +174,11 @@ export class StellantisApiClient {
     /**
      * Get vehicle alarms
      */
-    async getVehicle(vehicleId: string): Promise<any> {
+    async getUser(): Promise<User> {
+        return this.request('GET', `/user`);
+    }
+
+    async getVehicle(vehicleId: string): Promise<Vehicle> {
         return this.request('GET', `/user/vehicles/${vehicleId}`);
     }
     

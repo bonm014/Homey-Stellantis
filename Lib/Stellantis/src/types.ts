@@ -225,6 +225,11 @@ export interface Alert {
   createdAt: string;
   active: boolean;
 }
+export interface User {
+  email: string;
+  firstName: string;
+  lastName: string;
+}
 
 export interface Maintenance {
   mileageBeforeMaintenance: number;

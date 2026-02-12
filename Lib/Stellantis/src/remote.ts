@@ -1,12 +1,43 @@
 import * as crypto from 'crypto';
-import * as https from 'https';
 import * as mqtt from 'mqtt';
+import axios, { AxiosRequestConfig } from 'axios';
+import { Otp, ConfigException } from './otp'
+import type { OtpState } from './otp'
+import Homey from 'homey';
+
+
+/**
+ * MQTT TOKEN RESULT
+ */
+interface MqttTokenResult {
+  success: boolean;
+  accessToken?: string;
+  refreshToken?: string;
+  expiresIn?: number;
+  otpCode?: string;
+  error?: string;
+  requiresSetup?: boolean;
+  otpState?: OtpState;  // Nieuwe state om in sessie op te slaan
+}
+
+/**
+ * OPTIONS
+ */
+interface OtpOptions {
+  otpState?: OtpState;     // Bestaande state uit sessie
+  smsCode?: string;        // Voor eerste keer setup
+  pinCode?: string;        // Voor eerste keer setup
+  clientId: string;
+  baseUrl?: string;
+}
 
 /**
  * Configuration for Stellantis Remote Client
  */
 export interface StellantisConfig {
   realm: string;
+  clientId: string;
+  clientSecret: string;
   countryCode: string;
   customerId: string;
   accessToken: string;
@@ -54,7 +85,6 @@ export class StellantisRemoteClient {
   private config: StellantisConfig;
   private remoteCredentials: RemoteCredentials;
   private mqttClient: mqtt.MqttClient | null;
-  private otpCode: string | null;
 
   constructor(config: StellantisConfig) {
     this.config = config;
@@ -64,115 +94,57 @@ export class StellantisRemoteClient {
       expiresAt: null
     };
     this.mqttClient = null;
-    this.otpCode = null;
   }
 
-  /**
-   * Generate code verifier for PKCE (Proof Key for Code Exchange)
-   */
-  private generateCodeVerifier(): string {
-    return crypto.randomBytes(32).toString('base64url');
+  getAPIHost() {
+    return 'api.groupe-psa.com';
   }
-
-  /**
-   * Generate code challenge from verifier
-   */
-  private generateCodeChallenge(verifier: string): string {
-    return crypto
-      .createHash('sha256')
-      .update(verifier)
-      .digest('base64url');
-  }
-
-  /**
-   * Make HTTPS request
-   */
-  private async makeRequest(
-    hostname: string,
-    path: string,
-    method: string,
-    data: string,
-    headers: { [key: string]: string | number }
-  ): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const options: https.RequestOptions = {
-        hostname,
-        path,
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': data.length,
-          ...headers
-        }
-      };
-
-      const req = https.request(options, (res) => {
-        let body = '';
-        
-        res.on('data', (chunk) => {
-          body += chunk;
-        });
-        
-        res.on('end', () => {
-          try {
-            const response = JSON.parse(body);
-            resolve(response);
-          } catch (error) {
-            reject(new Error(`Failed to parse response: ${(error as Error).message}`));
-          }
-        });
-      });
-
-      req.on('error', (error) => {
-        reject(error);
-      });
-
-      req.write(data);
-      req.end();
-    });
-  }
-
   /**
    * Step 1: Request OTP SMS
    * This triggers an SMS to be sent to the phone number associated with the account
    */
   async requestOTP(): Promise<void> {
-    const baseUrl = this.getBaseUrl();
     
-    const data = JSON.stringify({
-      siteCode: this.config.realm.replace('clientsB2C', '').toLowerCase(),
-      culture: `${this.config.countryCode.toLowerCase()}-${this.config.countryCode}`,
-      action: 'AUTHENTICATE',
-      fields: {
-        USR_EMAIL: { value: this.config.customerId }
-      }
+    const apiHost = this.getAPIHost();
+    const url = `https://${apiHost}/applications/cvs/v4/mobile/smsCode`;
+    
+    const params = new URLSearchParams({
+      client_id: this.config.clientId
     });
-
-    const headers = {
-      'Authorization': `Bearer ${this.config.accessToken}`,
-      'x-introspect-realm': this.config.realm
-    };
-
-    const response: OTPResponse = await this.makeRequest(
-      baseUrl,
-      '/GetAccessToken',
-      'POST',
-      data,
-      headers
-    );
-
-    // Check for errors
-    if (response.err) {
-      if (response.err === 'NOK:MAXNBTOOLS') {
-        throw new Error('Maximum number of devices/SMS reached. Please reset your Stellantis account.');
-      } else if (response.err === 'NOK:FORBIDDEN') {
-        throw new Error('Forbidden. Please re-authenticate your account.');
-      } else {
-        throw new Error(`OTP request failed: ${response.err}`);
-      }
-    }
     
-    console.log('OTP SMS sent successfully. Check your phone.');
+    try {
+      console.log('\n========================================');
+      console.log('STEP 1: Requesting OTP SMS');
+      console.log('========================================');
+      console.log('URL:', `${url}?${params.toString()}`);
+      
+      const response = await axios({
+        method: 'POST',
+        url: `${url}?${params.toString()}`,
+        headers: {
+          'Authorization': `Bearer ${this.config.accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        data: {},
+        timeout: 30000
+      });
+      
+      console.log('✓ SMS requested (status 202)');
+      //console.log('Response:', response);
+      console.log('========================================\n');
+      
+      return response.data;
+      
+    } catch (error) {
+      console.error('✗ Failed to request SMS');
+      console.log(error);
+      if (axios.isAxiosError(error) && error.response) {
+        console.error('Status:', error.response.status);
+        console.error('Error:', error.response.data);
+      }
+      
+      throw error;
+    }
   }
 
   /**
@@ -180,368 +152,150 @@ export class StellantisRemoteClient {
    * @param smsCode - 4-digit code received via SMS
    * @param pin - 4-digit PIN from mobile app
    */
-  async validateOTP(smsCode: string, pin: string): Promise<RemoteCredentials> {
-    if (!smsCode || smsCode.length === 0) {
-      throw new Error('SMS code must be set');
+  async validateOTP(homey:Homey.App, smsCode: string, pinCode:string, brandName:string, clientId:string): Promise<any> {
+    let otpState = await homey.homey.settings.get('stellantis_tokens_otpState_' + brandName.toLowerCase());
+    let baseUrl = 'https://mw-web-bff.mpsa.com';
+
+  try {
+    // ========================================================================
+    // STAP 2 & 3: OTP OBJECT VERKRIJGEN (uit sessie of nieuw aanmaken)
+    // ========================================================================
+    
+    let otp: Otp | null = null;
+    
+    // Probeer eerst uit sessie te laden
+    if (otpState) {
+      console.log('[STAP 3] OTP laden uit sessie...');
+      otp = Otp.fromJSON(otpState);
+      console.log('[STAP 3] ✓ OTP object succesvol geladen uit sessie');
+    } 
+    // Als geen state in sessie, maak nieuwe aan (STAP 2)
+    else {
+      console.log('[STAP 2] Geen OTP state in sessie, nieuwe sessie aanmaken...');
+      
+      // Check of SMS code en PIN zijn meegegeven
+      if (!smsCode || !pinCode) {
+        return {
+          success: false,
+          requiresSetup: true,
+          error: 'Geen OTP state in sessie. SMS code en PIN vereist voor setup.'
+        };
+      }
+      
+      console.log(`[STAP 2] Aanmaken met SMS: ${smsCode}, PIN: ${pinCode.replace(/./g, '*')}`);
+      
+      // Maak nieuw OTP object
+      otp = new Otp('bb8e981582b0f31353108fb020bead1c', 'Homey_' + brandName);
+      otp['smsCode'] = smsCode;
+      otp['codepin'] = pinCode;
+      
+      // Activeer
+      const activated = await otp.activationStart();
+
+      if (!activated) {
+        return {
+          success: false,
+          error: 'OTP activatie gefaald. Controleer SMS code en PIN.'
+        };
+      }
+      
+      const finalizeResult = await otp.activationFinalize();
+      console.log(finalizeResult);
+      if (finalizeResult !== 0) { // 0 = OK
+        return {
+          success: false,
+          error: `OTP activatie finalisatie gefaald: ${finalizeResult}`
+        };
+      }
+      
+      console.log('[STAP 2] ✓ OTP sessie succesvol aangemaakt');
     }
-    if (!pin || pin.length !== 4) {
-      throw new Error('PIN must be 4 digits');
+
+    // ========================================================================
+    // STAP 4: OTP CODE GENEREREN
+    // ========================================================================
+    
+    console.log('[STAP 4] OTP code genereren...');
+    console.log('[STAP 4] ⚠️  Rate limit: Max 6 keer per 24 uur');
+    
+    const otpCode = await otp.getOtpCode();
+    
+    if (!otpCode) {
+      return {
+        success: false,
+        error: 'OTP code generatie gefaald. Mogelijk opnieuw authenticeren vereist.'
+      };
     }
+    
+    console.log(`[STAP 4] ✓ OTP code gegenereerd: ${otpCode}`);
 
-    const baseUrl = this.getBaseUrl();
-    const codeVerifier = this.generateCodeVerifier();
-    const codeChallenge = this.generateCodeChallenge(codeVerifier);
-
-    // Combine SMS code and PIN
-    this.otpCode = smsCode + pin;
-
-    const data = JSON.stringify({
-      siteCode: this.config.realm.replace('clientsB2C', '').toLowerCase(),
-      culture: `${this.config.countryCode.toLowerCase()}-${this.config.countryCode}`,
-      action: 'AUTHENTICATE',
-      fields: {
-        USR_EMAIL: { value: this.config.customerId },
-        USR_PASSWORD: { value: this.otpCode }
+    // ========================================================================
+    // STAP 5: MQTT TOKEN VERKRIJGEN MET OTP CODE
+    // ========================================================================
+    
+    console.log('[STAP 5] MQTT token aanvragen met OTP code...');
+    
+    const tokenUrl = `${baseUrl}/v1/oauth/token`;
+    const response = await axios.post(
+      tokenUrl,
+      {
+        grant_type: 'password',
+        password: otpCode
       },
-      codeVerifier: codeVerifier,
-      codeChallenge: codeChallenge
-    });
-
-    const headers = {
-      'Authorization': `Bearer ${this.config.accessToken}`,
-      'x-introspect-realm': this.config.realm
-    };
-
-    const response: OTPResponse = await this.makeRequest(
-      baseUrl,
-      '/GetAccessToken',
-      'POST',
-      data,
-      headers
-    );
-
-    // Check for errors
-    if (response.err) {
-      if (response.err === 'NOK:NOK_BLOCKED') {
-        throw new Error('Too many wrong PIN attempts. Account blocked.');
-      } else {
-        throw new Error(`OTP validation failed: ${response.err}`);
-      }
-    }
-
-    // Store remote tokens
-    if (response.access_token && response.refresh_token) {
-      this.remoteCredentials.accessToken = response.access_token;
-      this.remoteCredentials.refreshToken = response.refresh_token;
-      this.remoteCredentials.expiresAt = Date.now() + (response.expires_in! * 1000);
-      
-      console.log('Remote access tokens obtained successfully!');
-      return { ...this.remoteCredentials };
-    } else {
-      throw new Error('Response missing access_token or refresh_token');
-    }
-  }
-
-  /**
-   * Refresh remote access token using refresh token
-   */
-  async refreshRemoteToken(): Promise<RemoteCredentials> {
-    if (!this.remoteCredentials.refreshToken) {
-      throw new Error('No refresh token available. Please complete OTP flow first.');
-    }
-
-    const baseUrl = this.getBaseUrl();
-    
-    const data = JSON.stringify({
-      grant_type: 'refresh_token',
-      refresh_token: this.remoteCredentials.refreshToken
-    });
-
-    const headers = {
-      'Authorization': `Bearer ${this.config.accessToken}`
-    };
-
-    const response: OTPResponse = await this.makeRequest(
-      baseUrl,
-      '/oauth/token',
-      'POST',
-      data,
-      headers
-    );
-
-    if (response.err) {
-      throw new Error(`Token refresh failed: ${response.err}`);
-    }
-
-    if (response.access_token) {
-      this.remoteCredentials.accessToken = response.access_token;
-      
-      if (response.refresh_token) {
-        this.remoteCredentials.refreshToken = response.refresh_token;
-      }
-      
-      if (response.expires_in) {
-        this.remoteCredentials.expiresAt = Date.now() + (response.expires_in * 1000);
-      }
-      
-      console.log('Remote token refreshed successfully');
-      return { ...this.remoteCredentials };
-    } else {
-      throw new Error('Response missing access_token');
-    }
-  }
-
-  /**
-   * Check if remote token needs refresh
-   */
-  needsTokenRefresh(): boolean {
-    if (!this.remoteCredentials.expiresAt) {
-      return true;
-    }
-    // Refresh if token expires in less than 5 minutes
-    return Date.now() >= (this.remoteCredentials.expiresAt - 300000);
-  }
-
-  /**
-   * Initialize MQTT connection for remote commands
-   */
-  async initializeMQTT(): Promise<mqtt.MqttClient> {
-    if (!this.remoteCredentials.accessToken) {
-      throw new Error('No remote access token. Complete OTP flow first.');
-    }
-
-    const mqttUrl = this.getMQTTUrl();
-    
-    const options: mqtt.IClientOptions = {
-      clientId: `psa-${this.config.customerId}`,
-      username: this.config.customerId,
-      password: this.remoteCredentials.accessToken,
-      protocol: 'mqtts',
-      port: 8885,
-      clean: true,
-      protocolVersion: 4
-    };
-
-    return new Promise((resolve, reject) => {
-      this.mqttClient = mqtt.connect(mqttUrl, options);
-
-      this.mqttClient.on('connect', () => {
-        console.log('MQTT connected successfully');
-        
-        // Subscribe to response topics
-        const topic = `psa/RemoteServices/to/cid/${this.config.customerId}/#`;
-        this.mqttClient!.subscribe(topic, (err) => {
-          if (err) {
-            reject(err);
-          } else {
-            console.log(`Subscribed to topic: ${topic}`);
-            resolve(this.mqttClient!);
-          }
-        });
-      });
-
-      this.mqttClient.on('error', (error) => {
-        console.error('MQTT error:', error);
-        reject(error);
-      });
-
-      this.mqttClient.on('message', (topic, message) => {
-        console.log(`Received message on ${topic}:`, message.toString());
-      });
-    });
-  }
-
-  /**
-   * Send remote command via MQTT
-   * @param vin - Vehicle VIN
-   * @param command - Command type (e.g., 'VehCharge', 'Precondition')
-   * @param payload - Command payload
-   */
-  async sendRemoteCommand(
-    vin: string,
-    command: string,
-    payload: Partial<CommandPayload> = {}
-  ): Promise<void> {
-    if (!this.mqttClient || !this.mqttClient.connected) {
-      await this.initializeMQTT();
-    }
-
-    if (this.needsTokenRefresh()) {
-      await this.refreshRemoteToken();
-    }
-
-    const topic = `psa/RemoteServices/from/cid/${this.config.customerId}/${command}`;
-    
-    const message = JSON.stringify({
-      vin,
-      ...payload
-    });
-
-    return new Promise((resolve, reject) => {
-      this.mqttClient!.publish(topic, message, { qos: 1 }, (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          console.log(`Command sent: ${command} for VIN ${vin}`);
-          resolve();
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-introspect-realm': 'INTROSPECT_REALM'
+        },
+        params: {
+          client_id: clientId
         }
-      });
-    });
-  }
+      }
+    );
 
-  /**
-   * Start charging
-   */
-  async startCharging(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'VehCharge', {
-      action: 'start'
-    });
-  }
+    console.log('[STAP 5] ✓ MQTT token succesvol verkregen');
+    console.log(`[STAP 5]   Access token: ${response.data.access_token.substring(0, 30)}...`);
+    console.log(`[STAP 5]   Verloopt over: ${response.data.expires_in} seconden`);
 
-  /**
-   * Stop charging
-   */
-  async stopCharging(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'VehCharge', {
-      action: 'stop'
-    });
-  }
+    // ========================================================================
+    // RESULTAAT + NIEUWE STATE VOOR SESSIE
+    // ========================================================================
+    
+    // Serialize OTP state om in sessie op te slaan
+    const newOtpState = otp.toJSON();
 
-  /**
-   * Set charging limit
-   * @param vin - Vehicle VIN
-   * @param percentage - Target charge percentage (0-100)
-   */
-  async setChargingLimit(vin: string, percentage: number): Promise<void> {
-    if (percentage < 0 || percentage > 100) {
-      throw new Error('Percentage must be between 0 and 100');
-    }
-
-    return this.sendRemoteCommand(vin, 'VehCharge', {
-      action: 'setChargeLimit',
-      percentage
-    });
-  }
-
-  /**
-   * Start climate preconditioning
-   * @param vin - Vehicle VIN
-   * @param temperature - Target temperature in Celsius
-   */
-  async startPreconditioning(vin: string, temperature: number = 21): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Precondition', {
-      action: 'start',
-      temperature
-    });
-  }
-
-  /**
-   * Stop climate preconditioning
-   */
-  async stopPreconditioning(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Precondition', {
-      action: 'stop'
-    });
-  }
-
-  /**
-   * Wake up vehicle
-   */
-  async wakeUp(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'VehCharge', {
-      action: 'state'
-    });
-  }
-
-  /**
-   * Lock doors
-   */
-  async lockDoors(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Doors', {
-      action: 'lock'
-    });
-  }
-
-  /**
-   * Unlock doors
-   */
-  async unlockDoors(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Doors', {
-      action: 'unlock'
-    });
-  }
-
-  /**
-   * Honk horn
-   */
-  async honkHorn(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Horn', {
-      action: 'activate'
-    });
-  }
-
-  /**
-   * Flash lights
-   */
-  async flashLights(vin: string): Promise<void> {
-    return this.sendRemoteCommand(vin, 'Lights', {
-      action: 'flash'
-    });
-  }
-
-  /**
-   * Get base URL for realm
-   */
-  private getBaseUrl(): string {
-    const realmUrls: { [key: string]: string } = {
-      'clientsB2CPeugeot': 'idpconfigadapter.peugeot.com',
-      'clientsB2CCitroen': 'idpconfigadapter.citroen.com',
-      'clientsB2CDS': 'idpconfigadapter.driveds.com',
-      'clientsB2COpel': 'idpconfigadapter.opel.com',
-      'clientsB2CVauxhall': 'idpconfigadapter.vauxhall.co.uk'
+    await homey.homey.settings.set('stellantis_tokens_otpState_' + brandName.toLowerCase(), newOtpState);
+    
+    return {
+      success: true,
+      accessToken: response.data.access_token,
+      refreshToken: response.data.refresh_token,
+      expiresIn: response.data.expires_in,
+      otpCode: otpCode,
+      otpState: newOtpState  // ← Sla dit op in je sessie!
     };
 
-    return realmUrls[this.config.realm] || 'idpconfigadapter.peugeot.com';
-  }
-
-  /**
-   * Get MQTT URL for realm
-   */
-  private getMQTTUrl(): string {
-    return 'mqtts://mwa-mobile-iot.mpsa.com:8885';
-  }
-
-  /**
-   * Disconnect MQTT client
-   */
-  disconnect(): void {
-    if (this.mqttClient) {
-      this.mqttClient.end();
-      console.log('MQTT disconnected');
+  } catch (error) {
+    // Error handling
+    if (error instanceof ConfigException) {
+      return {
+        success: false,
+        requiresSetup: true,
+        error: 'OTP configuratie is ongeldig. Re-authenticatie vereist.'
+      };
     }
-  }
 
-  /**
-   * Get current credentials (for saving to config)
-   */
-  getCredentials(): RemoteCredentials {
-    return { ...this.remoteCredentials };
-  }
+    if (axios.isAxiosError(error)) {
+      return {
+        success: false,
+        error: `MQTT token request gefaald: ${error.response?.data?.error_description || error.message}`
+      };
+    }
 
-  /**
-   * Restore credentials from saved config
-   */
-  restoreCredentials(credentials: Partial<RemoteCredentials>): void {
-    if (credentials.refreshToken) {
-      this.remoteCredentials.refreshToken = credentials.refreshToken;
-    }
-    if (credentials.accessToken) {
-      this.remoteCredentials.accessToken = credentials.accessToken;
-    }
-    if (credentials.expiresAt) {
-      this.remoteCredentials.expiresAt = credentials.expiresAt;
-    }
+    return {
+      success: false,
+      error: `Onverwachte fout: ${(error as Error).message}`
+    };
   }
 }
-
-export default StellantisRemoteClient;
+}

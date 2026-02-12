@@ -156,6 +156,7 @@ class StellantisApp extends Homey.App {
             country: tokens.country,
             oauth_url: tokens.oauth_url,
             clientid: tokens.client_id,
+            clientSecret: tokens.client_secret,
             getAccessToken: () => this.getAccessToken(brand.toLowerCase())
         };
     }

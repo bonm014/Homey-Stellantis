@@ -32,6 +32,7 @@ export interface StellantisClient {
     country: string;
     oauth_url: string;
     clientid:string;
+    clientSecret:string;
     getAccessToken: () => Promise<string>;
 }
 

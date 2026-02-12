@@ -1,17 +1,83 @@
 // api.ts - Homey API Endpoints (TypeScript)
 // Handles communication between settings page and app
 
-import Homey from 'homey';
 import fetch from 'node-fetch';
 import { AuthData, TokenData, ApiResponse, ApiArgs } from './types';
+import { StellantisApiClient,StellantisRemoteClient } from './Lib/Stellantis/src'
+import StellantisApp from './app';
 
 module.exports = {
-    
+    async validateOTP(args: ApiArgs): Promise<ApiResponse> {
+        const { homey, body } = args;
+        const { brandName,smsCode, pinCode } = body;
+
+        homey.app.log(`Validate OTP ${smsCode}`);
+
+        const tokens:TokenData = homey.settings.get('stellantis_tokens_' + brandName.toLowerCase());
+
+        let myApp = homey.app as StellantisApp;
+
+        let myClient = await myApp.getStellantisClient(brandName);
+
+        var client:StellantisApiClient = new StellantisApiClient(homey.app, tokens.accessToken, tokens.brand, tokens.country,tokens.client_id);
+
+        var user = await client.getUser();
+
+        var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
+            accessToken: await myClient.getAccessToken(),
+            clientId:tokens.client_id,
+            clientSecret:tokens.client_secret,
+            countryCode: myClient.country,
+            customerId: user.email,
+            realm:`clientsB2C${brandName.replace('My', '')}`
+        });
+
+        await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id);
+
+        return { success: true, expiresAt:0 };
+    },
+
     /**
      * Exchange authorization code for access token
      * Called from settings page after user provides auth code
      */
-    async exchangeToken({ homey }: ApiArgs,brand:string): Promise<ApiResponse> {
+    async requestOTP(args: ApiArgs): Promise<ApiResponse> {
+        const { homey, body } = args;
+        const { brandName } = body;
+
+        homey.app.log(`Requesting OTP ${brandName}`);
+
+        const tokens:TokenData = homey.settings.get('stellantis_tokens_' + brandName.toLowerCase());
+
+        let myApp = homey.app as StellantisApp;
+
+        let myClient = await myApp.getStellantisClient(brandName);
+
+        var client:StellantisApiClient = new StellantisApiClient(homey.app, tokens.accessToken, tokens.brand, tokens.country,tokens.client_id);
+
+        var user = await client.getUser();
+
+        var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
+            accessToken: await myClient.getAccessToken(),
+            clientId:tokens.client_id,
+            clientSecret:tokens.client_secret,
+            countryCode: myClient.country,
+            customerId: user.email,
+            realm:`clientsB2C${brandName.replace('My', '')}`
+        });
+
+        await remoteClient.requestOTP();
+
+        return { success: true, expiresAt:0 };
+    },
+
+    /**
+     * Exchange authorization code for access token
+     * Called from settings page after user provides auth code
+     */
+    async exchangeToken(args: ApiArgs): Promise<ApiResponse> {
+        const { homey, body } = args;
+
         homey.app.log('API: Exchange authorization code for token');
         
         try {

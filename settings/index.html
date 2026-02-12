@@ -33,6 +33,9 @@
         <select id="country"></select>
         
         <button onclick="generateAuthUrl()">Continue to Login</button>
+        <!--
+        <button onclick="requestOTP()">Request OTP</button>
+        -->
     </div>
     
     <!-- Step 2: Login & Get Authorization Code -->
@@ -76,15 +79,18 @@
             ⏳ Requesting access token from Stellantis...
         </div>
         
-        <div id="otpSection" class="hidden">
+        <div id="otpSection">
             <div class="message info">
                 📱 SMS Verification Required<br>
                 Please check your phone for a 6-digit verification code.
             </div>
             
-            <label for="otpCode">Enter 6-digit OTP code:</label>
-            <input type="text" id="otpCode" maxlength="6" placeholder="123456" pattern="[0-9]{6}">
+            <label for="otpCode">Enter SMS OTP code:</label>
+            <input type="text" id="otpCode">
             
+            <label for="pinCode">Enter PIN code:</label>
+            <input type="text" id="pinCode">
+
             <button onclick="submitOTP()">Verify OTP</button>
         </div>
         
@@ -184,6 +190,23 @@
                 opt.value = c;
                 opt.text = `${c} (${CONFIG[brand].configs[c].locale})`;
                 select.add(opt);
+            });
+        }
+
+        function requestOTP() {
+            selectedBrand = document.getElementById('brand').value;
+
+            // Call backend to exchange code for token
+            // In SDK 3, API methods are called via the api object name from app.json
+            Homey.api('POST', '/OTP/request', {'brandName':selectedBrand}, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                else {
+                    goToStep(3);
+                }
+
             });
         }
 
@@ -305,18 +328,14 @@
         }
 
         function submitOTP() {
-            const otp = document.getElementById('otpCode').value.trim();
-            
-            if (otp.length !== 6 || !/^\d{6}$/.test(otp)) {
-                showMessage('tokenStatus', 'OTP must be 6 digits', 'error');
-                return;
-            }
-            
+            const otpCode = document.getElementById('otpCode').value.trim();
+            const pinCode = document.getElementById('pinCode').value.trim();
+                        
             showMessage('tokenStatus', '⏳ Verifying OTP...', 'info');
             document.getElementById('otpSection').classList.add('hidden');
             
             // Call backend with OTP
-            Homey.api('POST', '/exchangeTokenOTP', { otp: otp }, function(err, result) {
+            Homey.api('POST', '/OTP/validate', {'brandName':selectedBrand, smsCode: otpCode, pinCode:pinCode }, function(err, result) {
                 if (err) {
                     showMessage('tokenStatus', 'Error: ' + err.message, 'error');
                     document.getElementById('otpSection').classList.remove('hidden');

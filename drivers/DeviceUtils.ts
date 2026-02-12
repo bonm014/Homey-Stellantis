@@ -1,5 +1,5 @@
 import Homey from 'homey';
-import {StellantisApiClient,StellantisRemoteClient,TripDetail} from './../Lib/Stellantis/src'
+import {StellantisApiClient,TripDetail} from './../Lib/Stellantis/src'
 import StellantisApp from './../app'
 import { isNumberObject } from 'util/types';
 
@@ -16,16 +16,39 @@ class DeviceUtils {
 
   static async setCapabilityValue(device:Homey.Device, key:string, value:any)
   {
-    if(!device.hasCapability(key))
+    if(value == null || value == undefined)
     {
-      device.addCapability(key);
+      if(await device.hasCapability(key))
+      {
+        await device.removeCapability(key);
+      }
+
+      return;
     }
 
-    device.setCapabilityValue(key,value);
+    try
+    {
+      if(!await device.hasCapability(key))
+      {
+        await device.addCapability(key);
+      }
+
+      await device.setCapabilityValue(key,value);
+    }
+    catch(error)
+    {
+      device.log(`${key}=${value}`)
+
+      if(await device.hasCapability(key))
+      {
+        await device.removeCapability(key);
+      }
+    }
   }
 
   static async StartStopCharging(device:Homey.Device, brandName:string, start:boolean)
   {
+    /*
     let myApp = device.homey.app as StellantisApp;
 
     let myClient = await myApp.getStellantisClient(brandName);
@@ -33,6 +56,8 @@ class DeviceUtils {
     var client:StellantisApiClient = new StellantisApiClient(device.homey.app, await myClient.getAccessToken(), myClient.brand, myClient.country,myClient.clientid);
     var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
       accessToken: await myClient.getAccessToken(),
+      clientId: myClient.clientid,
+      clientSecret: myClient.clientSecret,
       countryCode: myClient.country,
       customerId: "",
       realm:`clientsB2C${brandName.replace('My', '')}`
@@ -47,6 +72,7 @@ class DeviceUtils {
     {
       //client.stopCharging(carId);
     }
+      */
   }
 
 
@@ -60,11 +86,8 @@ class DeviceUtils {
 
     let numOfNewTrips:number = vehicleTrips._embedded.trips.length;
 
-    device.log(tripLastKnownDate);
     for(let i = 0 ; i < numOfNewTrips ; i++) {
       let trip:TripDetail = vehicleTrips._embedded.trips[i];
-
-      device.log(trip.startedAt);
 
       if(trip.startedAt > tripLastKnownDate || tripLastKnownDate == null || tripLastKnownDate == undefined)
       {
