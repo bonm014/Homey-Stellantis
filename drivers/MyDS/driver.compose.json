@@ -1,0 +1,39 @@
+{
+  "name": {
+    "en": "DS"
+  },
+  "class": "car",
+  "capabilities": [
+    "measure_odometer_km",
+    "measure_range_km",
+    "measure_battery",
+    "ev_charging_state",
+    "measure_voltage"
+  ],
+  "energy": {
+    "batteries": ["INTERNAL"]
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_my_devices"
+      }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.jpg",
+    "large": "{{driverAssetsPath}}/images/large.jpg"
+  }
+}

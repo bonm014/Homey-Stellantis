@@ -8,9 +8,21 @@ class DriverUtils {
 
     let myApp = device.homey.app as StellantisApp;
 
-    let client = await myApp.getStellantisClient(brandName);
-
-    let vehicles:Vehicle[] = await client.getVehicles();
+    let client:StellantisClient | undefined = undefined;
+    let vehicles:Vehicle[]
+    try
+    {
+      client = await myApp.getStellantisClient(brandName);
+      if(client.accessToken == "" || client.accessToken == null || client.accessToken == undefined)
+      {
+        throw("Please login first");
+      }
+      vehicles = await client!.getVehicles();
+    }
+    catch(error)
+    {
+      throw("Please login first");
+    }
 
     vehicles.forEach((vehicle: Vehicle) => {
       console.log(`${vehicle.vin}`);

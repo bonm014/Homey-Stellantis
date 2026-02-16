@@ -116,6 +116,73 @@
         ]
       },
       {
+        "id": "newtrip_myds",
+        "title": {
+          "en": "New trip available"
+        },
+        "titleFormatted": {
+          "en": "New trip available"
+        },
+        "tokens": [
+          {
+            "name": "duration",
+            "title": {
+              "en": "duration seconds"
+            },
+            "type": "number"
+          },
+          {
+            "name": "distance",
+            "title": {
+              "en": "distance"
+            },
+            "type": "number"
+          },
+          {
+            "name": "startedAt",
+            "title": {
+              "en": "startedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "stoppedAt",
+            "title": {
+              "en": "stoppedAt"
+            },
+            "type": "string"
+          },
+          {
+            "name": "energyConsumption",
+            "title": {
+              "en": "energyConsumption"
+            },
+            "type": "number"
+          },
+          {
+            "name": "energyConsumptionAvg",
+            "title": {
+              "en": "energyConsumptionAvg"
+            },
+            "type": "number"
+          },
+          {
+            "name": "SpeedAvg",
+            "title": {
+              "en": "SpeedAvg"
+            },
+            "type": "number"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
         "id": "newtrip_myopel",
         "title": {
           "en": "New trip available"
@@ -268,6 +335,22 @@
         ]
       },
       {
+        "id": "updatevehiclestatus_myds",
+        "title": {
+          "en": "Update Vehicle Status"
+        },
+        "hint": {
+          "en": "Force an update if you need the update now"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
         "id": "updatevehiclestatus_myopel",
         "title": {
           "en": "Update Vehicle Status"
@@ -343,6 +426,48 @@
         "large": "/drivers/MyCitroen/assets/images/large.jpg"
       },
       "id": "MyCitroen"
+    },
+    {
+      "name": {
+        "en": "DS"
+      },
+      "class": "car",
+      "capabilities": [
+        "measure_odometer_km",
+        "measure_range_km",
+        "measure_battery",
+        "ev_charging_state",
+        "measure_voltage"
+      ],
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/MyDS/assets/images/small.jpg",
+        "large": "/drivers/MyDS/assets/images/large.jpg"
+      },
+      "id": "MyDS"
     },
     {
       "name": {

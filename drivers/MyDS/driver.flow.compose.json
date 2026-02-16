@@ -1,0 +1,62 @@
+{
+  "actions": [
+    {
+      "id": "updatevehiclestatus_myds",
+      "title": {
+        "en": "Update Vehicle Status"
+      },
+      "hint": {
+        "en": "Force an update if you need the update now"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "id": "newtrip_myds",
+      "title": {
+        "en": "New trip available"
+      },
+      "titleFormatted": {
+        "en": "New trip available"
+      },
+      "tokens": [
+          {
+            "name": "duration",
+            "title": { "en": "duration seconds" },
+            "type": "number"
+          },
+          {
+            "name": "distance",
+            "title": { "en": "distance" },
+            "type": "number"
+          },
+          {
+            "name": "startedAt",
+            "title": { "en": "startedAt" },
+            "type": "string"
+          },
+          {
+            "name": "stoppedAt",
+            "title": { "en": "stoppedAt" },
+            "type": "string"
+          },
+          {
+            "name": "energyConsumption",
+            "title": { "en": "energyConsumption" },
+            "type": "number"
+          },
+          {
+            "name": "energyConsumptionAvg",
+            "title": { "en": "energyConsumptionAvg" },
+            "type": "number"
+          },
+          {
+            "name": "SpeedAvg",
+            "title": { "en": "SpeedAvg" },
+            "type": "number"
+          }
+      ]
+    }
+  ]
+
+}
