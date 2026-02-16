@@ -5,10 +5,10 @@
  * Supports: Peugeot, Citroën, DS, Opel, Vauxhall
  */
 
-export { StellantisApiClient } from './client';
+export { StellantisClient } from './client';
 export { StellantisRemoteClient } from './remote';
 
 export * from './types';
 
 // Default export
-export { StellantisApiClient as default } from './client';
+export { StellantisClient as default } from './client';

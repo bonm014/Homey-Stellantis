@@ -1,5 +1,5 @@
 import Homey from 'homey';
-import {StellantisApiClient,TripDetail} from './../Lib/Stellantis/src'
+import {StellantisClient,TripDetail} from './../Lib/Stellantis/src'
 import StellantisApp from './../app'
 import { isNumberObject } from 'util/types';
 
@@ -9,9 +9,16 @@ class DeviceUtils {
   }
 
   static async setPicture(device:Homey.Device, picture:string) {
-    const img = await device.homey.images.createImage();
-    img.setUrl(picture);
-    device.setCameraImage('myCar', 'myCar', img);
+    if(picture != null && picture != undefined && picture != "")
+    {
+      try
+      {
+        const img = await device.homey.images.createImage();
+        img.setUrl(picture);
+        await device.setCameraImage('myCar', 'myCar', img);
+      }
+      catch{}
+    }
   }
 
   static async setCapabilityValue(device:Homey.Device, key:string, value:any)
@@ -76,7 +83,7 @@ class DeviceUtils {
   }
 
 
-  static async checkTrips(device:Homey.Device,client:StellantisApiClient,carId:string, brandName:string)
+  static async checkTrips(device:Homey.Device,client:StellantisClient,carId:string, brandName:string)
   {
     device.log("check trips");
     var vehicleTrips = await client.getVehicleLastTrips(carId);
@@ -111,7 +118,7 @@ class DeviceUtils {
     }
   }
 
-  static async checkStatus(device:Homey.Device,client:StellantisApiClient,carId:string)
+  static async checkStatus(device:Homey.Device,client:StellantisClient,carId:string)
   {
     var vehicle = await client.getVehicle(carId);
     //device.log(vehicle);
@@ -121,7 +128,7 @@ class DeviceUtils {
     if(vehicle.pictures.length > 0)
     {
       let pIndex:number = Math.floor(Math.random() * (vehicle.pictures.length-1));
-      DeviceUtils.setPicture(device, vehicle.pictures[pIndex]);
+      await DeviceUtils.setPicture(device, vehicle.pictures[pIndex]);
     }
     
     if(vehicleMaintenance.mileageBeforeMaintenance != undefined)
@@ -177,9 +184,7 @@ class DeviceUtils {
     let myApp = device.homey.app as StellantisApp;
 
     device.log(`Refresh car details ${device.getStoreValue('vin')}`)
-    let myClient = await myApp.getStellantisClient(brandName);
-
-    var client:StellantisApiClient = new StellantisApiClient(device.homey.app, await myClient.getAccessToken(), myClient.brand, myClient.country,myClient.clientid);
+    let client = await myApp.getStellantisClient(brandName);
 
     var carId = DeviceUtils.getCarId(device);
 

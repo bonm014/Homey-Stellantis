@@ -2,8 +2,7 @@
 // Handles communication between settings page and app
 
 import fetch from 'node-fetch';
-import { AuthData, TokenData, ApiResponse, ApiArgs } from './types';
-import { StellantisApiClient,StellantisRemoteClient } from './Lib/Stellantis/src'
+import { AuthData, TokenData, ApiResponse, ApiArgs,StellantisClient,StellantisRemoteClient } from './Lib/Stellantis/src';
 import StellantisApp from './app';
 
 module.exports = {
@@ -17,22 +16,20 @@ module.exports = {
 
         let myApp = homey.app as StellantisApp;
 
-        let myClient = await myApp.getStellantisClient(brandName);
-
-        var client:StellantisApiClient = new StellantisApiClient(homey.app, tokens.accessToken, tokens.brand, tokens.country,tokens.client_id);
+        let client = await myApp.getStellantisClient(brandName);
 
         var user = await client.getUser();
-
+/*
         var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
-            accessToken: await myClient.getAccessToken(),
+            accessToken: await client.tokens.accessToken,
             clientId:tokens.client_id,
             clientSecret:tokens.client_secret,
-            countryCode: myClient.country,
+            countryCode: client.country,
             customerId: user.email,
             realm:`clientsB2C${brandName.replace('My', '')}`
         });
-
         await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id);
+*/
 
         return { success: true, expiresAt:0 };
     },
@@ -51,17 +48,15 @@ module.exports = {
 
         let myApp = homey.app as StellantisApp;
 
-        let myClient = await myApp.getStellantisClient(brandName);
-
-        var client:StellantisApiClient = new StellantisApiClient(homey.app, tokens.accessToken, tokens.brand, tokens.country,tokens.client_id);
+        let client = await myApp.getStellantisClient(brandName);
 
         var user = await client.getUser();
 
         var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
-            accessToken: await myClient.getAccessToken(),
+            accessToken: client.accessToken,
             clientId:tokens.client_id,
             clientSecret:tokens.client_secret,
-            countryCode: myClient.country,
+            countryCode: client.country,
             customerId: user.email,
             realm:`clientsB2C${brandName.replace('My', '')}`
         });
@@ -107,27 +102,13 @@ module.exports = {
             });
             
             const responseText = await response.text();
-            homey.app.log('Token response status:', response.status);
-            homey.app.log('Token response headers:', JSON.stringify(response.headers.raw()));
-            homey.app.log('Token response body (full):', responseText);
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${responseText}`);
             }
             
             const data = JSON.parse(responseText);
-            homey.app.log('Parsed token data:', JSON.stringify(data, null, 2));
             
-            // Log wat we ontvangen
-            if (data.access_token) {
-                homey.app.log('access_token type:', typeof data.access_token);
-                homey.app.log('access_token length:', data.access_token.length);
-                homey.app.log('access_token preview:', data.access_token.substring(0, 50));
-            } else {
-                homey.app.error('❌ No access_token in response!');
-                homey.app.error('Response keys:', Object.keys(data));
-            }
-                        
             if (!data.access_token) {
                 homey.app.log('No access_token found, might be 2FA flow');
                 // Check if this is a 2FA intermediate response
@@ -154,6 +135,8 @@ module.exports = {
             
             homey.settings.set('stellantis_tokens_' + tokens.brand.toLowerCase(), tokens);
             homey.app.log('Tokens saved successfully');
+
+            (homey.app as StellantisApp).getStellantisClient(tokens.brand).updateConfig();
             
             // Clear auth data (code can only be used once)
             homey.settings.unset('auth_data');
