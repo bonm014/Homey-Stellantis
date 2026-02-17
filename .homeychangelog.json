@@ -13,5 +13,8 @@
   },
   "1.3.0": {
     "en": "TokenManager refectored, added DS brand"
+  },
+  "1.3.1": {
+    "en": "Token refresh more frequently checked"
   }
 }
