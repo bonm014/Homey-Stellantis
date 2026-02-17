@@ -32,7 +32,9 @@ export class StellantisClient
         
         this.tokenRefreshInterval = setInterval(() => {
             this.checkAndRefreshTokens();
-        }, 60 * 15 * 1000);
+        }, 5000 /*60 * 15 * 1000*/);
+
+        this.checkAndRefreshTokens();
     }
 
     async updateConfig()
@@ -138,7 +140,11 @@ export class StellantisClient
         
         if (needsRefresh) {
             this.app.log(`${this.brandName} Token needs refresh, refreshing...`);
-            await this.refreshTokens();
+            try
+            {
+                await this.refreshTokens();
+            }
+            catch{}
         } else {
             this.app.log(`${this.brandName} Token still valid`);
         }
@@ -148,8 +154,9 @@ export class StellantisClient
      * Refresh tokens (internal use)
      */
     async refreshTokens(): Promise<void> {
+        let tokens = null;
         try {
-            let tokens = this.app.homey.settings.get('stellantis_tokens_' + this.brandName.toLowerCase()) as TokenData | undefined;
+            tokens = this.app.homey.settings.get('stellantis_tokens_' + this.brandName.toLowerCase()) as TokenData | undefined;
             
             if (!tokens || !tokens.refreshToken) {
                 //try the iold token storage
@@ -194,7 +201,7 @@ export class StellantisClient
             this.app.log(`${this.brandName} Token refreshed successfully`);
             
         } catch (error) {
-            this.app.error(`${this.brandName} Error refreshing token:`, error);
+            this.app.error(`${this.brandName} Error refreshing token:`);
         }
     }
 
@@ -211,7 +218,12 @@ export class StellantisClient
         const fiveMinutes = 5 * 60 * 1000;
         if (this.tokens.expiresAt - Date.now() < fiveMinutes) {
             this.app.log(`${this.brandName} Token expired or expiring soon, refreshing...`);
-            await this.refreshTokens();
+
+            try
+            {
+                await this.refreshTokens();
+            }
+            catch{}
 
             //Get the latest token
             return await this.getAccessToken();

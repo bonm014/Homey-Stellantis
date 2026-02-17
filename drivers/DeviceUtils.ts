@@ -113,7 +113,11 @@ class DeviceUtils {
           SpeedAvg:trip.kinetic.avgSpeed
         });
 
-        await device.setStoreValue('tripLastKnownDate', trip.startedAt);
+        try
+        {
+          await device.setStoreValue('tripLastKnownDate', trip.startedAt);
+        }
+        catch(error) {}
       }
     }
   }
