@@ -129,6 +129,9 @@ class DeviceUtils {
     var vehicleStatus = await client.getVehicleStatus(carId);
     var vehicleMaintenance = await client.getVehicleMaintenance(carId);
 
+    var d = new Date();
+    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", d.toISOString());
+
     if(vehicle.pictures.length > 0)
     {
       let pIndex:number = Math.floor(Math.random() * (vehicle.pictures.length-1));

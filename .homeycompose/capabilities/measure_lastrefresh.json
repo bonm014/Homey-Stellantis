@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "title": { "en": "Last Refresh", "nl": "Laatste vernieuwing" },
+  "desc":  { "en": "Last Refresh", "nl": "Laatste vernieuwing" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true
+}

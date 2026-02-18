@@ -148,6 +148,8 @@ export class StellantisClient
         } else {
             this.app.log(`${this.brandName} Token still valid`);
         }
+
+        this.updateAccessToken(tokens.accessToken);        
     }
 
         /**
@@ -196,6 +198,8 @@ export class StellantisClient
             tokens.expiresIn = data.expires_in;
             tokens.expiresAt = Date.now() + (data.expires_in * 1000);
             tokens.lastRefresh = Date.now();
+
+            this.updateAccessToken(actualAccessToken);
             
             this.app.homey.settings.set('stellantis_tokens_' + this.brandName.toLowerCase(), tokens);
             this.app.log(`${this.brandName} Token refreshed successfully`);
