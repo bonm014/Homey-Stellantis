@@ -22,5 +22,8 @@
   },
   "1.3.3": {
     "en": "accesstoken refresh failed to set"
+  },
+  "1.3.4": {
+    "en": "Opel onPairDevices changed due to lack of brand"
   }
 }
