@@ -29,7 +29,7 @@ class DriverUtils {
 
       console.log(vehicle.brand);
 
-      if(vehicle.brand.toLowerCase() == brandName.replace("My","").toLowerCase())
+      if(vehicle.brand == null || vehicle.brand == undefined || vehicle.brand.toLowerCase() == brandName.replace("My","").toLowerCase())
       {
         devices.push({
             name: `${vehicle.vin}`,

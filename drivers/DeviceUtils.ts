@@ -122,6 +122,29 @@ class DeviceUtils {
     }
   }
 
+  
+  static formatDate(device:Homey.Device,date: Date): string {
+    const tz = device.homey.clock.getTimezone()
+
+    const parts = new Intl.DateTimeFormat('nl-NL', {
+      timeZone: tz,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).formatToParts(date);
+
+    const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+
+    const formatted = `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}`;
+
+    return formatted;
+  }
+
+
   static async checkStatus(device:Homey.Device,client:StellantisClient,carId:string)
   {
     var vehicle = await client.getVehicle(carId);
@@ -130,7 +153,8 @@ class DeviceUtils {
     var vehicleMaintenance = await client.getVehicleMaintenance(carId);
 
     var d = new Date();
-    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", d.toISOString());
+
+    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, d));
 
     if(vehicle.pictures.length > 0)
     {
