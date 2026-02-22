@@ -31,5 +31,8 @@
   },
   "1.4.0": {
     "en": "Added countries, fixed opel vehicle connection"
+  },
+  "1.4.1": {
+    "en": "DS Flow card trigger update"
   }
 }
