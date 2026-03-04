@@ -19,7 +19,7 @@ module.exports = class MyCitroenDevice extends Homey.Device {
     //Wait 15 seconds before request data in order to get the correct token available
     setTimeout(() => {this.checkAndRefreshData();}, 1000 * 15)    
     
-    let actionUpdateVehicle = this.homey.flow.getActionCard('updatevehiclestatus_' + this.brandName);
+    let actionUpdateVehicle = this.homey.flow.getActionCard('updatevehiclestatus_' + this.brandName.toLowerCase());
     actionUpdateVehicle.registerRunListener(async (args) => {
       await this.checkAndRefreshData();
       return true;

@@ -185,24 +185,29 @@ export interface VehicleStatus {
   odometer?: {
     mileage: number;
     unit: string;
-    updatedAt: string;
+    updatedAt: Date;
   };
-  preconditionning?: {
+  environment?: {
+    luminosity: { createdAt: Date, day: boolean },
+    air: { createdAt: Date, temp: number }
+  };
+  kinetic?: { createdAt: Date, moving: boolean }
+  preconditioning?: {
     airConditioning?: {
       status?: string;
     };
   };
-  updatedAt: string;
+  updatedAt: Date;
   ignition?: {
-    createdAt:string;
+    createdAt:Date;
     type:string;
   }
   battery?: {
       voltage:number;
-      createdAt:string;
+      createdAt:Date;
   }
   service?: {
-    createdAt:string;
+    createdAt:Date;
     type:string;
   }
 }

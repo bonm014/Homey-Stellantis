@@ -425,7 +425,33 @@
         "small": "/drivers/MyCitroen/assets/images/small.jpg",
         "large": "/drivers/MyCitroen/assets/images/large.jpg"
       },
-      "id": "MyCitroen"
+      "id": "MyCitroen",
+      "settings": [
+        {
+          "id": "debug_vehicle",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Vehicle"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclestatus",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Status"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclemaintenance",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Maintenance"
+          },
+          "value": ""
+        }
+      ]
     },
     {
       "name": {
@@ -467,7 +493,33 @@
         "small": "/drivers/MyDS/assets/images/small.jpg",
         "large": "/drivers/MyDS/assets/images/large.jpg"
       },
-      "id": "MyDS"
+      "id": "MyDS",
+      "settings": [
+        {
+          "id": "debug_vehicle",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Vehicle"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclestatus",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Status"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclemaintenance",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Maintenance"
+          },
+          "value": ""
+        }
+      ]
     },
     {
       "name": {
@@ -509,7 +561,33 @@
         "small": "/drivers/MyOpel/assets/images/small.jpg",
         "large": "/drivers/MyOpel/assets/images/large.jpg"
       },
-      "id": "MyOpel"
+      "id": "MyOpel",
+      "settings": [
+        {
+          "id": "debug_vehicle",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Vehicle"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclestatus",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Status"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclemaintenance",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Maintenance"
+          },
+          "value": ""
+        }
+      ]
     },
     {
       "name": {
@@ -551,10 +629,52 @@
         "small": "/drivers/MyPeugeot/assets/images/small.jpg",
         "large": "/drivers/MyPeugeot/assets/images/large.jpg"
       },
-      "id": "MyPeugeot"
+      "id": "MyPeugeot",
+      "settings": [
+        {
+          "id": "debug_vehicle",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Vehicle"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclestatus",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Status"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_vehiclemaintenance",
+          "type": "textarea",
+          "label": {
+            "en": "Debug Information Maintenance"
+          },
+          "value": ""
+        }
+      ]
     }
   ],
   "capabilities": {
+    "measure_airconditioning": {
+      "type": "boolean",
+      "title": {
+        "en": "Airconditioning",
+        "nl": "Airconditioning"
+      },
+      "desc": {
+        "en": "Airconditioning",
+        "nl": "Airconditioning"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "/assets/icons/fan.svg"
+    },
     "measure_lastrefresh": {
       "type": "string",
       "title": {

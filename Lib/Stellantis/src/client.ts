@@ -32,7 +32,7 @@ export class StellantisClient
         
         this.tokenRefreshInterval = setInterval(() => {
             this.checkAndRefreshTokens();
-        }, 5000 /*60 * 15 * 1000*/);
+        }, 1 * 60 * 1000);
 
         this.checkAndRefreshTokens();
     }
@@ -116,7 +116,7 @@ export class StellantisClient
 
     public async checkAndRefreshTokens()
     {
-        this.app.log(`${this.brandName} Checking if tokens need refresh`);
+        //this.app.log(`${this.brandName} Checking if tokens need refresh`);
         
         let tokens = this.app.homey.settings.get('stellantis_tokens_' + this.brandName.toLowerCase()) as TokenData | undefined;
         
@@ -125,7 +125,7 @@ export class StellantisClient
         }
         
         if (!tokens) {
-            this.app.log(`${this.brandName} No tokens found`);
+            //this.app.log(`${this.brandName} No tokens found`);
             return;
         }
 
@@ -139,14 +139,14 @@ export class StellantisClient
         const needsRefresh = tokens.expiresAt - Date.now() < fiveMinutes;
         
         if (needsRefresh) {
-            this.app.log(`${this.brandName} Token needs refresh, refreshing...`);
+            //this.app.log(`${this.brandName} Token needs refresh, refreshing...`);
             try
             {
                 await this.refreshTokens();
             }
             catch{}
         } else {
-            this.app.log(`${this.brandName} Token still valid`);
+            //this.app.log(`${this.brandName} Token still valid`);
         }
 
         this.updateAccessToken(tokens.accessToken);        
@@ -205,7 +205,7 @@ export class StellantisClient
             this.app.log(`${this.brandName} Token refreshed successfully`);
             
         } catch (error) {
-            this.app.error(`${this.brandName} Error refreshing token:`);
+            //this.app.error(`${this.brandName} Error refreshing token:`);
         }
     }
 

@@ -1,0 +1,10 @@
+{
+  "type": "boolean",
+  "title": { "en": "Airconditioning", "nl": "Airconditioning" },
+  "desc":  { "en": "Airconditioning", "nl": "Airconditioning" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "icon": "/assets/icons/fan.svg"
+}

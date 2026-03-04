@@ -39,7 +39,7 @@ class DeviceUtils {
       {
         await device.addCapability(key);
       }
-
+      device.log(`${key} == ${value}`);
       await device.setCapabilityValue(key,value);
     }
     catch(error)
@@ -86,6 +86,14 @@ class DeviceUtils {
   static async checkTrips(device:Homey.Device,client:StellantisClient,carId:string, brandName:string)
   {
     device.log("check trips");
+    var vehicleStatus = await client.getVehicleStatus(carId);
+
+    //Skip the trips if we are still moving
+    if(vehicleStatus.kinetic?.moving)
+    {
+      return;
+    }
+
     var vehicleTrips = await client.getVehicleLastTrips(carId);
     let tripLastKnownDate:Date = await device.getStoreValue('tripLastKnownDate');
 
@@ -135,7 +143,7 @@ class DeviceUtils {
       minute: '2-digit',
       second: '2-digit',
       hour12: false
-    }).formatToParts(date);
+    }).formatToParts(new Date(date));
 
     const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
 
@@ -152,9 +160,14 @@ class DeviceUtils {
     var vehicleStatus = await client.getVehicleStatus(carId);
     var vehicleMaintenance = await client.getVehicleMaintenance(carId);
 
-    var d = new Date();
+    await device.setSettings({ debug_vehicle: JSON.stringify(vehicle, null, 2) }); // schrijft naar Advanced settings
+    await device.setSettings({ debug_vehiclestatus: JSON.stringify(vehicleStatus,null,2) }); // schrijft naar Advanced settings
+    await device.setSettings({ debug_vehiclemaintenance: JSON.stringify(vehicleMaintenance,null,2) }); // schrijft naar Advanced settings
 
-    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, d));
+
+    console.dir(vehicleStatus, { depth: null });
+    
+    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, vehicleStatus.updatedAt));
 
     if(vehicle.pictures.length > 0)
     {
@@ -162,16 +175,42 @@ class DeviceUtils {
       await DeviceUtils.setPicture(device, vehicle.pictures[pIndex]);
     }
     
-    if(vehicleMaintenance.mileageBeforeMaintenance != undefined)
-    {
-      DeviceUtils.setCapabilityValue(device,'measure_maintenance_km', vehicleMaintenance.mileageBeforeMaintenance);
-    }
-    if(vehicleMaintenance.daysBeforeMaintenance != undefined)
-    {
-      DeviceUtils.setCapabilityValue(device,'measure_maintenance_days', vehicleMaintenance.daysBeforeMaintenance);
-    }
+    DeviceUtils.setCapabilityValue(device,'measure_maintenance_km', vehicleMaintenance.mileageBeforeMaintenance);
+    DeviceUtils.setCapabilityValue(device,'measure_maintenance_days', vehicleMaintenance.daysBeforeMaintenance);
 
     DeviceUtils.setCapabilityValue(device,'measure_odometer_km', vehicleStatus.odometer?.mileage);
+
+    DeviceUtils.setCapabilityValue(device,'measure_temperature', vehicleStatus.environment?.air.temp);
+
+    DeviceUtils.setCapabilityValue(device,'fan_mode', null);
+
+    if(vehicleStatus.preconditioning?.airConditioning?.status == "Disabled")
+    {
+      DeviceUtils.setCapabilityValue(device,'measure_airconditioning', false);
+    }
+    else
+    {
+      DeviceUtils.setCapabilityValue(device,'measure_airconditioning', true);
+    }  
+
+    switch(vehicleStatus.ignition?.type)
+    {
+      default:
+      {
+        DeviceUtils.setCapabilityValue(device,'operational_state', 'running');
+        break;   
+      }
+      case "StartUp":
+      {
+        DeviceUtils.setCapabilityValue(device,'operational_state', 'paused');
+        break;   
+      }
+      case "Stop":
+      {
+        DeviceUtils.setCapabilityValue(device,'operational_state', 'stopped');
+        break;   
+      }
+    }
 
     if(vehicleStatus.energy!.length > 0)
     {
@@ -182,7 +221,6 @@ class DeviceUtils {
       if(vehicle.motorization == 'Electric')
       {
         DeviceUtils.setCapabilityValue(device,'measure_voltage', vehicleStatus.battery?.voltage);
-        DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_out");
 
         if(energy.charging?.plugged)
         {
@@ -204,8 +242,8 @@ class DeviceUtils {
         }
         else
         {
-          DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
-          DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_out");
+          DeviceUtils.setCapabilityValue(device,'evcharger_charging', null);  
+          DeviceUtils.setCapabilityValue(device,'ev_charging_state', null);
         }
       }
     }

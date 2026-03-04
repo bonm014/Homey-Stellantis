@@ -15,13 +15,13 @@ class DriverUtils {
       client = await myApp.getStellantisClient(brandName);
       if(client.accessToken == "" || client.accessToken == null || client.accessToken == undefined)
       {
-        throw("Please login first");
+        throw("Please login first, no access token found");
       }
       vehicles = await client!.getVehicles();
     }
     catch(error)
     {
-      throw("Please login first");
+      throw(`Unable to get the vehicles: ${error}`);
     }
 
     vehicles.forEach((vehicle: Vehicle) => {
