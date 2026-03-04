@@ -34,5 +34,8 @@
   },
   "1.4.1": {
     "en": "DS Flow card trigger update"
+  },
+  "1.4.2": {
+    "en": "debug info added"
   }
 }
