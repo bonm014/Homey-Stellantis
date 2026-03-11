@@ -40,5 +40,8 @@
   },
   "1.4.3": {
     "en": "Fix missing charger state"
+  },
+  "1.4.4": {
+    "en": "Add Finnish language for config"
   }
 }
