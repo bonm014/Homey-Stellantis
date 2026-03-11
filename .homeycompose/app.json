@@ -1,6 +1,6 @@
 {
   "id": "com.martech.stellantisvehicles",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "compatibility": ">=12.4.5",
   "sdk": 3,
   "platforms": [
@@ -28,6 +28,10 @@
     "validateOTP": {
       "method": "POST",
       "path": "/OTP/validate"
+    },
+    "refreshOTP": {
+      "method": "POST",
+      "path": "/OTP/refresh"
     }
   },
   "permissions": [],
