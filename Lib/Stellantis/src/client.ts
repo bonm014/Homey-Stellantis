@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import type {TokenData} from './types' 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import type { Vehicle, VehicleStatus, Maintenance, Trips, User } from './types'
+import { StellantisRemoteClient } from './../src';
 
 interface StellantisConfig {
     brand: string;
@@ -112,6 +113,30 @@ export class StellantisClient
         if (this.tokenRefreshInterval) {
             clearInterval(this.tokenRefreshInterval);
         }
+    }
+
+    public async getRemoteClient()
+    {
+        var user = await this.getUser();
+        const tokens:TokenData = this.app.homey.settings.get('stellantis_tokens_' + this.brandName.toLowerCase());
+
+        await this.refreshTokens();
+
+        var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
+            accessToken: await this.getAccessToken(),
+            clientId:tokens.client_id,
+            clientSecret:tokens.client_secret,
+            countryCode: this.country,
+            customerId: user.email,
+            realm:`clientsB2C${this.brandName.replace('My', '')}`
+        },   async () => {
+                // Deze callback refresht de token en geeft de nieuwe terug
+                await this.refreshTokens();  // Jouw bestaande refresh functie
+                return this.getAccessToken();   // Return de nieuwe token
+            }
+        );
+
+        return remoteClient;
     }
 
     public async checkAndRefreshTokens()

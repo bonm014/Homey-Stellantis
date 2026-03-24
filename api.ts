@@ -6,30 +6,53 @@ import { AuthData, TokenData, ApiResponse, ApiArgs,StellantisClient,StellantisRe
 import StellantisApp from './app';
 
 module.exports = {
-    async validateOTP(args: ApiArgs): Promise<ApiResponse> {
-        const { homey, body } = args;
-        const { brandName,smsCode, pinCode } = body;
 
-        homey.app.log(`Validate OTP ${smsCode}`);
+    async refreshOTP(args: ApiArgs): Promise<ApiResponse> {
+        const { homey, body } = args;
+        const { brandName } = body;
+
+        homey.app.log(`Refresh OTP ${brandName}`);
 
         const tokens:TokenData = homey.settings.get('stellantis_tokens_' + brandName.toLowerCase());
 
         let myApp = homey.app as StellantisApp;
 
+        homey.app.log(`Get client`);
         let client = await myApp.getStellantisClient(brandName);
 
-        var user = await client.getUser();
-/*
-        var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
-            accessToken: await client.tokens.accessToken,
-            clientId:tokens.client_id,
-            clientSecret:tokens.client_secret,
-            countryCode: client.country,
-            customerId: user.email,
-            realm:`clientsB2C${brandName.replace('My', '')}`
-        });
-        await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id);
-*/
+        homey.app.log(`get remote client`);
+        var remoteClient = await client.getRemoteClient();
+
+        console.log('[TOKEN] Before refresh:', this.config.accessToken.substring(0, 20));
+        await this.refreshToken(); // of hoe je het ook doet
+        console.log('[TOKEN] After refresh:', this.config.accessToken.substring(0, 20));
+
+        homey.app.log(`validate`);
+        await remoteClient.validateOTP(homey,null, null,tokens.brand,tokens.client_id,false);
+
+        return { success: true, expiresAt:0 };
+    },
+
+    async validateOTP(args: ApiArgs): Promise<ApiResponse> {
+        const { homey, body } = args;
+        const { brandName,smsCode, pinCode } = body;
+
+        homey.app.log(`Validate OTP ${smsCode}`);
+        homey.app.log(`Validate OTP ${brandName}`);
+        homey.app.log(`Validate OTP ${pinCode}`);
+        
+
+        let myApp = homey.app as StellantisApp;
+        let client = await myApp.getStellantisClient(brandName);
+        //await client.refreshTokens();
+
+        const tokens:TokenData = homey.settings.get('stellantis_tokens_' + brandName.toLowerCase());
+
+        homey.app.log(`Get client`);
+
+        homey.app.log(`get remote client`);
+        var remoteClient = await client.getRemoteClient();
+        await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id,true);
 
         return { success: true, expiresAt:0 };
     },
@@ -50,16 +73,7 @@ module.exports = {
 
         let client = await myApp.getStellantisClient(brandName);
 
-        var user = await client.getUser();
-
-        var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
-            accessToken: client.accessToken,
-            clientId:tokens.client_id,
-            clientSecret:tokens.client_secret,
-            countryCode: client.country,
-            customerId: user.email,
-            realm:`clientsB2C${brandName.replace('My', '')}`
-        });
+        var remoteClient = await client.getRemoteClient()
 
         await remoteClient.requestOTP();
 

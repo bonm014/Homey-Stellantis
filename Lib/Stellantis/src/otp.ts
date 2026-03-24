@@ -77,7 +77,15 @@ export interface OtpState {
   mode: OtpMode;
   defi: number;
   otp_count: number;
-  data: IWData;
+  data: {  // ← Verander van IWData naar een plain object
+    iwid: string;
+    iwTsync: string;
+    iwK0: string;
+    iwK1: string;
+    iwsecid: string;
+    iwsecval: string;
+    iwsecn: number;
+  };
 }
 
 class IWData {
@@ -102,15 +110,60 @@ class IWData {
   }
 
   synchro(xml: XmlResponse, kma: string): void {
-    // Update sync timestamp
-    if (xml.tsync) {
-      this.iwTsync = xml.tsync;
-    }
+    console.debug('[Synchro] Starting synchro');
+    console.debug('[Synchro] xml.id:', xml.id);
+    console.debug('[Synchro] xml.Tsync:', xml.Tsync);
     
     // Update ID
-    if (xml.id) {
+    if (xml.id && xml.id.length > 0) {
+      const oldId = this.iwid;
       this.iwid = xml.id;
+      console.debug(`[Synchro] ✓ Updated iwid from '${oldId}' to '${this.iwid}'`);
+    } else {
+      console.debug(`[Synchro] ✗ No id in XML, keeping: '${this.iwid}'`);
     }
+
+    // Update Tsync
+    if (xml.Tsync) {
+      const oldTsync = this.iwTsync;
+      this.iwTsync = xml.Tsync;
+      console.debug(`[Synchro] ✓ Updated iwTsync from '${oldTsync}' to '${this.iwTsync}'`);
+    } else {
+      console.debug(`[Synchro] ✗ No Tsync in XML, keeping: '${this.iwTsync}'`);
+    }    
+    
+    // Decrypt K0 and K1 if present
+    const aesDecipher = (encryptedHex: string): string => {
+      const key = Buffer.from(kma, 'hex');
+      const decipher = crypto.createDecipheriv('aes-128-ecb', key, Buffer.alloc(0));
+      decipher.setAutoPadding(false);
+      
+      const decrypted = Buffer.concat([
+        decipher.update(Buffer.from(encryptedHex, 'hex')),
+        decipher.final()
+      ]);
+      
+      return decrypted.toString('hex').substring(0, 32);
+    };
+
+    // Update K0
+    if (xml.K0 && xml.K0.length > 0) {
+      const oldK0 = this.iwK0;
+      this.iwK0 = aesDecipher(xml.K0);
+      console.debug(`[Synchro] ✓ Updated iwK0 from ${oldK0} to ${this.iwK0}`);
+    } else {
+      console.debug('[Synchro] ✗ No K0 in XML, keeping:', this.iwK0);
+    }
+
+    // Update K1
+    if (xml.K1 && xml.K1.length > 0) {
+      const oldK1 = this.iwK1;
+      this.iwK1 = aesDecipher(xml.K1);
+      console.debug(`[Synchro] ✓ Updated iwK1 from ${oldK1} to ${this.iwK1}`);
+    } else {
+      console.debug('[Synchro] ✗ No K1 in XML, keeping:', this.iwK1);
+    }
+    
     
     // CRITICAL: Set iwK0 from KMA on first sync
     // iwK0 is used for generating R values
@@ -195,7 +248,10 @@ function oaepDecrypt(ciphertext: Buffer, modulus: forge.jsbn.BigInteger, exponen
   const em = Buffer.from(emHex, 'hex');
 
   const lHash = crypto.createHash('sha256').update(label).digest();
+ 
   const y = em[0];
+  if (y !== 0x00) throw new Error('OAEP: bad leading byte');
+
   const maskedSeed = em.slice(1, hLen + 1);
   const maskedDb = em.slice(hLen + 1);
 
@@ -204,6 +260,11 @@ function oaepDecrypt(ciphertext: Buffer, modulus: forge.jsbn.BigInteger, exponen
   const dbMask = mgf1(seed, k - hLen - 1);
   const db = xorBuffers(maskedDb, dbMask);
 
+  // validate lHash
+  const lHashExpected = crypto.createHash('sha256').update(label).digest();
+  if (!crypto.timingSafeEqual(db.slice(0, hLen), lHashExpected)) {
+    throw new Error('OAEP: lHash mismatch');
+  }
   const dbData = db.slice(hLen);
   const onePos = dbData.indexOf(0x01);
   
@@ -271,7 +332,7 @@ export class Otp {
   private s_id: string | null = null;
   private version: string = '0.2.11';
   private isMac: boolean = true;
-  private data: IWData;
+  public data: IWData;
   private cipher: OAEPCipher | null = null;
   private macid: string;
   private smsCode: string | null = null;
@@ -377,10 +438,13 @@ export class Otp {
     };
 
     if (this.mode === OtpMode.OTP) {
-      params.sid = this.data.iwsecid;
+      this.action = '';  // ← VOEG DEZE REGEL TOE! Reset action voor OTP mode
+      if (this.data.iwsecid) params.sid = this.data.iwsecid;
     } else if (this.mode === OtpMode.ACTIVATE) {
       params.code = this.smsCode;
     }
+
+    console.debug('[activationStart] Params:', params); // ← VOEG TOE
 
     const xml = await this.request(params, true);
 
@@ -481,11 +545,15 @@ export class Otp {
       Buffer.alloc(0)
     );
     aesCipher.setAutoPadding(false);
-    const encodeAesFromHex = aesCipher.update(randomBytesData).toString('hex');
+    
+    const encodeAesFromHex = Buffer.concat([aesCipher.update(randomBytesData), aesCipher.final()]).toString('hex');
 
     this.data.iwsecval = encodeAesFromHex;
     this.data.iwsecid = xml.s_id!;
     this.data.iwsecn = 1;
+
+    console.debug('[activationFinalize MS] Set iwsecid:', this.data.iwsecid);  // ← VOEG TOE
+    console.debug('[activationFinalize MS] Set iwsecval:', this.data.iwsecval); // ← VOEG TOE
 
     const reqParam: Record<string, any> = {
       action: 'ActionFinalize',
@@ -518,9 +586,15 @@ export class Otp {
     return otp;
   }
 
-  async getOtpCode(): Promise<string | null> {
+  async getOtpCode(): Promise<string> {
     this.mode = OtpMode.OTP;
-    let otpCode: string | null = null;
+    this.action = '';  // ← VOEG DEZE REGEL TOE!
+    
+    console.debug('[getOtpCode] Starting OTP generation');
+    console.debug('[getOtpCode] Current iwTsync:', this.data.iwTsync);  // ← VOEG TOE
+    console.debug('[getOtpCode] Current iwsecid:', this.data.iwsecid);  // ← VOEG TOE
+    
+    let otpCode: string = "";
 
     try {
       if (await this.activationStart()) {
@@ -544,6 +618,10 @@ export class Otp {
           }
           
           console.debug('otp code:', otpCode);
+          
+          // ← VOEG DIT TOE: Increment iwTsync lokaal voor volgende refresh
+          //this.data.iwTsync = (parseInt(this.data.iwTsync) + 1).toString();
+          //console.debug('[getOtpCode] ✓ Incremented iwTsync to:', this.data.iwTsync);
         }
       }
     } catch (error) {
@@ -554,7 +632,15 @@ export class Otp {
   }
 
   toJSON(): OtpState {
-    return {
+    console.log('[toJSON] Serializing OTP state');
+    //console.log('[toJSON] iwid:', this.data.iwid);
+    //console.log('[toJSON] iwTsync:', this.data.iwTsync);
+    //console.log('[toJSON] iwK0:', this.data.iwK0);
+    //console.log('[toJSON] iwK1:', this.data.iwK1);
+    //console.log('[toJSON] iwsecid:', this.data.iwsecid);
+    //console.log('[toJSON] iwsecval:', this.data.iwsecval);
+    
+    const state = {
       Kiw: this.Kiw,
       pinmode: this.pinmode,
       Kfact: this.Kfact,
@@ -574,22 +660,78 @@ export class Otp {
       mode: this.mode,
       defi: this.defi,
       otp_count: this.otp_count,
-      data: this.data
+      data: {
+        iwid: this.data.iwid,
+        iwTsync: this.data.iwTsync,
+        iwK0: this.data.iwK0,
+        iwK1: this.data.iwK1,
+        iwsecid: this.data.iwsecid,
+        iwsecval: this.data.iwsecval,
+        iwsecn: this.data.iwsecn
+      }
     };
+    
+    //console.log('[toJSON] Serialized data.iwid:', state.data.iwid);
+    //console.log('[toJSON] Serialized data.iwTsync:', state.data.iwTsync);
+    
+    return state;
   }
 
-  static fromJSON(state: OtpState): Otp {
-    const otp = new Otp(state.macid, state.device_id);
-    Object.assign(otp, state);
-    
-    if (otp.Kiw) {
-      otp.cipher = new OAEPCipher(otp.Kiw, EXPONENT);
-    }
-    
-    return otp;
+static fromJSON(state: OtpState): Otp {
+  console.log('[fromJSON] Deserializing OTP state');
+  //console.log('[fromJSON] Input state.data.iwid:', state.data.iwid);
+  //console.log('[fromJSON] Input state.data.iwTsync:', state.data.iwTsync);
+  //console.log('[fromJSON] Input state.data.iwK0:', state.data.iwK0);
+  //console.log('[fromJSON] Input state.data.iwK1:', state.data.iwK1);
+  //console.log('[fromJSON] Input state.data.iwsecid:', state.data.iwsecid);
+  //console.log('[fromJSON] Input state.data.iwsecval:', state.data.iwsecval);
+  
+  const otp = new Otp(state.macid, state.device_id);
+  
+  // Restore all properties
+  otp.Kiw = state.Kiw;
+  otp.pinmode = state.pinmode;
+  otp.Kfact = state.Kfact;
+  otp.needsync = state.needsync;
+  otp.serviceid = state.serviceid;
+  otp.alias = state.alias;
+  otp.iwalea = state.iwalea;
+  otp.device_id = state.device_id;
+  otp.codepin = state.codepin;
+  otp.challenge = state.challenge;
+  otp.action = state.action;
+  otp.s_id = state.s_id;
+  otp.version = state.version;
+  otp.isMac = state.isMac;
+  otp.smsCode = state.smsCode;
+  otp.mode = state.mode;
+  otp.defi = state.defi;
+  otp.otp_count = state.otp_count;
+  
+  // CRITICAL: Properly restore IWData
+  otp.data.iwid = state.data.iwid || '';
+  otp.data.iwTsync = state.data.iwTsync || '0';
+  otp.data.iwK0 = state.data.iwK0 || '';
+  otp.data.iwK1 = state.data.iwK1 || '';
+  otp.data.iwsecid = state.data.iwsecid || '';
+  otp.data.iwsecval = state.data.iwsecval || '';
+  otp.data.iwsecn = state.data.iwsecn || 0;
+  
+  //console.log('[fromJSON] Restored otp.data.iwid:', otp.data.iwid);
+  //console.log('[fromJSON] Restored otp.data.iwTsync:', otp.data.iwTsync);
+  //console.log('[fromJSON] Restored otp.data.iwK0:', otp.data.iwK0);
+  //console.log('[fromJSON] Restored otp.data.iwK1:', otp.data.iwK1);
+  //console.log('[fromJSON] Restored otp.data.iwsecid:', otp.data.iwsecid);
+  //console.log('[fromJSON] Restored otp.data.iwsecval:', otp.data.iwsecval);
+  
+  // Restore cipher if Kiw exists
+  if (otp.Kiw) {
+    otp.cipher = new OAEPCipher(otp.Kiw, EXPONENT);
+    console.log('[fromJSON] ✓ Cipher restored');
   }
+  
+  return otp;
+}
 
-  static setProxies(proxies: AxiosProxyConfig): void {
-    Otp.proxies = proxies;
-  }
+  
 }

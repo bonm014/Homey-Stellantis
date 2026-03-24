@@ -164,8 +164,7 @@ class DeviceUtils {
     await device.setSettings({ debug_vehiclestatus: JSON.stringify(vehicleStatus,null,2) }); // schrijft naar Advanced settings
     await device.setSettings({ debug_vehiclemaintenance: JSON.stringify(vehicleMaintenance,null,2) }); // schrijft naar Advanced settings
 
-
-    console.dir(vehicleStatus, { depth: null });
+    //console.dir(vehicleStatus, { depth: null });
     
     DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, vehicleStatus.updatedAt));
 
@@ -175,6 +174,9 @@ class DeviceUtils {
       await DeviceUtils.setPicture(device, vehicle.pictures[pIndex]);
     }
     
+    //Remove the charging possibility
+    DeviceUtils.setCapabilityValue(device,'evcharger_charging', null);
+
     DeviceUtils.setCapabilityValue(device,'measure_maintenance_km', vehicleMaintenance.mileageBeforeMaintenance);
     DeviceUtils.setCapabilityValue(device,'measure_maintenance_days', vehicleMaintenance.daysBeforeMaintenance);
 
@@ -197,12 +199,14 @@ class DeviceUtils {
     {
       default:
       {
-        DeviceUtils.setCapabilityValue(device,'operational_state', 'running');
-        break;   
-      }
-      case "StartUp":
-      {
-        DeviceUtils.setCapabilityValue(device,'operational_state', 'paused');
+        if(vehicleStatus.kinetic?.moving)
+        {
+          DeviceUtils.setCapabilityValue(device,'operational_state', 'running');
+        }
+        else
+        {
+          DeviceUtils.setCapabilityValue(device,'operational_state', 'paused');
+        }
         break;   
       }
       case "Stop":
@@ -218,32 +222,32 @@ class DeviceUtils {
       DeviceUtils.setCapabilityValue(device,'measure_battery', energy.level);
       DeviceUtils.setCapabilityValue(device,'measure_range_km', energy.autonomy);
 
+      DeviceUtils.setCapabilityValue(device,'measure_voltage', vehicleStatus.battery?.voltage);
+
       if(vehicle.motorization == 'Electric')
       {
-        DeviceUtils.setCapabilityValue(device,'measure_voltage', vehicleStatus.battery?.voltage);
-
         if(energy.charging?.plugged)
         {
           if(energy.charging?.chargingRate! > 0)
           {
             DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_in_charging"); 
-            DeviceUtils.setCapabilityValue(device,'evcharger_charging', true);  
+            //DeviceUtils.setCapabilityValue(device,'evcharger_charging', true);  
           }
           if(energy.charging?.chargingRate! < 0)
           {
             DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_in_discharging");
-            DeviceUtils.setCapabilityValue(device,'evcharger_charging', true);  
+            //DeviceUtils.setCapabilityValue(device,'evcharger_charging', true);  
           }
           if(energy.charging?.chargingRate! == 0)
           {
             DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_in");  
-            DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
+            //DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
           }
         }
         else
         {
-          DeviceUtils.setCapabilityValue(device,'evcharger_charging', null);  
-          DeviceUtils.setCapabilityValue(device,'ev_charging_state', null);
+          DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
+          //DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_out");
         }
       }
     }

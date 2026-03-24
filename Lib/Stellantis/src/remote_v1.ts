@@ -1,33 +1,63 @@
 import * as crypto from 'crypto';
 import * as mqtt from 'mqtt';
-import axios, { AxiosRequestConfig,AxiosInstance } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { Otp, ConfigException } from './otp'
 import type { OtpState } from './otp'
-import { refreshMqttToken } from './control';
 
 /**
- * MQTT Constants
+ * Stellantis MQTT Remote Control Client
+ * Based on Home Assistant integration
  */
+
+// MQTT Constants (from Home Assistant const.py)
 const MQTT_SERVER = 'mwa.mpsa.com';
 const MQTT_PORT = 8885;
-// Poort 8883 zonder TLS (of 1883)
-
 const MQTT_KEEP_ALIVE = 120;
 const MQTT_QOS = 0;
+
+// MQTT Topics
 const MQTT_RESP_TOPIC = 'psa/RemoteServices/to/cid/';
 const MQTT_EVENT_TOPIC = 'psa/RemoteServices/events/MPHRTServices/';
 const MQTT_REQ_TOPIC = 'psa/RemoteServices/from/cid/';
+
+interface MqttConnectResult {
+  success: boolean;
+  client?: mqtt.MqttClient;
+  error?: string;
+}
+
+interface RemoteCommandResult {
+  success: boolean;
+  correlationId?: string;
+  response?: any;
+  error?: string;
+}
+
 
 /**
  * MQTT TOKEN RESULT
  */
 interface MqttTokenResult {
   success: boolean;
-  mqttClient?: mqtt.MqttClient;
+  accessToken?: string;
+  refreshToken?: string;
+  expiresIn?: number;
   otpCode?: string;
   error?: string;
   requiresSetup?: boolean;
-  otpState?: OtpState;
+  otpState?: OtpState;  // Nieuwe state om in sessie op te slaan
+  mqttClient?: mqtt.MqttClient
+}
+
+/**
+ * OPTIONS
+ */
+interface OtpOptions {
+  otpState?: OtpState;     // Bestaande state uit sessie
+  smsCode?: string;        // Voor eerste keer setup
+  pinCode?: string;        // Voor eerste keer setup
+  clientId: string;
+  baseUrl?: string;
 }
 
 /**
@@ -43,39 +73,67 @@ export interface StellantisConfig {
 }
 
 /**
- * Remote command result
+ * Remote credentials returned after OTP validation
  */
-interface RemoteCommandResult {
-  success: boolean;
-  correlationId?: string;
-  response?: any;
-  error?: string;
+export interface RemoteCredentials {
+  refreshToken: string | null;
+  accessToken: string | null;
+  expiresAt: number | null;
 }
 
 /**
- * Stellantis Remote Control Client - OTP + MQTT
+ * Command payload for remote commands
+ */
+export interface CommandPayload {
+  vin: string;
+  action?: string;
+  percentage?: number;
+  temperature?: number;
+  [key: string]: any;
+}
+
+/**
+ * OTP Response from API
+ */
+interface OTPResponse {
+  access_token?: string;
+  refresh_token?: string;
+  token_type?: string;
+  expires_in?: number;
+  err?: string;
+  newversion?: string | null;
+  newversionurl?: string | null;
+}
+
+/**
+ * Stellantis Remote Control Client - OTP Authentication
+ * Based on PSA Car Controller implementation
+ * Handles OTP flow for remote commands (charging, climate control, etc.)
  */
 export class StellantisRemoteClient {
   private config: StellantisConfig;
-  private refreshTokenCallback?: () => Promise<string>;  // ← Callback om nieuwe token te krijgen
-
-  private mqttClient: mqtt.MqttClient | null = null;
-  private otp: Otp | null = null;
+  private remoteCredentials: RemoteCredentials;
+  private mqttClient: mqtt.MqttClient | null;
   private pendingRequests: Map<string, {
     resolve: (value: any) => void;
     reject: (reason: any) => void;
     timeout: NodeJS.Timeout;
   }> = new Map();
 
-  constructor(config: StellantisConfig, refreshTokenCallback?: () => Promise<string>) {
+  constructor(config: StellantisConfig) {
     this.config = config;
-    this.refreshTokenCallback = refreshTokenCallback;
+    this.remoteCredentials = {
+      refreshToken: null,
+      accessToken: null,
+      expiresAt: null
+    };
+    this.mqttClient = null;
   }
 
   getAPIHost() {
     return 'api.groupe-psa.com';
   }
-
+  
   /**
    * Step 1: Request OTP SMS
    * This triggers an SMS to be sent to the phone number associated with the account
@@ -124,19 +182,10 @@ export class StellantisRemoteClient {
     }
   }
 
-  // Voeg deze methode toe
-  private async ensureFreshOAuthToken(): Promise<void> {
-    if (this.refreshTokenCallback) {
-      console.log('[OAuth] Refreshing OAuth token...');
-      const newToken = await this.refreshTokenCallback();
-      this.config.accessToken = newToken;  // Update de token
-      console.log('[OAuth] ✓ Token refreshed');
-    }
-  }
-
   /**
-   * Step 2-5: Validate OTP and Connect to MQTT
-   * Dit vervangt de HTTP token request met MQTT connectie
+   * Step 2: Validate OTP Code with PIN
+   * @param smsCode - 4-digit code received via SMS
+   * @param pin - 4-digit PIN from mobile app
    */
   async validateOTP(
     homey: any, 
@@ -144,20 +193,27 @@ export class StellantisRemoteClient {
     pinCode: string | null, 
     brandName: string, 
     clientId: string,
-    forceReset: boolean = false
+    forceReset:boolean = false
   ): Promise<MqttTokenResult> {
     homey.log(`Validate OTP`);
 
     const settingsKey = `stellantis_tokens_otpState_${brandName.toLowerCase()}`;
-    let otpState = null;
-    
-    // Reset if requested
-    if (forceReset) {
+    let otpState = await homey.settings.get(settingsKey);
+
+        // Als forceReset, verwijder oude state
+    if (forceReset)
+    {
       await homey.settings.unset(settingsKey);
       console.log('[RESET] OTP state geforceerd gereset');
-    } else {
+      otpState = null;
+    }
+    else
+    {
       otpState = await homey.settings.get(settingsKey);
     }
+
+    //const baseUrl = 'https://mw-web-bff.mpsa.com';
+    const baseUrl = 'https://api.groupe-psa.com';
 
     try {
       // ========================================================================
@@ -174,7 +230,7 @@ export class StellantisRemoteClient {
           console.log('[STAP 3] ✓ OTP object succesvol geladen uit sessie');
         } catch (error) {
           console.log('[STAP 3] ✗ OTP state corrupt, opnieuw aanmaken nodig');
-          otpState = null;
+          otpState = null; // Force nieuwe setup
         }
       } 
       
@@ -193,10 +249,11 @@ export class StellantisRemoteClient {
         
         console.log(`[STAP 2] Aanmaken met SMS: ${smsCode}, PIN: ${pinCode.replace(/./g, '*')}`);
         
-        // Maak nieuw OTP object
+        // Maak nieuw OTP object met unieke device identifier
         const deviceIdentifier = `Homey_${brandName}/_/${crypto.randomBytes(16).toString('hex')}`;
         otp = new Otp('bb8e981582b0f31353108fb020bead1c', deviceIdentifier);
         
+        // Zet SMS code en PIN
         otp['smsCode'] = smsCode;
         otp['codepin'] = pinCode;
         
@@ -214,7 +271,7 @@ export class StellantisRemoteClient {
         console.log('[STAP 2] Finaliseren activatie...');
         const finalizeResult = await otp.activationFinalize();
         
-        if (finalizeResult !== 0) {
+        if (finalizeResult !== 0) { // 0 = Otp.OK
           console.error(`[STAP 2] Finalisatie gefaald met code: ${finalizeResult}`);
           return {
             success: false,
@@ -223,16 +280,15 @@ export class StellantisRemoteClient {
         }
         
         console.log('[STAP 2] ✓ OTP sessie succesvol aangemaakt');
-        
-        // Sla state op
+
+                // ← VOEG DIT TOE!
         console.log('[SAVE] Saving state after activation...');
-        const newOtpState = otp.toJSON();
-        await homey.settings.set(settingsKey, newOtpState);
+        //console.log('[SAVE] iwid before save:', otp.data.iwid);
+        //console.log('[SAVE] iwTsync before save:', otp.data.iwTsync);
+        const tempState = otp.toJSON();
+        await homey.settings.set(settingsKey, tempState);
         console.log('[SAVE] State saved');
       }
-
-      // Bewaar OTP instance
-      this.otp = otp;
 
       // ========================================================================
       // STAP 4: OTP CODE GENEREREN
@@ -241,13 +297,15 @@ export class StellantisRemoteClient {
       console.log('[STAP 4] OTP code genereren...');
       console.log('[STAP 4] ⚠️  Rate limit: Max 6 keer per 24 uur');
       
-      let otpCode: string;
+      let otpCode: string|null;
       try {
         otpCode = await otp!.getOtpCode();
       } catch (error) {
         console.error('[STAP 4] ✗ OTP code generatie gefaald:', error);
         
+        // Als het een ConfigException is, moet de gebruiker opnieuw authenticeren
         if (error instanceof ConfigException) {
+          // Verwijder oude state
           await homey.settings.unset(settingsKey);
           
           return {
@@ -263,119 +321,45 @@ export class StellantisRemoteClient {
       if (!otpCode) {
         return {
           success: false,
-          error: 'OTP code generatie gefaald.'
+          error: 'OTP code generatie gefaald. Mogelijk opnieuw authenticeren vereist.'
         };
       }
       
       console.log(`[STAP 4] ✓ OTP code gegenereerd: ${otpCode}`);
 
-      // ← VOEG HIER TOE:
-      // Update en sla de nieuwe state op (iwTsync is gewijzigd)
-      const updatedState = otp!.toJSON();
-      await homey.settings.set(settingsKey, updatedState);
-      console.log('[STAP 4] State updated, new iwTsync:', updatedState.data.iwTsync);
-
-      
       // ========================================================================
       // STAP 5: MQTT CONNECTIE MAKEN MET OTP CODE
       // ========================================================================
       
       console.log('[STAP 5] MQTT connectie maken...');
       console.log(`[STAP 5] Server: mqtts://${MQTT_SERVER}:${MQTT_PORT}`);
-      //console.log(`[STAP 5] Username: ${this.config.customerId}`);
-      console.log(`[STAP 5] Username: IMA_OAUTH_ACCESS_TOKEN`);
-
-      // ← VOEG DIT TOE: REFRESH OAUTH TOKEN EERST!
-      console.log('[STAP 5] Refreshing OAuth token first...');
-      await this.ensureFreshOAuthToken();
-      console.log('[STAP 5] OAuth token refreshed');
-
-      if(true)
-      {
-        console.log('[STAP 5] Trying HTTP token endpoint first...');
-
-        try {
-          console.log('[HTTP] OTP code:', otpCode);
-          console.log('[HTTP] Client ID:', clientId);
-          console.log('[HTTP] Realm:', this.config.realm);
-
-          // STAP 5: MQTT Token verkrijgen
-          clientId = this.config.clientId;  // '1eebc2d5-5df3-459b-a624-20abfcf82530'
-          let accessToken= this.config.accessToken;
-          let realm = this.config.realm;
-          let countryCode = this.config.countryCode;
-
-          const tokenResponse = await this.exchangeOtpForMqttToken({
-            clientId:clientId,
-            accessToken:accessToken,
-            realm:realm,
-            locale:countryCode,
-            otpCode:otpCode});
-
-          console.log('[HTTP] ✓ Success!');
-          console.log('[HTTP] MQTT access_token:', tokenResponse.access_token);
-
-          const mqttAccessToken = tokenResponse.data.access_token;
-
-          // STAP 6: MQTT Connect met MQTT access token
-          this.mqttClient = mqtt.connect(`mqtts://${MQTT_SERVER}:${MQTT_PORT}`, {
-            username: 'IMA_OAUTH_ACCESS_TOKEN',
-            password: mqttAccessToken,  // ← MQTT token, NIET OTP!
-            keepalive: 120,
-            clean: true,
-            protocolVersion: 4,
-            connectTimeout: 30000,
-            reconnectPeriod: 0
-          });
-          
-          console.log('[HTTP] ✓ Success!');
-          console.log('[HTTP] Response:', tokenResponse.data);
-          
-          const mqttToken = tokenResponse.data.access_token;
-          console.log('[HTTP] MQTT token:', mqttToken);
-          
-          // Probeer MQTT met HTTP token
-          await this.connectMQTT(mqttToken);
-          
-        } catch (error) {
-          console.log('[HTTP] ✗ Failed');
-          if (axios.isAxiosError(error) && error.response) {
-            console.log('[HTTP] Status:', error.response.status);
-            console.log('[HTTP] Data:', error.response.data);
-            console.log('[HTTP] Headers:', error.response.headers);
-          } else {
-            console.log('[HTTP] Error:', error);
-          }
-          
-          console.log('[TEST] Trying direct MQTT with OTP code...');
-          await this.connectMQTT(otpCode);
-        }
+      console.log(`[STAP 5] Username: ${this.config.customerId}`);
+      console.log(`[STAP 5] Password: ${otpCode}`);
+      
+      const mqttConnectResult = await this.connectMQTT(otpCode);
+      
+      if (!mqttConnectResult.success) {
+        return {
+          success: false,
+          error: `MQTT connectie gefaald: ${mqttConnectResult.error}`
+        };
       }
-      else
-      {
-        /*
-        console.log(`[STAP 5] Password: ${otpCode}`);
-        const mqttConnectResult = await this.connectMQTT(otpCode);
 
-        if (!mqttConnectResult.success) {
-          return {
-            success: false,
-            error: `MQTT connectie gefaald: ${mqttConnectResult.error}`
-          };
-        }
-        console.log('[STAP 5] ✓ MQTT connectie succesvol!');
-        */
-      }
+      console.log('[STAP 5] ✓ MQTT connectie succesvol!');
 
       // ========================================================================
       // RESULTAAT
       // ========================================================================
-
+      
+      // Update OTP state in sessie
+      const newOtpState = otp!.toJSON();
+      await homey.settings.set(settingsKey, newOtpState);
+      
       return {
         success: true,
         mqttClient: this.mqttClient!,
         otpCode: otpCode,
-        otpState: updatedState
+        otpState: newOtpState
       };
 
     } catch (error) {
@@ -398,120 +382,23 @@ export class StellantisRemoteClient {
     }
   }
 
-  private async exchangeOtpForMqttToken({
-    clientId,
-    accessToken,  // OAuth access_token van idpcvs.<brand>.com
-    realm,        // bv. 'clientsB2CPeugeot'
-    locale,
-    otpCode
-  }: {
-    clientId: string;
-    accessToken: string;
-    realm: string;
-    locale: string;
-    otpCode: string;
-  }) {
-
-    const tokenUrl = 'https://api.groupe-psa.com/connectedcar/v4/virtualkey/remoteaccess/token';
-
-    const http = this.buildMqttTokenClient({
-      accessToken: this.config.accessToken,
-      realm: this.config.realm,          // bv. 'clientsB2CPeugeot'
-    });
-
-    const params = { client_id: this.config.clientId, locale: 'nl-NL' };
-
-    
-  const headers = {
-    Authorization: `Bearer ${accessToken}`,      // ← Bearer, géén Basic
-    "x-introspect-realm": realm,
-    "User-Agent": "okhttp/4.8.0",
-    Accept: "application/hal+json",
-    "Content-Type": "application/x-www-form-urlencoded",
-  };
-
-
-    // *** Belangrijk: form-encoded body met password-grant ***
-    const form = new URLSearchParams();
-    form.set("grant_type", "password");
-    form.set("password", otpCode);
-
-
-    // Debug
-    console.debug('[MQTT token] URL:', '/connectedcar/v4/virtualkey/remoteaccess/token');
-    console.debug('[MQTT token] Params:', params);
-    console.debug("[MQTT token] Body:", form.toString())
-    console.debug('[MQTT token] Final Authorization header:', http.defaults.headers?.Authorization);
-    
-    const resp = await http.post(
-      tokenUrl,
-      form.toString(),                 // ← string, niet het object
-      {
-        headers,
-        params,
-        timeout: 30_000,
-        auth: undefined,               // ← neutraliseer Basic
-        // voorkom dat axios je body/headers omzet:
-        transformRequest: [(d) => d],
-        maxRedirects: 0,
-        validateStatus: (s) => s < 500,
-      }
-    );
-
-    // Schone axios instance + logging van de échte request
-    http.interceptors.request.use((cfg) => {
-      console.debug("[REQ] url", cfg.url, cfg.params);
-      console.debug("[REQ] headers", {
-        ...cfg.headers,
-        Authorization: "Bearer ***",
-      });
-      console.debug(
-        "[REQ] body",
-        typeof cfg.data === "string" ? cfg.data : cfg.data?.toString?.()
-      );
-      return cfg;
-    });
-
-    if (resp.status !== 200) {
-      console.error('[MQTT token] HTTP error', resp.status, resp.data, resp.headers);
-      throw new Error(`MQTT token request failed: ${resp.status}`);
-    }
-
-    // → resp.data = { access_token, refresh_token, expires_in, ... }
-
-    return resp.data;
+  /**
+   * Get current remote credentials
+   */
+  getRemoteCredentials(): RemoteCredentials {
+    return this.remoteCredentials;
   }
 
-  private buildMqttTokenClient({
-    accessToken,
-    realm,
-  }: {
-    accessToken: string;
-    realm: string;
-  }): AxiosInstance {
-    const instance = axios.create({
-      baseURL: 'https://api.groupe-psa.com',
-      timeout: 30000,
-      headers: {
-        // Zet hier uitsluitend de vereiste headers neer
-        'Authorization': `Bearer ${accessToken}`,     // ← verplicht Bearer
-        'x-introspect-realm': realm,                 // bv. clientsB2CPeugeot
-        'User-Agent': 'okhttp/4.8.0',
-        'Accept': 'application/hal+json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      // Zorg dat 4xx-logs niet door axios worden weggeslikt
-      validateStatus: (s) => s < 500,
-    });
-
-    // Verwijder mogelijke globale defaults die Basic toevoegen
-    delete (instance.defaults.headers as any).common?.Authorization;
-
-    // Als je elders interceptors hebt die Authorization zetten: wis ze expliciet
-    instance.interceptors.request.clear?.();
-    instance.interceptors.response.clear?.();
-
-    return instance;
+  /**
+   * Check if remote token is still valid
+   */
+  isRemoteTokenValid(): boolean {
+    if (!this.remoteCredentials.expiresAt) {
+      return false;
+    }
+    
+    // Check if token expires in more than 5 minutes
+    return this.remoteCredentials.expiresAt > (Date.now() + 5 * 60 * 1000);
   }
 
   /**
@@ -520,46 +407,24 @@ export class StellantisRemoteClient {
   private async connectMQTT(otpCode: string): Promise<{ success: boolean; error?: string }> {
     return new Promise((resolve) => {
       const mqttUrl = `mqtts://${MQTT_SERVER}:${MQTT_PORT}`;
-
       const clientId = `Homey_${Date.now()}`;
-            
-      const mqttOptions: mqtt.IClientOptions = {
-        clientId: '',  // ← Expliciet lege string voor auto-generate
-        username: 'IMA_OAUTH_ACCESS_TOKEN',
+      
+      this.mqttClient = mqtt.connect(mqttUrl, {
+        clientId: clientId,
+        username: this.config.customerId,
         password: otpCode,
         keepalive: MQTT_KEEP_ALIVE,
         clean: true,
         rejectUnauthorized: true,
+        protocol: 'mqtts',
         protocolVersion: 4,
         connectTimeout: 30000,
-        reconnectPeriod: 0,
-        // TLS opties
-        cert: undefined,  // Gebruik systeem certificates
-        key: undefined,
-        ca: undefined
-      };
-
-      console.log('[MQTT] Connection options:', {
-        ...mqttOptions,
-        password: '***'  // Verberg password in logs
+        reconnectPeriod: 0
       });
 
-      console.log('[MQTT] Creating client...');
-      console.log('[MQTT] URL:', mqttUrl);
-      console.log('[MQTT] Options:', mqttOptions);
-
-      this.mqttClient = mqtt.connect(mqttUrl, mqttOptions);
-
-      console.log('[MQTT] Client created, waiting for connection...');
-
-      this.mqttClient.on('connect', (connack) => {
+      this.mqttClient.on('connect', () => {
         console.log('[MQTT] ✓ Connected!');
-        console.log('[MQTT] Connack:', connack);
-        console.log('[MQTT] Client ID:', this.mqttClient?.options.clientId);
-
-        console.log('[MQTT] ✓ Connected!');
-        console.log('[MQTT] Connected! Client ID:', this.mqttClient?.options.clientId);
-
+        
         // Subscribe to topics
         const respTopic = `${MQTT_RESP_TOPIC}${this.config.customerId}/#`;
         const eventTopic = `${MQTT_EVENT_TOPIC}${this.config.customerId}/#`;
@@ -573,40 +438,6 @@ export class StellantisRemoteClient {
           }
         });
       });
-
-      this.mqttClient.on('error', (error) => {
-        console.error('[MQTT] Error event:', error);
-        console.error('[MQTT] Error message:', error.message);
-        resolve({ success: false, error: error.message });
-      });
-
-      this.mqttClient.on('close', () => {
-        console.log('[MQTT] Connection closed');
-      });
-
-      this.mqttClient.on('offline', () => {
-        console.log('[MQTT] Client went offline');
-      });
-
-      this.mqttClient.on('reconnect', () => {
-        console.log('[MQTT] Reconnecting...');
-      });
-
-      this.mqttClient.on('disconnect', (packet) => {
-        console.log('[MQTT] Disconnected:', packet);
-      });
-
-      this.mqttClient.on('message', (topic, message) => {
-        this.handleMqttMessage(topic, message);
-      });
-
-      // Timeout voor debugging
-      setTimeout(() => {
-        if (!this.mqttClient?.connected) {
-          console.log('[MQTT] ⚠️ Still not connected after 10 seconds');
-          console.log('[MQTT] Client state:', this.mqttClient?.connected);
-        }
-      }, 10000);
 
       this.mqttClient.on('error', (error) => {
         console.error('[MQTT] Error:', error);
@@ -743,5 +574,65 @@ export class StellantisRemoteClient {
     console.log('[MQTT] Not connected, reconnecting...');
     const result = await this.validateOTP(homey, null, null, brandName, clientId);
     return result.success;
+  }
+
+  /**
+   * Refresh remote token if needed
+   */
+  async refreshRemoteTokenIfNeeded(homey: any, brandName: string, clientId: string): Promise<boolean> {
+    if (this.isRemoteTokenValid()) {
+      console.log('Remote token still valid, no refresh needed');
+      return true;
+    }
+    
+    console.log('Remote token expired or expiring soon, refreshing...');
+    
+    try {
+      const result = await this.validateOTP(homey, null, null, brandName, clientId);
+      return result.success;
+    } catch (error) {
+      console.error('Failed to refresh remote token:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Execute a remote command
+   * @param command - Command to execute
+   * @param vin - Vehicle VIN
+   */
+  async executeRemoteCommand(
+    homey: any,
+    brandName: string,
+    clientId: string,
+    command: string,
+    vin: string,
+    payload?: any
+  ): Promise<any> {
+    // Ensure we have a valid token
+    const refreshed = await this.refreshRemoteTokenIfNeeded(homey, brandName, clientId);
+    
+    if (!refreshed) {
+      throw new Error('Failed to refresh remote token. Re-authentication required.');
+    }
+    
+    const apiHost = this.getAPIHost();
+    const url = `https://${apiHost}/connectedcar/v4/user/vehicles/${vin}/${command}`;
+    
+    console.log(`Executing remote command: ${command}`);
+    
+    const response = await axios({
+      method: 'POST',
+      url: url,
+      headers: {
+        'Authorization': `Bearer ${this.remoteCredentials.accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      data: payload || {},
+      timeout: 30000
+    });
+    
+    console.log(`✓ Command ${command} executed successfully`);
+    return response.data;
   }
 }

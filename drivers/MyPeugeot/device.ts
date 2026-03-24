@@ -19,8 +19,7 @@ module.exports = class MyPeugeotDevice extends Homey.Device {
     //Wait 15 seconds before request data in order to get the correct token available
     setTimeout(() => {this.checkAndRefreshData();}, 1000 * 15)    
 
-    this.registerCapabilityListener('evcharger_charging', this.StartStopCharging.bind(this));
-
+    //this.registerCapabilityListener('evcharger_charging', this.StartStopCharging.bind(this));
     
     let actionUpdateVehicle = this.homey.flow.getActionCard('updatevehiclestatus_' + this.brandName.toLowerCase());
     actionUpdateVehicle.registerRunListener(async (args) => {
