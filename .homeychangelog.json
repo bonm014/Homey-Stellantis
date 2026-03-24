@@ -43,5 +43,8 @@
   },
   "1.4.4": {
     "en": "Add Finnish language for config"
+  },
+  "1.5.0": {
+    "en": "Clear token cache on new config"
   }
 }
