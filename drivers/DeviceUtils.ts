@@ -89,12 +89,16 @@ class DeviceUtils {
     var vehicleStatus = await client.getVehicleStatus(carId);
 
     //Skip the trips if we are still moving
-    if(vehicleStatus.kinetic?.moving)
+    if(vehicleStatus != null && vehicleStatus.kinetic?.moving)
     {
       return;
     }
 
     var vehicleTrips = await client.getVehicleLastTrips(carId);
+    if(vehicleTrips == null)
+    {
+      return;
+    }
     let tripLastKnownDate:Date = await device.getStoreValue('tripLastKnownDate');
 
     let triggerNewTrip = device.homey.flow.getDeviceTriggerCard("newtrip_" + brandName.toLowerCase());
@@ -166,9 +170,12 @@ class DeviceUtils {
 
     //console.dir(vehicleStatus, { depth: null });
     
-    DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, vehicleStatus.updatedAt));
+    if(vehicleStatus != null)
+    {
+      DeviceUtils.setCapabilityValue(device, "measure_lastrefresh", this.formatDate(device, vehicleStatus.updatedAt));
+    }
 
-    if(vehicle.pictures.length > 0)
+    if(vehicle != null && vehicle.pictures.length > 0)
     {
       let pIndex:number = Math.floor(Math.random() * (vehicle.pictures.length-1));
       await DeviceUtils.setPicture(device, vehicle.pictures[pIndex]);
@@ -177,46 +184,52 @@ class DeviceUtils {
     //Remove the charging possibility
     DeviceUtils.setCapabilityValue(device,'evcharger_charging', null);
 
-    DeviceUtils.setCapabilityValue(device,'measure_maintenance_km', vehicleMaintenance.mileageBeforeMaintenance);
-    DeviceUtils.setCapabilityValue(device,'measure_maintenance_days', vehicleMaintenance.daysBeforeMaintenance);
-
-    DeviceUtils.setCapabilityValue(device,'measure_odometer_km', vehicleStatus.odometer?.mileage);
-
-    DeviceUtils.setCapabilityValue(device,'measure_temperature', vehicleStatus.environment?.air.temp);
-
-    DeviceUtils.setCapabilityValue(device,'fan_mode', null);
-
-    if(vehicleStatus.preconditioning?.airConditioning?.status == "Disabled")
+    if(vehicleMaintenance != null)
     {
-      DeviceUtils.setCapabilityValue(device,'measure_airconditioning', false);
-    }
-    else
-    {
-      DeviceUtils.setCapabilityValue(device,'measure_airconditioning', true);
-    }  
-
-    switch(vehicleStatus.ignition?.type)
-    {
-      default:
-      {
-        if(vehicleStatus.kinetic?.moving)
-        {
-          DeviceUtils.setCapabilityValue(device,'operational_state', 'running');
-        }
-        else
-        {
-          DeviceUtils.setCapabilityValue(device,'operational_state', 'paused');
-        }
-        break;   
-      }
-      case "Stop":
-      {
-        DeviceUtils.setCapabilityValue(device,'operational_state', 'stopped');
-        break;   
-      }
+      DeviceUtils.setCapabilityValue(device,'measure_maintenance_km', vehicleMaintenance.mileageBeforeMaintenance);
+      DeviceUtils.setCapabilityValue(device,'measure_maintenance_days', vehicleMaintenance.daysBeforeMaintenance);
     }
 
-    if(vehicleStatus.energy!.length > 0)
+    if(vehicleStatus !=  null)
+    {
+      DeviceUtils.setCapabilityValue(device,'measure_odometer_km', vehicleStatus.odometer?.mileage);
+
+      DeviceUtils.setCapabilityValue(device,'measure_temperature', vehicleStatus.environment?.air.temp);
+
+      DeviceUtils.setCapabilityValue(device,'fan_mode', null);
+
+      if(vehicleStatus.preconditioning?.airConditioning?.status == "Disabled")
+      {
+        DeviceUtils.setCapabilityValue(device,'measure_airconditioning', false);
+      }
+      else
+      {
+        DeviceUtils.setCapabilityValue(device,'measure_airconditioning', true);
+      }  
+
+      switch(vehicleStatus.ignition?.type)
+      {
+        default:
+        {
+          if(vehicleStatus.kinetic?.moving)
+          {
+            DeviceUtils.setCapabilityValue(device,'operational_state', 'running');
+          }
+          else
+          {
+            DeviceUtils.setCapabilityValue(device,'operational_state', 'paused');
+          }
+          break;   
+        }
+        case "Stop":
+        {
+          DeviceUtils.setCapabilityValue(device,'operational_state', 'stopped');
+          break;   
+        }
+      }
+    }
+
+    if(vehicleStatus != null && vehicleStatus.energy!.length > 0)
     {
       let energy = vehicleStatus.energy![0];
       DeviceUtils.setCapabilityValue(device,'measure_battery', energy.level);
@@ -224,7 +237,7 @@ class DeviceUtils {
 
       DeviceUtils.setCapabilityValue(device,'measure_voltage', vehicleStatus.battery?.voltage);
 
-      if(vehicle.motorization == 'Electric')
+      if(vehicle != null && vehicle.motorization == 'Electric')
       {
         if(energy.charging?.plugged)
         {
@@ -246,7 +259,7 @@ class DeviceUtils {
         }
         else
         {
-          DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
+          //DeviceUtils.setCapabilityValue(device,'evcharger_charging', false);  
           //DeviceUtils.setCapabilityValue(device,'ev_charging_state', "plugged_out");
         }
       }
@@ -261,11 +274,11 @@ class DeviceUtils {
 
     var carId = DeviceUtils.getCarId(device);
 
-    //Check for new trips
-    DeviceUtils.checkTrips(device,client, carId, brandName);
-
     //Check status
     DeviceUtils.checkStatus(device,client,carId);
+
+    //Check for new trips
+    DeviceUtils.checkTrips(device,client, carId, brandName);
   }
 }
 

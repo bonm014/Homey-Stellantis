@@ -26,10 +26,14 @@ class DriverUtils {
 
     vehicles.forEach((vehicle: Vehicle) => {
       console.log(`${vehicle.vin}`);
-
       console.log(vehicle.brand);
 
-      if(vehicle.brand == null || vehicle.brand == undefined || vehicle.brand.toLowerCase() == brandName.replace("My","").toLowerCase())
+      let vehiclebrand = vehicle.brand;
+      vehiclebrand = vehiclebrand.replace("ë","e").toLowerCase();
+
+      console.log(vehiclebrand);
+
+      if(vehicle.brand == null || vehicle.brand == undefined || vehiclebrand == brandName.replace("My","").toLowerCase())
       {
         devices.push({
             name: `${vehicle.vin}`,

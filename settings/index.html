@@ -56,7 +56,7 @@
                 <li>Login with your Stellantis account credentials</li>
                 <li>The browser will show an error page (this is normal!)</li>
                 <li>Open Developer Tools, and open the Network tab</li>
-                <li>Copy the <strong>complete URL</strong> from the network trace (mymap://oauth2redirect/nl?code=...&state=...)</li>
+                <li>Copy the <strong>complete URL</strong> from the network trace (myxxxx://oauth2redirect/nl?code=...&state=...)</li>
                 <li>Paste it in the field below</li>
             </ol>
         </div>
@@ -65,7 +65,7 @@
         <textarea id="authUrlDisplay" placeholder="" readonly></textarea>
 
         <label for="redirectUrl">Paste the redirect URL here:</label>
-        <textarea id="redirectUrl" placeholder="mymap://oauth2redirect/nl?code=...&state=..."></textarea>
+        <textarea id="redirectUrl" placeholder="myxxxx://oauth2redirect/nl?code=...&state=..."></textarea>
         
         <button onclick="extractAndSaveCode()">Continue</button>
         <button class="secondary" onclick="goToStep(1)">Back</button>

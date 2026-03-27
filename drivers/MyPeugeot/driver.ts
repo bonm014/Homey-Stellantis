@@ -1,5 +1,7 @@
 import Homey, { App } from 'homey';
 import DriverUtils from './../DriverUtils'
+import StellantisClient from './../../Lib/Stellantis/src';
+import StellantisApp from './../../app'
 
 module.exports = class MyPeugeotDriver extends Homey.Driver {
   private brandName:string = "MyPeugeot";
@@ -9,6 +11,15 @@ module.exports = class MyPeugeotDriver extends Homey.Driver {
    */
   async onInit() {
     this.log(this.brandName + 'Driver has been initialized');
+
+    if(false)
+    {
+      let myApp = this.homey.app as StellantisApp;
+
+      let client = await myApp.getStellantisClient(this.brandName);
+
+      client.clearConfig();
+    }
   }
 
   /**

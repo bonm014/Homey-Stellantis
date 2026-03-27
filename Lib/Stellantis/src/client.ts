@@ -38,15 +38,36 @@ export class StellantisClient
         this.checkAndRefreshTokens();
     }
 
-    async updateConfig()
+    async clearConfig()
     {
-        this.tokens = this.app.homey.settings.get(`stellantis_tokens_${this.brandName.toLowerCase()}`) as TokenData | undefined;
+        this.tokens = undefined;
+        this.accessToken = "";
+        this.country = "";
 
-        if(this.tokens == null || this.tokens == undefined)
+        this.app.homey.settings.set(`stellantis_tokens_${this.brandName.toLowerCase()}`, null);
+        this.app.homey.settings.set(`stellantis_tokens`, null);
+    }
+
+    async updateConfig(newTokens:TokenData | undefined = undefined)
+    {
+        if(newTokens != undefined)
         {
-            return;
+            this.tokens = newTokens;
+            this.app.homey.settings.set(`stellantis_tokens_${this.brandName.toLowerCase()}`, newTokens);
         }
+        else
+        {
+            this.tokens = this.app.homey.settings.get(`stellantis_tokens_${this.brandName.toLowerCase()}`) as TokenData | undefined;
 
+            if (!this.tokens) {
+                this.tokens = this.app.homey.settings.get('stellantis_tokens') as TokenData | undefined;
+            }
+
+            if(this.tokens == null || this.tokens == undefined)
+            {
+                return;
+            }
+        }
 
         this.accessToken = this.tokens!.accessToken;
         this.country = this.tokens!.country;
@@ -118,6 +139,11 @@ export class StellantisClient
     public async getRemoteClient()
     {
         var user = await this.getUser();
+        if(user == null)
+        {
+            return;
+        }
+        
         const tokens:TokenData = this.app.homey.settings.get('stellantis_tokens_' + this.brandName.toLowerCase());
 
         await this.refreshTokens();
@@ -331,8 +357,15 @@ export class StellantisClient
             config.data = data;
         }
         
-        const response = await this.axios.request<T>(config);
-        return response.data;
+        try
+        {
+            const response = await this.axios.request<T>(config);
+            return response.data;
+        }
+        catch
+        {
+            return <T>null;
+        }
     }
     
     /**
@@ -382,35 +415,77 @@ export class StellantisClient
     /**
      * Get vehicle status
      */
-    async getVehicleStatus(vehicleId: string): Promise<VehicleStatus> {
-        return this.request('GET', `/user/vehicles/${vehicleId}/status`);
+    async getVehicleStatus(vehicleId: string): Promise<VehicleStatus | null> {
+        try
+        {
+            return this.request('GET', `/user/vehicles/${vehicleId}/status`);
+        }
+        catch
+        {
+            return null;
+        }
     }
     
     /**
      * Get vehicle alarms
      */
-    async getUser(): Promise<User> {
-        return this.request('GET', `/user`);
+    async getUser(): Promise<User | null> {
+        try
+        {
+            return this.request('GET', `/user`);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
-    async getVehicle(vehicleId: string): Promise<Vehicle> {
-        return this.request('GET', `/user/vehicles/${vehicleId}`);
+    async getVehicle(vehicleId: string): Promise<Vehicle | null> {
+        try
+        {
+            return this.request('GET', `/user/vehicles/${vehicleId}`);
+        }
+        catch
+        {
+            return null;
+        }
     }
     
-    async getVehicleLastTrips(vehicleId: string): Promise<Trips> {
-        var tripsFirstPage:any = await this.request('GET', `/user/vehicles/${vehicleId}/trips`);
+    async getVehicleLastTrips(vehicleId: string): Promise<Trips | null> {
+        try
+        {
+            var tripsFirstPage:any = await this.request('GET', `/user/vehicles/${vehicleId}/trips`);
 
-        let lastPageUrl = (tripsFirstPage._links.last.href as string).replace(this.brandConfig.baseUrl,"");
+            let lastPageUrl = (tripsFirstPage._links.last.href as string).replace(this.brandConfig.baseUrl,"");
 
-        return this.request('GET', lastPageUrl);
+            return this.request('GET', lastPageUrl);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     async getVehicleAlarms(vehicleId: string): Promise<any> {
-        return this.request('GET', `/user/vehicles/${vehicleId}/alarms`);
+        try
+        {
+            return this.request('GET', `/user/vehicles/${vehicleId}/alarms`);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
-    async getVehicleMaintenance(vehicleId: string): Promise<Maintenance> {
-        return this.request('GET', `/user/vehicles/${vehicleId}/maintenance`);
+    async getVehicleMaintenance(vehicleId: string): Promise<Maintenance | null> {
+        try
+        {
+            return this.request('GET', `/user/vehicles/${vehicleId}/maintenance`);
+        }
+        catch
+        {
+            return null;
+        }
     }
     /**
      * Update access token

@@ -23,6 +23,11 @@ module.exports = {
         homey.app.log(`get remote client`);
         var remoteClient = await client.getRemoteClient();
 
+        if(remoteClient == null)
+        {
+            return { success: true, expiresAt:0 };
+        }
+
         console.log('[TOKEN] Before refresh:', this.config.accessToken.substring(0, 20));
         await this.refreshToken(); // of hoe je het ook doet
         console.log('[TOKEN] After refresh:', this.config.accessToken.substring(0, 20));
@@ -52,6 +57,11 @@ module.exports = {
 
         homey.app.log(`get remote client`);
         var remoteClient = await client.getRemoteClient();
+        if(remoteClient == null)
+        {
+            return { success: true, expiresAt:0 };
+        }
+
         await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id,true);
 
         return { success: true, expiresAt:0 };
@@ -74,6 +84,10 @@ module.exports = {
         let client = await myApp.getStellantisClient(brandName);
 
         var remoteClient = await client.getRemoteClient()
+        if(remoteClient == null)
+        {
+            return { success: true, expiresAt:0 };
+        }
 
         await remoteClient.requestOTP();
 
@@ -147,11 +161,18 @@ module.exports = {
                 lastRefresh: Date.now()
             };
             
-            homey.settings.set('stellantis_tokens_' + tokens.brand.toLowerCase(), tokens);
+            //Clear old token
+            let app = homey.app as StellantisApp;
+            let client = app.getStellantisClient(tokens.brand);
+            
+            //Make sure the old token are removed
+            client.clearConfig();
+
+            //Update the config with the new tokens
+            client.updateConfig(tokens);
+
             homey.app.log('Tokens saved successfully');
 
-            (homey.app as StellantisApp).getStellantisClient(tokens.brand).updateConfig();
-            
             // Clear auth data (code can only be used once)
             homey.settings.unset('auth_data');
             
