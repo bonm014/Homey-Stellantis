@@ -52,5 +52,8 @@
   },
   "1.5.2": {
     "en": "Fix Opel paring screen"
+  },
+  "1.5.3": {
+    "en": "Opel check on missing brandname"
   }
 }
