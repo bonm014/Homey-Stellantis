@@ -3,6 +3,13 @@ import {StellantisClient,Vehicle,TripDetail} from './../Lib/Stellantis/src'
 import StellantisApp from './../app'
 
 class DriverUtils {
+  private static brandnames: { [key: string]: string[] } = {
+    "MyPeugeot":["peugeot"],
+    "MyCitroen":["citroen","citroën"],
+    "MyDS":["ds","ds automobiles"],
+    "MyOpel":["opel","vauxhall"]
+  }
+
   static async getVehicles(device:Homey.Driver, brandName:string) {
     let devices:any = [];
 
@@ -24,16 +31,19 @@ class DriverUtils {
       throw(`Unable to get the vehicles: ${error}`);
     }
 
+    let driverBrandnames = this.brandnames[brandName];
+    
     vehicles.forEach((vehicle: Vehicle) => {
-      console.log(`${vehicle.vin}`);
-      console.log(vehicle.brand);
+      device.log(`${vehicle.brand} - ${vehicle.vin}`);
 
-      let vehiclebrand = vehicle.brand;
-      vehiclebrand = vehiclebrand.replace("ë","e").toLowerCase();
+      //Get the brandname in lowercase
+      let vehiclebrand = (vehicle.brand + "").toLowerCase();
 
-      console.log(vehiclebrand);
+      //Check if the brandname is within the driver brand we are searching
+      let containsBrandname = driverBrandnames.some(b => b.toLowerCase() === vehiclebrand);
 
-      if(vehicle.brand == null || vehicle.brand == undefined || vehiclebrand == brandName.replace("My","").toLowerCase())
+      //Check if we should show the vehicle for this brand
+      if(vehicle.brand == null || vehicle.brand == undefined || containsBrandname)
       {
         devices.push({
             name: `${vehicle.vin}`,

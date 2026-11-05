@@ -25,15 +25,18 @@ module.exports = {
 
         if(remoteClient == null)
         {
-            return { success: true, expiresAt:0 };
+            return { success: false, error: homey.__('errors.remote_client_unavailable') };
         }
 
-        console.log('[TOKEN] Before refresh:', this.config.accessToken.substring(0, 20));
-        await this.refreshToken(); // of hoe je het ook doet
-        console.log('[TOKEN] After refresh:', this.config.accessToken.substring(0, 20));
-
         homey.app.log(`validate`);
-        await remoteClient.validateOTP(homey,null, null,tokens.brand,tokens.client_id,false);
+        const refreshResult = await remoteClient.validateOTP(homey,null, null,tokens.brand,tokens.client_id,false);
+        if(!refreshResult.success)
+        {
+            return { success: false, error: refreshResult.error || homey.__('errors.mqtt_connect_api_failed') };
+        }
+
+        // The car keeps its capabilities: look the remote services up again after an OTP refresh
+        await client.refreshVehicleRights();
 
         return { success: true, expiresAt:0 };
     },
@@ -42,9 +45,7 @@ module.exports = {
         const { homey, body } = args;
         const { brandName,smsCode, pinCode } = body;
 
-        homey.app.log(`Validate OTP ${smsCode}`);
         homey.app.log(`Validate OTP ${brandName}`);
-        homey.app.log(`Validate OTP ${pinCode}`);
         
 
         let myApp = homey.app as StellantisApp;
@@ -59,10 +60,17 @@ module.exports = {
         var remoteClient = await client.getRemoteClient();
         if(remoteClient == null)
         {
-            return { success: true, expiresAt:0 };
+            return { success: false, error: homey.__('errors.remote_client_unavailable') };
         }
 
-        await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id,true);
+        const validateResult = await remoteClient.validateOTP(homey,smsCode, pinCode,tokens.brand,tokens.client_id,true);
+        if(!validateResult.success)
+        {
+            return { success: false, error: validateResult.error || homey.__('errors.otp_validation_failed') };
+        }
+
+        // Look the remote services up once after the OTP activation and store them
+        await client.refreshVehicleRights();
 
         return { success: true, expiresAt:0 };
     },
@@ -86,7 +94,7 @@ module.exports = {
         var remoteClient = await client.getRemoteClient()
         if(remoteClient == null)
         {
-            return { success: true, expiresAt:0 };
+            return { success: false, error: homey.__('errors.remote_client_unavailable') };
         }
 
         await remoteClient.requestOTP();
@@ -108,7 +116,7 @@ module.exports = {
             const authData = homey.settings.get('auth_data') as AuthData | undefined;
             
             if (!authData || !authData.authCode) {
-                throw new Error('No authorization code found in store');
+                throw new Error(homey.__('errors.no_auth_code'));
             }
             
             homey.app.log('Making token request to:', authData.oauth_url);
@@ -140,7 +148,7 @@ module.exports = {
             if (!data.access_token) {
                 homey.app.log('No access_token found, might be 2FA flow');
                 // Check if this is a 2FA intermediate response
-                throw new Error('No access_token in response');
+                throw new Error(homey.__('errors.no_access_token_response'));
             }
             
             // Success - we have tokens!
@@ -154,6 +162,7 @@ module.exports = {
                 expiresAt: Date.now() + (data.expires_in * 1000),
                 brand: authData.brand,
                 country: authData.country,
+                locale: authData.locale,
                 client_id: authData.client_id,
                 client_secret: authData.client_secret,
                 oauth_url: authData.oauth_url,
@@ -185,7 +194,7 @@ module.exports = {
             homey.app.error('Error exchanging token:', error);
             return {
                 success: false,
-                error: error instanceof Error ? error.message : 'Unknown error'
+                error: error instanceof Error ? error.message : homey.__('errors.unknown')
             };
         }
     }

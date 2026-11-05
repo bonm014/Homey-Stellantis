@@ -1,7 +1,21 @@
 {
   "type": "boolean",
-  "title": { "en": "Airconditioning", "nl": "Airconditioning" },
-  "desc":  { "en": "Airconditioning", "nl": "Airconditioning" },
+  "title": {
+    "en": "Airconditioning",
+    "nl": "Airconditioning",
+    "de": "Klimaanlage",
+    "fr": "Climatisation",
+    "no": "Klimaanlegg",
+    "da": "Klimaanlæg"
+  },
+  "desc": {
+    "en": "Airconditioning",
+    "nl": "Airconditioning",
+    "de": "Klimaanlage",
+    "fr": "Climatisation",
+    "no": "Klimaanlegg",
+    "da": "Klimaanlæg"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

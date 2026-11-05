@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="settings-style.css" />
 </head>
 <body>
-    <h2>Stellantis Account Configuration</h2>
+    <h2 data-i18n="wizard.title">Stellantis Account Configuration</h2>
     
     <!-- Step 1: Brand & Country Selection -->
     <div class="step active" id="step1">
         <h3>
             <span class="step-number">1</span>
-            Select Brand & Country
+            <span data-i18n="wizard.step1_title">Select brand &amp; country</span>
         </h3>
         
-        <label for="brand">Vehicle Brand:</label>
+        <label for="brand" data-i18n="wizard.brand">Vehicle brand:</label>
         <select id="brand">
             <option value="MyPeugeot">Peugeot</option>
             <option value="MyCitroen">Citroën</option>
@@ -29,91 +29,108 @@
             <option value="MyVauxhall">Vauxhall</option>
         </select>
         
-        <label for="country">Country:</label>
+        <label for="country" data-i18n="wizard.country">Country:</label>
         <select id="country"></select>
         
-        <button onclick="generateAuthUrl()">Continue to Login</button>
+        <button onclick="generateAuthUrl()" data-i18n="wizard.continue_login">Continue to login</button>
 
-        <!--
-        <button onclick="requestOTP()">Request OTP</button>
-
-        <button onclick="refreshOTP()">Refresh OTP</button>
--->
+        <div class="instructions">
+            <strong data-i18n="wizard.already_title">Already logged in?</strong>
+            <span data-i18n="wizard.already_text">Go straight to the remote control (OTP) step:</span>
+        </div>
+        <button class="secondary" onclick="requestOTP()" data-i18n="wizard.request_otp">Request OTP</button>
+        <button class="secondary" onclick="refreshOTP()" data-i18n="wizard.refresh_otp">Refresh OTP</button>
     </div>
     
     <!-- Step 2: Login & Get Authorization Code -->
     <div class="step hidden" id="step2">
         <h3>
             <span class="step-number">2</span>
-            Login with Stellantis Account
+            <span data-i18n="wizard.step2_title">Log in with your Stellantis account</span>
         </h3>
         
         <div class="instructions">
-            <strong>Follow these steps:</strong>
+            <strong data-i18n="wizard.follow_steps">Follow these steps:</strong>
             <ol>
-                <li>Copy the link below</li>
-                <li>Open a new window and navigate to the link</li>
-                <li>Login with your Stellantis account credentials</li>
-                <li>The browser will show an error page (this is normal!)</li>
-                <li>Open Developer Tools, and open the Network tab</li>
-                <li>Copy the <strong>complete URL</strong> from the network trace (myxxxx://oauth2redirect/nl?code=...&state=...)</li>
-                <li>Paste it in the field below</li>
+                <li data-i18n="wizard.s2_1">Copy the link below</li>
+                <li data-i18n="wizard.s2_2">Open a new window and go to the link</li>
+                <li data-i18n="wizard.s2_3">Log in with your Stellantis account</li>
+                <li data-i18n="wizard.s2_4">The browser shows an error page (this is normal!)</li>
+                <li data-i18n="wizard.s2_5">Open the developer tools and go to the Network tab</li>
+                <li data-i18n="wizard.s2_6">Copy the complete URL from the network trace (mymap://oauth2redirect/nl?code=...&amp;state=...)</li>
+                <li data-i18n="wizard.s2_7">Paste it in the field below</li>
             </ol>
         </div>
         
-        <label for="authUrlDisplay">Stellantis login:</label>
+        <label for="authUrlDisplay" data-i18n="wizard.login_link">Stellantis login:</label>
         <textarea id="authUrlDisplay" placeholder="" readonly></textarea>
 
-        <label for="redirectUrl">Paste the redirect URL here:</label>
-        <textarea id="redirectUrl" placeholder="myxxxx://oauth2redirect/nl?code=...&state=..."></textarea>
+        <label for="redirectUrl" data-i18n="wizard.paste_redirect">Paste the redirect URL here:</label>
+        <textarea id="redirectUrl" placeholder="mymap://oauth2redirect/nl?code=...&state=..."></textarea>
         
-        <button onclick="extractAndSaveCode()">Continue</button>
-        <button class="secondary" onclick="goToStep(1)">Back</button>
+        <button onclick="extractAndSaveCode()" data-i18n="wizard.continue">Continue</button>
+        <button class="secondary" onclick="goToStep(1)" data-i18n="wizard.back">Back</button>
     </div>
     
     <!-- Step 3: Code Saved, Getting Token -->
     <div class="step hidden" id="step3">
         <h3>
             <span class="step-number">3</span>
-            Getting Access Token
+            <span data-i18n="wizard.step3_title">Getting access token</span>
         </h3>
         
-        <div id="tokenStatus" class="message info">
+        <div id="tokenStatus" class="message info" data-i18n="wizard.requesting_token">
             ⏳ Requesting access token from Stellantis...
         </div>
-        <!--
-        <div id="otpSection">
-            <div class="message info">
-                📱 SMS Verification Required<br>
-                Please check your phone for a verification code.
-            </div>
-            
-            <label for="otpCode">Enter SMS OTP code:</label>
-            <input type="text" id="otpCode">
-            
-            <label for="pinCode">Enter PIN code:</label>
-            <input type="text" id="pinCode">
-
-            <button onclick="submitOTP()">Verify OTP</button>
-        </div>
-        -->
-        <button class="secondary" onclick="location.reload()">Start Over</button>
+        <button class="secondary" onclick="location.reload()" data-i18n="wizard.start_over">Start over</button>
     </div>
-    
-    <!-- Step 4: Success -->
+
+    <!-- Step 4: Remote control (OTP) -->
     <div class="step hidden" id="step4">
         <h3>
             <span class="step-number">4</span>
-            Configuration Complete
+            <span data-i18n="wizard.step4_title">Remote control (OTP)</span>
+        </h3>
+
+        <div class="instructions" data-i18n="wizard.otp_intro">
+            Remote commands (for example air conditioning) need a one-time activation.
+            Press "Send SMS", then enter the code from the SMS together with your Stellantis PIN.
+        </div>
+
+        <div id="otpStatus" class="message info" data-i18n="wizard.otp_connected">
+            Your account is connected. Request an SMS code to activate remote control.
+        </div>
+
+        <button onclick="requestOTP()" data-i18n="wizard.send_sms">Send SMS</button>
+
+        <div id="otpSection">
+            <label for="otpCode" data-i18n="wizard.sms_code">SMS code:</label>
+            <input type="text" id="otpCode">
+
+            <label for="pinCode" data-i18n="wizard.pin_code">PIN code:</label>
+            <input type="text" id="pinCode">
+
+            <button onclick="submitOTP()" data-i18n="wizard.verify_otp">Verify OTP</button>
+        </div>
+
+        <button class="secondary" onclick="skipOTP()" data-i18n="wizard.skip_otp">Skip (no remote control)</button>
+        <button class="secondary" onclick="goToStep(1)" data-i18n="wizard.back_start">Back to start</button>
+    </div>
+    
+    <!-- Step 5: Success -->
+    <div class="step hidden" id="step5">
+        <h3>
+            <span class="step-number">5</span>
+            <span data-i18n="wizard.step5_title">Configuration complete</span>
         </h3>
         
-        <div class="message success">
-            ✅ Your Stellantis account has been successfully connected!
+        <div id="doneMessage" class="message success" data-i18n="wizard.connected_ok">
+            ✅ Your Stellantis account has been connected!
         </div>
         
         <div id="accountInfo"></div>
         
-        <button onclick="location.reload()">Configure Another Account</button>
+        <button onclick="location.reload()" data-i18n="wizard.another_account">Configure another account</button>
     </div>
 
     <script>
@@ -195,6 +212,25 @@
             }
         };
 
+        // Translation helper: Homey.__ reads /locales/<language>.json (wizard.* keys)
+        function t(key, vars) {
+            try {
+                return Homey.__('wizard.' + key, vars);
+            } catch (e) {
+                return key;
+            }
+        }
+
+        // Translate the static texts (data-i18n) and placeholders (data-i18n-placeholder)
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const text = t(el.getAttribute('data-i18n').replace(/^wizard\./, ''));
+                if (text && text !== el.getAttribute('data-i18n')) {
+                    el.textContent = text;
+                }
+            });
+        }
+
         let state, authUrl, authCode;
         let selectedBrand, selectedCountry, brandData, countryData;
 
@@ -215,43 +251,57 @@
             });
         }
 
-        function refreshOTP() {      
+        function rememberSelection() {
             selectedBrand = document.getElementById('brand').value;
-                              
-            showMessage('tokenStatus', '⏳ Refresh OTP...', 'info');
-            document.getElementById('otpSection').classList.add('hidden');
-            
-            // Call backend with OTP
+            selectedCountry = document.getElementById('country').value;
+        }
+
+        function setOtpBusy(busy) {
+            document.getElementById('otpSection').classList.toggle('hidden', busy);
+        }
+
+        // Shortcut from the start screen: refresh the MQTT token with the stored OTP session
+        function refreshOTP() {
+            rememberSelection();
+            goToStep(4);
+
+            showMessage('otpStatus', t('otp_refreshing'), 'info');
+            setOtpBusy(true);
+
             Homey.api('POST', '/OTP/refresh', {'brandName':selectedBrand }, function(err, result) {
+                setOtpBusy(false);
                 if (err) {
-                    showMessage('tokenStatus', 'Error: ' + err.message, 'error');
-                    document.getElementById('otpSection').classList.remove('hidden');
+                    showMessage('otpStatus', t('error', {error: err.message}), 'error');
                     return;
                 }
-                
+
                 if (result.success) {
-                    onTokenReceived(result);
+                    onOtpDone(t('otp_refreshed'));
                 } else {
-                    showMessage('tokenStatus', 'OTP verification failed: ' + (result.error || 'Invalid code'), 'error');
-                    document.getElementById('otpSection').classList.remove('hidden');
+                    showMessage('otpStatus', t('otp_refresh_failed', {error: result.error || t('unknown_error')}), 'error');
                 }
             });
         }
 
+        // Request the SMS code (used from the wizard and from the start screen)
         function requestOTP() {
-            selectedBrand = document.getElementById('brand').value;
+            rememberSelection();
+            goToStep(4);
 
-            // Call backend to exchange code for token
-            // In SDK 3, API methods are called via the api object name from app.json
+            showMessage('otpStatus', t('sms_requesting'), 'info');
+
             Homey.api('POST', '/OTP/request', {'brandName':selectedBrand}, function(err, result) {
                 if (err) {
-                    console.log(err);
+                    showMessage('otpStatus', t('error', {error: err.message}), 'error');
                     return;
                 }
-                else {
-                    goToStep(3);
+
+                if (result && result.success === false) {
+                    showMessage('otpStatus', t('sms_failed', {error: result.error || t('unknown_error')}), 'error');
+                    return;
                 }
 
+                showMessage('otpStatus', t('sms_sent'), 'info');
             });
         }
 
@@ -295,7 +345,7 @@
             const redirectUrl = document.getElementById('redirectUrl').value.trim();
             
             if (!redirectUrl.includes('oauth2redirect')) {
-                showMessage('tokenStatus', 'Invalid URL. Must contain oauth2redirect', 'error');
+                showMessage('tokenStatus', t('invalid_url'), 'error');
                 return;
             }
             
@@ -308,12 +358,12 @@
                 console.log(urlState);
                 
                 if (!authCode) {
-                    showMessage('tokenStatus', 'No authorization code found in URL', 'error');
+                    showMessage('tokenStatus', t('no_code'), 'error');
                     return;
                 }
                 
                 if (urlState !== state) {
-                    showMessage('tokenStatus', 'State mismatch - security error. Please start over.', 'error');
+                    showMessage('tokenStatus', t('state_mismatch'), 'error');
                     return;
                 }
                 
@@ -321,7 +371,7 @@
                 saveCodeToStore();
                 
             } catch (e) {
-                showMessage('tokenStatus', 'Error parsing URL: ' + e.message, 'error');
+                showMessage('tokenStatus', t('parse_error', {error: e.message}), 'error');
             }
         }
 
@@ -330,6 +380,7 @@
             const authData = {
                 brand: selectedBrand,
                 country: selectedCountry,
+                locale: countryData.locale,
                 authCode: authCode,
                 client_id: countryData.client_id,
                 client_secret: countryData.client_secret,
@@ -341,7 +392,7 @@
             
             Homey.set('auth_data', authData, function(err) {
                 if (err) {
-                    showMessage('tokenStatus', 'Error saving: ' + err, 'error');
+                    showMessage('tokenStatus', t('save_error', {error: String(err)}), 'error');
                     return;
                 }
                 
@@ -354,21 +405,21 @@
         }
 
         function requestTokenFromBackend() {
-            showMessage('tokenStatus', '⏳ Requesting access token from Stellantis...', 'info');
+            showMessage('tokenStatus', t('requesting_token'), 'info');
             
             // Call backend to exchange code for token
             // In SDK 3, API methods are called via the api object name from app.json
             Homey.api('POST', '/exchangeToken', null, function(err, result) {
                 if (err) {
-                    showMessage('tokenStatus', 'Error: ' + err.message, 'error');
+                    showMessage('tokenStatus', t('error', {error: err.message}), 'error');
                     return;
                 }
 
                 if (result.success) {
-                    // Success!
+                    // Account connected: continue with the OTP step for remote control
                     onTokenReceived(result);
                 } else {
-                    showMessage('tokenStatus', 'Error: ' + (result.error || 'Unknown error'), 'error');
+                    showMessage('tokenStatus', t('error', {error: result.error || t('unknown_error')}), 'error');
                 }
             });
         }
@@ -376,39 +427,57 @@
         function submitOTP() {
             const otpCode = document.getElementById('otpCode').value.trim();
             const pinCode = document.getElementById('pinCode').value.trim();
-                        
-            showMessage('tokenStatus', '⏳ Verifying OTP...', 'info');
-            document.getElementById('otpSection').classList.add('hidden');
-            
-            // Call backend with OTP
+
+            if (!otpCode || !pinCode) {
+                showMessage('otpStatus', t('enter_both'), 'error');
+                return;
+            }
+
+            showMessage('otpStatus', t('otp_verifying'), 'info');
+            setOtpBusy(true);
+
             Homey.api('POST', '/OTP/validate', {'brandName':selectedBrand, 'smsCode': otpCode, 'pinCode':pinCode }, function(err, result) {
+                setOtpBusy(false);
                 if (err) {
-                    showMessage('tokenStatus', 'Error: ' + err.message, 'error');
-                    document.getElementById('otpSection').classList.remove('hidden');
+                    showMessage('otpStatus', t('error', {error: err.message}), 'error');
                     return;
                 }
-                
+
                 if (result.success) {
-                    onTokenReceived(result);
+                    document.getElementById('otpCode').value = '';
+                    document.getElementById('pinCode').value = '';
+                    onOtpDone(t('otp_activated'));
                 } else {
-                    showMessage('tokenStatus', 'OTP verification failed: ' + (result.error || 'Invalid code'), 'error');
-                    document.getElementById('otpSection').classList.remove('hidden');
+                    showMessage('otpStatus', t('otp_verify_failed', {error: result.error || t('invalid_code')}), 'error');
                 }
             });
         }
 
-        function onTokenReceived(result) {
-            showMessage('tokenStatus', '✅ Access token received and saved!', 'success');
-            
-            // Show account info
+        function skipOTP() {
+            onOtpDone(t('otp_skipped'));
+        }
+
+        function showDone(message) {
             const info = `
-                <p><strong>Brand:</strong> ${selectedBrand}</p>
-                <p><strong>Country:</strong> ${selectedCountry}</p>
-                <p><strong>Token expires:</strong> ${new Date(result.expiresAt).toLocaleString()}</p>
+                <p><strong>${t('info_brand')}</strong> ${selectedBrand}</p>
+                ${selectedCountry ? `<p><strong>${t('info_country')}</strong> ${selectedCountry}</p>` : ''}
             `;
             document.getElementById('accountInfo').innerHTML = info;
-            
+            showMessage('doneMessage', message, 'success');
+            goToStep(5);
+        }
+
+        function onOtpDone(message) {
+            showMessage('otpStatus', message, 'success');
+            setTimeout(() => { showDone(message); }, 1000);
+        }
+
+        function onTokenReceived(result) {
+            showMessage('tokenStatus', t('token_received'), 'success');
+
+            // Next: activate remote control (OTP)
             setTimeout(() => {
+                showMessage('otpStatus', t('otp_connected'), 'info');
                 goToStep(4);
             }, 1000);
         }
@@ -440,6 +509,7 @@
         // Ready callback for Homey
         function onHomeyReady(homeyReady) {
             Homey = homeyReady;
+            applyTranslations();
             Homey.ready();
         }
     </script>

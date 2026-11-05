@@ -1,7 +1,21 @@
 {
   "type": "number",
-  "title": { "en": "Maintenance days", "nl": "Onderhoud dagen" },
-  "desc":  { "en": "Next maintenance in days", "nl": "Volgende onderhoudsbeurt in dagen" },
+  "title": {
+    "en": "Maintenance days",
+    "nl": "Onderhoud dagen",
+    "de": "Wartung in Tagen",
+    "fr": "Entretien (jours)",
+    "no": "Service (dager)",
+    "da": "Service (dage)"
+  },
+  "desc": {
+    "en": "Next maintenance in days",
+    "nl": "Volgende onderhoudsbeurt in dagen",
+    "de": "Nächste Wartung in Tagen",
+    "fr": "Prochain entretien en jours",
+    "no": "Neste service om dager",
+    "da": "Næste service om dage"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

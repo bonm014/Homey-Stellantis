@@ -68,6 +68,7 @@ export interface StellantisConfig {
   clientId: string;
   clientSecret: string;
   countryCode: string;
+  locale: string;
   customerId: string;
   accessToken: string;
 }

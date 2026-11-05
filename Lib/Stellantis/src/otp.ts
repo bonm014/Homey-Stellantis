@@ -54,6 +54,7 @@ interface XmlResponse {
   s_id?: string;
   tsync?: string;
   id?: string;
+  dK1?: string;
   [key: string]: any;
 }
 
@@ -111,25 +112,21 @@ class IWData {
 
   synchro(xml: XmlResponse, kma: string): void {
     console.debug('[Synchro] Starting synchro');
-    console.debug('[Synchro] xml.id:', xml.id);
-    console.debug('[Synchro] xml.Tsync:', xml.Tsync);
-    
+            
     // Update ID
     if (xml.id && xml.id.length > 0) {
-      const oldId = this.iwid;
       this.iwid = xml.id;
-      console.debug(`[Synchro] ✓ Updated iwid from '${oldId}' to '${this.iwid}'`);
+      console.debug('[Synchro] ✓ iwid updated');
     } else {
-      console.debug(`[Synchro] ✗ No id in XML, keeping: '${this.iwid}'`);
+      console.debug('[Synchro] ✗ No id in XML, keeping current');
     }
 
     // Update Tsync
     if (xml.Tsync) {
-      const oldTsync = this.iwTsync;
       this.iwTsync = xml.Tsync;
-      console.debug(`[Synchro] ✓ Updated iwTsync from '${oldTsync}' to '${this.iwTsync}'`);
+      console.debug('[Synchro] ✓ iwTsync updated');
     } else {
-      console.debug(`[Synchro] ✗ No Tsync in XML, keeping: '${this.iwTsync}'`);
+      console.debug('[Synchro] ✗ No Tsync in XML, keeping current');
     }    
     
     // Decrypt K0 and K1 if present
@@ -148,20 +145,27 @@ class IWData {
 
     // Update K0
     if (xml.K0 && xml.K0.length > 0) {
-      const oldK0 = this.iwK0;
       this.iwK0 = aesDecipher(xml.K0);
-      console.debug(`[Synchro] ✓ Updated iwK0 from ${oldK0} to ${this.iwK0}`);
+      console.debug('[Synchro] ✓ iwK0 updated');
     } else {
-      console.debug('[Synchro] ✗ No K0 in XML, keeping:', this.iwK0);
+      console.debug('[Synchro] ✗ No K0 in XML, keeping current');
     }
 
     // Update K1
     if (xml.K1 && xml.K1.length > 0) {
-      const oldK1 = this.iwK1;
       this.iwK1 = aesDecipher(xml.K1);
-      console.debug(`[Synchro] ✓ Updated iwK1 from ${oldK1} to ${this.iwK1}`);
+      console.debug('[Synchro] ✓ iwK1 updated');
     } else {
-      console.debug('[Synchro] ✗ No K1 in XML, keeping:', this.iwK1);
+      console.debug('[Synchro] ✗ No K1 in XML, keeping current');
+    }
+
+    // dK1: derivation of K1, sent by the server to rotate K1 (same as the Home Assistant /
+    // psa_car_controller implementation). Without it the next OTP request is rejected (NOK:ACCESS).
+    if (xml.dK1 !== undefined && xml.dK1 !== null && String(xml.dK1).length > 0) {
+      this.iwK1 = crypto.createHash('sha256').update(`${this.iwK1};${xml.dK1}`, 'utf-8').digest('hex').substring(0, 32);
+      console.debug('[Synchro] ✓ dK1 applied, iwK1 rotated');
+    } else {
+      console.debug('[Synchro] ✗ No dK1 in XML');
     }
     
     
@@ -292,7 +296,6 @@ function decodeOaep(enc: string, key: string): string {
     decString += decrypted.toString('hex');
   }
 
-  console.debug('Decoded OAEP:', decString);
   return decString;
 }
 
@@ -424,6 +427,9 @@ export class Otp {
       throw new Error('Bad response from server');
     }
 
+    // Only the names of the fields (no values), to see what the server sends
+    console.debug('[OTP] response fields:', Object.keys(result).join(', '));
+
     return result;
   }
 
@@ -439,7 +445,7 @@ export class Otp {
 
     if (this.mode === OtpMode.OTP) {
       this.action = '';  // ← VOEG DEZE REGEL TOE! Reset action voor OTP mode
-      if (this.data.iwsecid) params.sid = this.data.iwsecid;
+      if (this.data.iwsecid) params.sid = String(this.data.iwsecid);
     } else if (this.mode === OtpMode.ACTIVATE) {
       params.code = this.smsCode;
     }
@@ -501,7 +507,7 @@ export class Otp {
     const xml = await this.request(params);
 
     if (xml.err !== 'OK') {
-      console.error('Error during activation:', xml);
+      console.error('Error during activation:', xml.err);
       return OtpResult.NOK;
     }
 
@@ -511,8 +517,9 @@ export class Otp {
       if (!xml.defi) {
         throw new ConfigException('Missing defi in response');
       }
+      // Keep the value exactly as the server sends it (may be negative): the OTP hash uses it as is,
+      // Home Assistant does the same (str(xml['defi'])).
       this.defi = parseInt(xml.defi);
-
       if (xml.J) {
         console.debug('Need another otp request');
         return OtpResult.OTP_TWICE;
@@ -574,6 +581,8 @@ export class Otp {
   }
 
   private _getOtpCode(): string {
+
+
     const password = `${this.data.iwK1}:${this.defi}:${this.data.iwsecval}`;
     const res = crypto.createHash('sha256').update(password, 'utf-8').digest();
 
@@ -591,8 +600,6 @@ export class Otp {
     this.action = '';  // ← VOEG DEZE REGEL TOE!
     
     console.debug('[getOtpCode] Starting OTP generation');
-    console.debug('[getOtpCode] Current iwTsync:', this.data.iwTsync);  // ← VOEG TOE
-    console.debug('[getOtpCode] Current iwsecid:', this.data.iwsecid);  // ← VOEG TOE
     
     let otpCode: string = "";
 
@@ -607,17 +614,17 @@ export class Otp {
             const secondRes = await this.activationFinalize();
             
             if (secondRes !== OtpResult.OK) {
-              throw new Error('Second OTP finalization failed');
+              throw new ConfigException('Second OTP finalization failed');
             }
           }
           
           otpCode = this._getOtpCode();
           
           if (!otpCode) {
-            throw new Error('OTP code is null');
+            throw new ConfigException('OTP code is null');
           }
           
-          console.debug('otp code:', otpCode);
+          console.debug('[OTP] code generated');
           
           // ← VOEG DIT TOE: Increment iwTsync lokaal voor volgende refresh
           //this.data.iwTsync = (parseInt(this.data.iwTsync) + 1).toString();
@@ -625,7 +632,9 @@ export class Otp {
         }
       }
     } catch (error) {
-      throw new ConfigException('Cannot get otp code: ' + (error as Error).message);
+      // Only real OTP problems are a ConfigException (-> the saved OTP state is discarded).
+      // Network errors etc. are passed on unchanged, the OTP state is probably still valid.
+      throw error;
     }
 
     return otpCode;

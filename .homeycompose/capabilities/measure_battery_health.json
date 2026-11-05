@@ -1,0 +1,27 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery health (SoH)",
+    "nl": "Accugezondheid (SoH)",
+    "de": "Batteriezustand (SoH)",
+    "fr": "État de santé de la batterie (SoH)",
+    "no": "Batterihelse (SoH)",
+    "da": "Batterisundhed (SoH)"
+  },
+  "desc": {
+    "en": "State of health of the traction battery, as reported by the car",
+    "nl": "Gezondheid (state of health) van de tractiebatterij, zoals de auto die doorgeeft",
+    "de": "Zustand (State of Health) der Antriebsbatterie, wie vom Fahrzeug gemeldet",
+    "fr": "État de santé (State of Health) de la batterie de traction, tel que communiqué par le véhicule",
+    "no": "Helsetilstand (state of health) for trekkbatteriet, slik bilen rapporterer den",
+    "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den"
+  },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": "%",
+  "decimals": 0,
+  "min": 0,
+  "max": 100
+}

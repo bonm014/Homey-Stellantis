@@ -53,35 +53,301 @@ class DeviceUtils {
     }
   }
 
-  static async StartStopCharging(device:Homey.Device, brandName:string, start:boolean)
-  {
-    /*
-    let myApp = device.homey.app as StellantisApp;
-
-    let myClient = await myApp.getStellantisClient(brandName);
-
-    var client:StellantisApiClient = new StellantisApiClient(device.homey.app, await myClient.getAccessToken(), myClient.brand, myClient.country,myClient.clientid);
-    var remoteClient:StellantisRemoteClient = new StellantisRemoteClient({
-      accessToken: await myClient.getAccessToken(),
-      clientId: myClient.clientid,
-      clientSecret: myClient.clientSecret,
-      countryCode: myClient.country,
-      customerId: "",
-      realm:`clientsB2C${brandName.replace('My', '')}`
-    })
-    var carId = DeviceUtils.getCarId(device);
-
-    if(start)
-    {
-      //client.startCharging(carId);
+  private static parsePtTime(value: any): { hour: number, minute: number } | null {
+    const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(String(value || ''));
+    if (!match) {
+      return null;
     }
-    else
-    {
-      //client.stopCharging(carId);
-    }
-      */
+    return { hour: parseInt(match[1] || '0', 10), minute: parseInt(match[2] || '0', 10) };
   }
 
+  /**
+   * The preconditioning programs that are currently set in the car. The car expects them to be
+   * sent along with every start/stop, otherwise the schedules would be reset
+   * (same as the Home Assistant integration; hour 34 = program not in use).
+   */
+  static getPreconditioningPrograms(vehicleStatus: any): { [key: string]: any } {
+    const programs: { [key: string]: any } = {
+      program1: { day: [0, 0, 0, 0, 0, 0, 0], hour: 34, minute: 7, on: 0 },
+      program2: { day: [0, 0, 0, 0, 0, 0, 0], hour: 34, minute: 7, on: 0 },
+      program3: { day: [0, 0, 0, 0, 0, 0, 0], hour: 34, minute: 7, on: 0 },
+      program4: { day: [0, 0, 0, 0, 0, 0, 0], hour: 34, minute: 7, on: 0 }
+    };
+
+    const current = vehicleStatus?.preconditioning?.airConditioning?.programs;
+    if (!Array.isArray(current)) {
+      return programs;
+    }
+
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    for (const program of current) {
+      if (!program || !program.occurence || !program.occurence.day || !program.start) {
+        continue;
+      }
+      const time = DeviceUtils.parsePtTime(program.start);
+      if (time == null) {
+        continue;
+      }
+      programs['program' + program.slot] = {
+        day: days.map(d => program.occurence.day.includes(d) ? 1 : 0),
+        hour: time.hour,
+        minute: time.minute,
+        on: program.enabled ? 1 : 0
+      };
+    }
+
+    return programs;
+  }
+
+  /**
+   * Start or stop the air conditioning (preconditioning) of the car
+   */
+  static async sendPreconditioning(device:Homey.Device, brandName:string, start:boolean)
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const vin:string = device.getStoreValue('vin');
+    if(!vin)
+    {
+      throw new Error(device.homey.__('errors.vin_unknown'));
+    }
+
+    const remoteClient = await client.getRemoteClient();
+    if(remoteClient == null)
+    {
+      throw new Error(device.homey.__('errors.remote_unavailable'));
+    }
+
+    let programs = DeviceUtils.getPreconditioningPrograms(null);
+    try
+    {
+      const vehicleStatus = await client.getVehicleStatus(DeviceUtils.getCarId(device));
+      programs = DeviceUtils.getPreconditioningPrograms(vehicleStatus);
+    }
+    catch(error)
+    {
+      device.log('Unable to read the current preconditioning programs, using the defaults');
+    }
+
+    const action = start ? 'activate' : 'deactivate';
+    device.log(`Send preconditioning ${action}`);
+
+    const result = await remoteClient.sendRemoteCommand(vin, '/ThermalPrecond', { asap: action, programs: programs });
+    if(!result.success)
+    {
+      throw new Error(device.homey.__(start ? 'errors.airco_start_failed' : 'errors.airco_stop_failed', { error: String(result.error) }));
+    }
+
+    device.log(`Preconditioning ${action} done`);
+  }
+
+  /**
+   * Is a remote service (FDS code like NAS01) part of the subscription of this car?
+   * Used by the "service is available" flow conditions.
+   */
+  static async hasRemoteService(device:Homey.Device, brandName:string, code:string):Promise<boolean>
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const vin:string = device.getStoreValue('vin');
+    if(!vin)
+    {
+      throw new Error(device.homey.__('errors.vin_unknown'));
+    }
+
+    const wanted = String(code || '').trim().toUpperCase();
+    if(!wanted)
+    {
+      throw new Error(device.homey.__('errors.service_code_missing'));
+    }
+
+    const services = await client.getVehicleRights(vin);
+    return services.some(s => s.code.toUpperCase() === wanted);
+  }
+
+  /**
+   * Send a simple remote command (no status needed) and throw a readable error when it fails.
+   */
+  private static async sendSimpleCommand(device:Homey.Device, brandName:string, service:string, params:any, label:string, failedKey:string)
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const vin:string = device.getStoreValue('vin');
+    if(!vin)
+    {
+      throw new Error(device.homey.__('errors.vin_unknown'));
+    }
+
+    const remoteClient = await client.getRemoteClient();
+    if(remoteClient == null)
+    {
+      throw new Error(device.homey.__('errors.remote_unavailable'));
+    }
+
+    device.log(`Send ${label}`);
+    const result = await remoteClient.sendRemoteCommand(vin, service, params);
+    if(!result.success)
+    {
+      throw new Error(device.homey.__(failedKey, { error: String(result.error) }));
+    }
+
+    device.log(`${label} done`);
+  }
+
+  static async sendDoors(device:Homey.Device, brandName:string, lock:boolean)
+  {
+    await DeviceUtils.sendSimpleCommand(device, brandName, '/Doors', { action: lock ? 'lock' : 'unlock' }, lock ? 'Lock doors' : 'Unlock doors', lock ? 'errors.doors_lock_failed' : 'errors.doors_unlock_failed');
+  }
+
+  static async sendHorn(device:Homey.Device, brandName:string)
+  {
+    await DeviceUtils.sendSimpleCommand(device, brandName, '/Horn', { nb_horn: '2', action: 'activate' }, 'Honk horn', 'errors.horn_failed');
+  }
+
+  static async sendLights(device:Homey.Device, brandName:string)
+  {
+    await DeviceUtils.sendSimpleCommand(device, brandName, '/Lights', { duration: '10', action: 'activate' }, 'Flash lights', 'errors.lights_failed');
+  }
+
+  /**
+   * Start or stop charging, same as the Home Assistant integration:
+   * there is no stop command; starting is type "immediate" and stopping is type "delayed",
+   * both carrying the charging start time that is programmed in the car (nextDelayedTime).
+   */
+  static async sendCharging(device:Homey.Device, brandName:string, start:boolean)
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const vin:string = device.getStoreValue('vin');
+    if(!vin)
+    {
+      throw new Error(device.homey.__('errors.vin_unknown'));
+    }
+
+    const remoteClient = await client.getRemoteClient();
+    if(remoteClient == null)
+    {
+      throw new Error(device.homey.__('errors.remote_unavailable'));
+    }
+
+    const vehicleStatus:any = await client.getVehicleStatus(DeviceUtils.getCarId(device));
+    const electric = (vehicleStatus?.energy || []).find((e:any) => e.type === 'Electric');
+    const time = DeviceUtils.parsePtTime(electric?.charging?.nextDelayedTime);
+    if(time == null)
+    {
+      throw new Error(device.homey.__('errors.charge_time_unknown'));
+    }
+
+    const type = start ? 'immediate' : 'delayed';
+    device.log(`Send charging ${type}`);
+
+    const result = await remoteClient.sendRemoteCommand(vin, '/VehCharge', { program: { hour: time.hour, minute: time.minute }, type: type });
+    if(!result.success)
+    {
+      throw new Error(device.homey.__(start ? 'errors.charging_start_failed' : 'errors.charging_stop_failed', { error: String(result.error) }));
+    }
+
+    device.log(`Charging ${type} done`);
+  }
+
+  private static wakeupHistory:{ [vin:string]: number[] } = {};
+
+  /**
+   * Wake up the car (same "state" request the Home Assistant wake-up button sends) and refresh the status afterwards.
+   * Limited to 6 per 20 minutes per car, like Home Assistant, to avoid draining the 12V battery.
+   */
+  static async sendWakeup(device:Homey.Device, brandName:string)
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const vin:string = device.getStoreValue('vin');
+    if(!vin)
+    {
+      throw new Error(device.homey.__('errors.vin_unknown'));
+    }
+
+    const now = Date.now();
+    const recent = (DeviceUtils.wakeupHistory[vin] || []).filter(t => now - t < 20 * 60 * 1000);
+    if(recent.length >= 6)
+    {
+      throw new Error(device.homey.__('errors.wakeup_limit'));
+    }
+
+    const remoteClient = await client.getRemoteClient();
+    if(remoteClient == null)
+    {
+      throw new Error(device.homey.__('errors.remote_unavailable'));
+    }
+
+    recent.push(now);
+    DeviceUtils.wakeupHistory[vin] = recent;
+
+    device.log('Send wakeup');
+    const result = await remoteClient.sendRemoteCommand(vin, '/VehCharge/state', { action: 'state' });
+    if(!result.success)
+    {
+      throw new Error(device.homey.__('errors.wakeup_failed', { error: String(result.error) }));
+    }
+
+    device.log('Wakeup done');
+  }
+
+
+  /**
+   * The battery health (state of health) of the traction battery, when the car reports it.
+   * The status holds it twice: energies[].extension.electric.battery.health and energy[].battery.health.
+   */
+  static getBatteryHealth(vehicleStatus:any):{ value:number, updatedAt?:string } | null
+  {
+    const candidates:any[] = [];
+
+    for(const energy of Array.isArray(vehicleStatus?.energies) ? vehicleStatus.energies : [])
+    {
+      candidates.push(energy?.extension?.electric?.battery?.health);
+    }
+    for(const energy of Array.isArray(vehicleStatus?.energy) ? vehicleStatus.energy : [])
+    {
+      candidates.push(energy?.battery?.health);
+    }
+
+    for(const health of candidates)
+    {
+      if(health != null && typeof health.resistance === 'number' && !isNaN(health.resistance))
+      {
+        return { value: health.resistance, updatedAt: health.createdAt };
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Flow action: reads the battery health from the car and returns it as tokens (Advanced Flow).
+   */
+  static async readBatteryHealth(device:Homey.Device, brandName:string)
+  {
+    const myApp = device.homey.app as StellantisApp;
+    const client = myApp.getStellantisClient(brandName);
+
+    const status = await client.getVehicleStatus(DeviceUtils.getCarId(device));
+    const health = DeviceUtils.getBatteryHealth(status);
+    if(health == null)
+    {
+      throw new Error(device.homey.__('errors.battery_health_unavailable'));
+    }
+
+    await DeviceUtils.setCapabilityValue(device, 'measure_battery_health', health.value);
+
+    return {
+      battery_health: health.value,
+      battery_health_updated: health.updatedAt ? DeviceUtils.formatDate(device, new Date(health.updatedAt)) : ''
+    };
+  }
 
   static async checkTrips(device:Homey.Device,client:StellantisClient,carId:string, brandName:string)
   {
@@ -157,6 +423,48 @@ class DeviceUtils {
   }
 
 
+  /**
+   * Writes the remote services (FDS codes) of the car to the advanced settings of the device,
+   * so users can share them (for example to find out which cars support doors, horn or lights).
+   * The VIN is left out on purpose.
+   */
+  static async updateServiceCodes(device:Homey.Device, client:StellantisClient)
+  {
+    let text:string;
+
+    try
+    {
+      const vin:string = device.getStoreValue('vin');
+      if(!vin)
+      {
+        return;
+      }
+
+      const services = await client.getVehicleRights(vin);
+      text = JSON.stringify({
+        brand: device.getStoreValue('brand'),
+        motorization: device.getStoreValue('motorization'),
+        services: services.map(s => ({ code: s.code, name: s.name, mqtt_services: s.mqtt_services }))
+      }, null, 2);
+    }
+    catch(error)
+    {
+      text = `Unable to look up the remote services: ${(error as Error).message}`;
+    }
+
+    try
+    {
+      if(device.getSetting('debug_remoteservices') !== text)
+      {
+        await device.setSettings({ debug_remoteservices: text }); // schrijft naar Advanced settings
+      }
+    }
+    catch(error)
+    {
+      device.log(`Unable to store the remote services in the settings: ${(error as Error).message}`);
+    }
+  }
+
   static async checkStatus(device:Homey.Device,client:StellantisClient,carId:string)
   {
     var vehicle = await client.getVehicle(carId);
@@ -193,6 +501,9 @@ class DeviceUtils {
     if(vehicleStatus !=  null)
     {
       DeviceUtils.setCapabilityValue(device,'measure_odometer_km', vehicleStatus.odometer?.mileage);
+
+      //Battery health (state of health), only when the car reports it
+      DeviceUtils.setCapabilityValue(device,'measure_battery_health', DeviceUtils.getBatteryHealth(vehicleStatus)?.value);
 
       DeviceUtils.setCapabilityValue(device,'measure_temperature', vehicleStatus.environment?.air.temp);
 
@@ -233,6 +544,8 @@ class DeviceUtils {
     {
       let energy = vehicleStatus.energy![0];
       DeviceUtils.setCapabilityValue(device,'measure_battery', energy.level);
+      DeviceUtils.setCapabilityValue(device,'progress', null);
+      
       DeviceUtils.setCapabilityValue(device,'measure_range_km', energy.autonomy);
 
       DeviceUtils.setCapabilityValue(device,'measure_voltage', vehicleStatus.battery?.voltage);
@@ -276,6 +589,9 @@ class DeviceUtils {
 
     //Check status
     DeviceUtils.checkStatus(device,client,carId);
+
+    //Remote services of the car (advanced settings)
+    DeviceUtils.updateServiceCodes(device,client);
 
     //Check for new trips
     DeviceUtils.checkTrips(device,client, carId, brandName);

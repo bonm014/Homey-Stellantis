@@ -1,7 +1,21 @@
 {
   "type": "string",
-  "title": { "en": "Last Refresh", "nl": "Laatste vernieuwing" },
-  "desc":  { "en": "Last Refresh", "nl": "Laatste vernieuwing" },
+  "title": {
+    "en": "Last Refresh",
+    "nl": "Laatste vernieuwing",
+    "de": "Letzte Aktualisierung",
+    "fr": "Dernière actualisation",
+    "no": "Siste oppdatering",
+    "da": "Seneste opdatering"
+  },
+  "desc": {
+    "en": "Last Refresh",
+    "nl": "Laatste vernieuwing",
+    "de": "Letzte Aktualisierung",
+    "fr": "Dernière actualisation",
+    "no": "Siste oppdatering",
+    "da": "Seneste opdatering"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

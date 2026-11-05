@@ -3,60 +3,451 @@
     {
       "id": "updatevehiclestatus_mycitroen",
       "title": {
-        "en": "Update Vehicle Status"
+        "en": "Update Vehicle Status",
+        "nl": "Voertuigstatus bijwerken",
+        "de": "Fahrzeugstatus aktualisieren",
+        "fr": "Mettre à jour l'état du véhicule",
+        "no": "Oppdater kjøretøystatus",
+        "da": "Opdater køretøjsstatus"
       },
       "hint": {
-        "en": "Force an update if you need the update now"
+        "en": "Force an update if you need the update now",
+        "nl": "Forceer een update als je de gegevens nu nodig hebt",
+        "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
+        "fr": "Force une mise à jour si vous avez besoin des données maintenant",
+        "no": "Tving en oppdatering hvis du trenger dataene nå",
+        "da": "Gennemtving en opdatering, hvis du har brug for data nu"
       }
+    },
+    {
+      "id": "startairco_mycitroen",
+      "title": {
+        "en": "Start air conditioning",
+        "nl": "Airco starten",
+        "de": "Klimaanlage starten",
+        "fr": "Démarrer la climatisation",
+        "no": "Start klimaanlegget",
+        "da": "Start klimaanlægget"
+      },
+      "hint": {
+        "en": "Start the air conditioning (preconditioning) of the car now",
+        "nl": "Start nu de airco (voorconditionering) van de auto",
+        "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+        "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
+        "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
+        "da": "Start bilens klimaanlæg (forvarmning) nu"
+      }
+    },
+    {
+      "id": "stopairco_mycitroen",
+      "title": {
+        "en": "Stop air conditioning",
+        "nl": "Airco stoppen",
+        "de": "Klimaanlage stoppen",
+        "fr": "Arrêter la climatisation",
+        "no": "Stopp klimaanlegget",
+        "da": "Stop klimaanlægget"
+      },
+      "hint": {
+        "en": "Stop the air conditioning (preconditioning) of the car",
+        "nl": "Stop de airco (voorconditionering) van de auto",
+        "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+        "fr": "Arrête la climatisation (préconditionnement) du véhicule",
+        "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
+        "da": "Stop bilens klimaanlæg (forvarmning)"
+      }
+    },
+    {
+      "id": "startcharging_mycitroen",
+      "title": {
+        "en": "Start charging",
+        "nl": "Laden starten",
+        "de": "Laden starten",
+        "fr": "Démarrer la charge",
+        "no": "Start lading",
+        "da": "Start opladning"
+      },
+      "hint": {
+        "en": "Start charging now (the car must be plugged in)",
+        "nl": "Start nu met laden (de auto moet aangesloten zijn)",
+        "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
+        "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
+        "no": "Start lading nå (bilen må være koblet til)",
+        "da": "Start opladning nu (bilen skal være tilsluttet)"
+      }
+    },
+    {
+      "id": "stopcharging_mycitroen",
+      "title": {
+        "en": "Stop charging",
+        "nl": "Laden stoppen",
+        "de": "Laden stoppen",
+        "fr": "Arrêter la charge",
+        "no": "Stopp lading",
+        "da": "Stop opladning"
+      },
+      "hint": {
+        "en": "Stop charging (postpones the start to the programmed charging time)",
+        "nl": "Stop het laden (stelt de start uit tot de ingestelde laadtijd)",
+        "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
+        "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
+        "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
+        "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+      }
+    },
+    {
+      "id": "wakeup_mycitroen",
+      "title": {
+        "en": "Wake up car",
+        "nl": "Auto wakker maken",
+        "de": "Fahrzeug aufwecken",
+        "fr": "Réveiller le véhicule",
+        "no": "Vekk bilen",
+        "da": "Væk bilen"
+      },
+      "hint": {
+        "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
+        "nl": "Maak de auto wakker en ververs de status (max 6 per 20 minuten)",
+        "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
+        "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
+        "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
+        "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+      }
+    },
+    {
+      "id": "lockdoors_mycitroen",
+      "title": {
+        "en": "Lock doors",
+        "nl": "Deuren vergrendelen",
+        "de": "Türen verriegeln",
+        "fr": "Verrouiller les portes",
+        "no": "Lås dørene",
+        "da": "Lås dørene"
+      },
+      "hint": {
+        "en": "Lock all doors (only if the car supports it)",
+        "nl": "Vergrendel alle deuren (alleen als de auto dit ondersteunt)",
+        "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+        "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
+        "no": "Låser alle dørene (bare hvis bilen støtter det)",
+        "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+      }
+    },
+    {
+      "id": "unlockdoors_mycitroen",
+      "title": {
+        "en": "Unlock doors",
+        "nl": "Deuren ontgrendelen",
+        "de": "Türen entriegeln",
+        "fr": "Déverrouiller les portes",
+        "no": "Lås opp dørene",
+        "da": "Lås dørene op"
+      },
+      "hint": {
+        "en": "Unlock all doors (only if the car supports it)",
+        "nl": "Ontgrendel alle deuren (alleen als de auto dit ondersteunt)",
+        "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+        "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
+        "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
+        "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+      }
+    },
+    {
+      "id": "horn_mycitroen",
+      "title": {
+        "en": "Honk horn",
+        "nl": "Claxon",
+        "de": "Hupe betätigen",
+        "fr": "Klaxonner",
+        "no": "Tut med hornet",
+        "da": "Tut med hornet"
+      },
+      "hint": {
+        "en": "Sound the horn twice (only if the car supports it)",
+        "nl": "Laat de claxon twee keer klinken (alleen als de auto dit ondersteunt)",
+        "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
+        "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
+        "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
+        "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+      }
+    },
+    {
+      "id": "lights_mycitroen",
+      "title": {
+        "en": "Flash lights",
+        "nl": "Lichten knipperen",
+        "de": "Lichter blinken lassen",
+        "fr": "Faire clignoter les feux",
+        "no": "Blink med lysene",
+        "da": "Blink med lygterne"
+      },
+      "hint": {
+        "en": "Flash the lights for 10 seconds (only if the car supports it)",
+        "nl": "Laat de lichten 10 seconden knipperen (alleen als de auto dit ondersteunt)",
+        "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
+        "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
+        "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
+        "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+      }
+    },
+    {
+      "id": "getbatteryhealth_mycitroen",
+      "title": {
+        "en": "Get battery health",
+        "nl": "Accugezondheid ophalen",
+        "de": "Batteriezustand abrufen",
+        "fr": "Récupérer l'état de santé de la batterie",
+        "no": "Hent batterihelse",
+        "da": "Hent batterisundhed"
+      },
+      "hint": {
+        "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
+        "nl": "Leest de accugezondheid (state of health) van de auto uit. Geeft tokens terug en kan daarom alleen in een Advanced Flow worden gebruikt",
+        "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
+        "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
+        "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
+        "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+      },
+      "tokens": [
+        {
+          "name": "battery_health",
+          "type": "number",
+          "title": {
+            "en": "Battery health (%)",
+            "nl": "Accugezondheid (%)",
+            "de": "Batteriezustand (%)",
+            "fr": "État de santé de la batterie (%)",
+            "no": "Batterihelse (%)",
+            "da": "Batterisundhed (%)"
+          }
+        },
+        {
+          "name": "battery_health_updated",
+          "type": "string",
+          "title": {
+            "en": "Battery health measured at",
+            "nl": "Accugezondheid gemeten op",
+            "de": "Batteriezustand gemessen am",
+            "fr": "État de santé mesuré le",
+            "no": "Batterihelse målt",
+            "da": "Batterisundhed målt"
+          }
+        }
+      ]
     }
   ],
   "triggers": [
     {
       "id": "newtrip_mycitroen",
       "title": {
-        "en": "New trip available"
+        "en": "New trip available",
+        "nl": "Nieuwe rit beschikbaar",
+        "de": "Neue Fahrt verfügbar",
+        "fr": "Nouveau trajet disponible",
+        "no": "Ny tur tilgjengelig",
+        "da": "Ny tur tilgængelig"
       },
       "titleFormatted": {
-        "en": "New trip available"
+        "en": "New trip available",
+        "nl": "Nieuwe rit beschikbaar",
+        "de": "Neue Fahrt verfügbar",
+        "fr": "Nouveau trajet disponible",
+        "no": "Ny tur tilgjengelig",
+        "da": "Ny tur tilgængelig"
       },
       "tokens": [
-          {
-            "name": "duration",
-            "title": { "en": "duration seconds" },
-            "type": "number"
+        {
+          "name": "duration",
+          "title": {
+            "en": "duration seconds",
+            "nl": "duur in seconden",
+            "de": "Dauer in Sekunden",
+            "fr": "durée en secondes",
+            "no": "varighet i sekunder",
+            "da": "varighed i sekunder"
           },
-          {
-            "name": "distance",
-            "title": { "en": "distance" },
-            "type": "number"
+          "type": "number"
+        },
+        {
+          "name": "distance",
+          "title": {
+            "en": "distance",
+            "nl": "afstand",
+            "de": "Strecke",
+            "fr": "distance",
+            "no": "distanse",
+            "da": "afstand"
           },
-          {
-            "name": "startedAt",
-            "title": { "en": "startedAt" },
-            "type": "string"
+          "type": "number"
+        },
+        {
+          "name": "startedAt",
+          "title": {
+            "en": "startedAt",
+            "nl": "gestart om",
+            "de": "Start",
+            "fr": "début",
+            "no": "startet",
+            "da": "startet"
           },
-          {
-            "name": "stoppedAt",
-            "title": { "en": "stoppedAt" },
-            "type": "string"
+          "type": "string"
+        },
+        {
+          "name": "stoppedAt",
+          "title": {
+            "en": "stoppedAt",
+            "nl": "gestopt om",
+            "de": "Ende",
+            "fr": "fin",
+            "no": "stoppet",
+            "da": "stoppet"
           },
-          {
-            "name": "energyConsumption",
-            "title": { "en": "energyConsumption" },
-            "type": "number"
+          "type": "string"
+        },
+        {
+          "name": "energyConsumption",
+          "title": {
+            "en": "energyConsumption",
+            "nl": "energieverbruik",
+            "de": "Energieverbrauch",
+            "fr": "consommation d'énergie",
+            "no": "energiforbruk",
+            "da": "energiforbrug"
           },
-          {
-            "name": "energyConsumptionAvg",
-            "title": { "en": "energyConsumptionAvg" },
-            "type": "number"
+          "type": "number"
+        },
+        {
+          "name": "energyConsumptionAvg",
+          "title": {
+            "en": "energyConsumptionAvg",
+            "nl": "gemiddeld energieverbruik",
+            "de": "durchschnittlicher Energieverbrauch",
+            "fr": "consommation d'énergie moyenne",
+            "no": "gjennomsnittlig energiforbruk",
+            "da": "gennemsnitligt energiforbrug"
           },
-          {
-            "name": "SpeedAvg",
-            "title": { "en": "SpeedAvg" },
-            "type": "number"
+          "type": "number"
+        },
+        {
+          "name": "SpeedAvg",
+          "title": {
+            "en": "SpeedAvg",
+            "nl": "gemiddelde snelheid",
+            "de": "Durchschnittsgeschwindigkeit",
+            "fr": "vitesse moyenne",
+            "no": "gjennomsnittsfart",
+            "da": "gennemsnitshastighed"
+          },
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "remoteservice_mycitroen",
+      "title": {
+        "en": "Remote service is available",
+        "nl": "Remote service is beschikbaar",
+        "de": "Remote-Dienst ist verfügbar",
+        "fr": "Le service à distance est disponible",
+        "no": "Fjerntjeneste er tilgjengelig",
+        "da": "Fjerntjeneste er tilgængelig"
+      },
+      "titleFormatted": {
+        "en": "Remote service [[service]] is available",
+        "nl": "Remote service [[service]] is beschikbaar",
+        "de": "Remote-Dienst [[service]] ist verfügbar",
+        "fr": "Le service à distance [[service]] est disponible",
+        "no": "Fjerntjenesten [[service]] er tilgjengelig",
+        "da": "Fjerntjenesten [[service]] er tilgængelig"
+      },
+      "hint": {
+        "en": "Checks whether the subscription of this car includes the service",
+        "nl": "Controleert of het abonnement van deze auto de service bevat",
+        "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
+        "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
+        "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
+        "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+      },
+      "args": [
+        {
+          "name": "service",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "NAS01",
+              "label": {
+                "en": "Air conditioning (preconditioning)",
+                "nl": "Airco (voorconditionering)",
+                "de": "Klimaanlage (Vorklimatisierung)",
+                "fr": "Climatisation (préconditionnement)",
+                "no": "Klimaanlegg (forhåndsklimatisering)",
+                "da": "Klimaanlæg (forvarmning)"
+              }
+            },
+            {
+              "id": "NBM01",
+              "label": {
+                "en": "Charging control (also wake-up)",
+                "nl": "Laadcontrole (ook wake-up)",
+                "de": "Laderegelung (auch Aufwecken)",
+                "fr": "Contrôle de la charge (aussi le réveil)",
+                "no": "Ladekontroll (også vekking)",
+                "da": "Opladningsstyring (også vækning)"
+              }
+            },
+            {
+              "id": "NCG01",
+              "label": {
+                "en": "Battery durability advice",
+                "nl": "Advies accuduurzaamheid",
+                "de": "Hinweise zur Batterielebensdauer",
+                "fr": "Conseils de durabilité de la batterie",
+                "no": "Råd om batteriets levetid",
+                "da": "Råd om batteriets holdbarhed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "servicecode_mycitroen",
+      "title": {
+        "en": "Service code is available",
+        "nl": "Servicecode is beschikbaar",
+        "de": "Dienstcode ist verfügbar",
+        "fr": "Le code de service est disponible",
+        "no": "Tjenestekode er tilgjengelig",
+        "da": "Servicekode er tilgængelig"
+      },
+      "titleFormatted": {
+        "en": "Service code [[code]] is available",
+        "nl": "Servicecode [[code]] is beschikbaar",
+        "de": "Dienstcode [[code]] ist verfügbar",
+        "fr": "Le code de service [[code]] est disponible",
+        "no": "Tjenestekoden [[code]] er tilgjengelig",
+        "da": "Servicekoden [[code]] er tilgængelig"
+      },
+      "hint": {
+        "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
+        "nl": "Controleert een servicecode uit de logregel 'Remote services for …' (bijvoorbeeld NAS01)",
+        "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
+        "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
+        "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
+        "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+      },
+      "args": [
+        {
+          "name": "code",
+          "type": "text",
+          "placeholder": {
+            "en": "NAS01",
+            "nl": "NAS01"
           }
+        }
       ]
     }
   ]
-
 }

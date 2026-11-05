@@ -1,7 +1,21 @@
 {
   "type": "number",
-  "title": { "en": "Range", "nl": "Actieradius" },
-  "desc":  { "en": "Estimated remaining distance", "nl": "Geschatte resterende afstand" },
+  "title": {
+    "en": "Range",
+    "nl": "Actieradius",
+    "de": "Reichweite",
+    "fr": "Autonomie",
+    "no": "Rekkevidde",
+    "da": "Rækkevidde"
+  },
+  "desc": {
+    "en": "Estimated remaining distance",
+    "nl": "Geschatte resterende afstand",
+    "de": "Geschätzte Restreichweite",
+    "fr": "Distance restante estimée",
+    "no": "Estimert gjenstående distanse",
+    "da": "Anslået resterende distance"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

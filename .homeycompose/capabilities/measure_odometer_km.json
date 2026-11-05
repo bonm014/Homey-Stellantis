@@ -1,8 +1,21 @@
-
 {
   "type": "number",
-  "title": { "en": "Odometer", "nl": "Kilometerstand" },
-  "desc":  { "en": "Total distance travelled", "nl": "Totale afgelegde afstand" },
+  "title": {
+    "en": "Odometer",
+    "nl": "Kilometerstand",
+    "de": "Kilometerstand",
+    "fr": "Compteur kilométrique",
+    "no": "Kilometerteller",
+    "da": "Kilometertæller"
+  },
+  "desc": {
+    "en": "Total distance travelled",
+    "nl": "Totale afgelegde afstand",
+    "de": "Insgesamt zurückgelegte Strecke",
+    "fr": "Distance totale parcourue",
+    "no": "Total tilbakelagt distanse",
+    "da": "Samlet tilbagelagt distance"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

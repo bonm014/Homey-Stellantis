@@ -1,7 +1,21 @@
 {
   "type": "number",
-  "title": { "en": "Maintenance milage", "nl": "Onderhoud km" },
-  "desc":  { "en": "Next maintenance in milages", "nl": "Volgende onderhoudsbeurt in kilometers" },
+  "title": {
+    "en": "Maintenance milage",
+    "nl": "Onderhoud km",
+    "de": "Wartung in km",
+    "fr": "Entretien (km)",
+    "no": "Service (km)",
+    "da": "Service (km)"
+  },
+  "desc": {
+    "en": "Next maintenance in milages",
+    "nl": "Volgende onderhoudsbeurt in kilometers",
+    "de": "Nächste Wartung in Kilometern",
+    "fr": "Prochain entretien en kilomètres",
+    "no": "Neste service om kilometer",
+    "da": "Næste service om kilometer"
+  },
   "uiComponent": "sensor",
   "getable": true,
   "setable": false,

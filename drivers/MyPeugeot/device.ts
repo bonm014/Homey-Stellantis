@@ -28,8 +28,51 @@ module.exports = class MyPeugeotDevice extends Homey.Device {
     });
   }
 
-  async StartStopCharging(value:boolean, opts:any) {
-    DeviceUtils.StartStopCharging(this, this.brandName, value);
+  async startAirco() {
+    await DeviceUtils.sendPreconditioning(this, this.brandName, true);
+  }
+
+  async stopAirco() {
+    await DeviceUtils.sendPreconditioning(this, this.brandName, false);
+  }
+
+  async startCharging() {
+    await DeviceUtils.sendCharging(this, this.brandName, true);
+  }
+
+  async stopCharging() {
+    await DeviceUtils.sendCharging(this, this.brandName, false);
+  }
+
+  async hasRemoteService(code:string):Promise<boolean> {
+    return await DeviceUtils.hasRemoteService(this, this.brandName, code);
+  }
+
+  async lockDoors() {
+    await DeviceUtils.sendDoors(this, this.brandName, true);
+  }
+
+  async unlockDoors() {
+    await DeviceUtils.sendDoors(this, this.brandName, false);
+  }
+
+  async honkHorn() {
+    await DeviceUtils.sendHorn(this, this.brandName);
+  }
+
+  async flashLights() {
+    await DeviceUtils.sendLights(this, this.brandName);
+  }
+
+  async wakeUp() {
+    await DeviceUtils.sendWakeup(this, this.brandName);
+    // Give the car a moment to report, then refresh the status
+    setTimeout(() => { this.checkAndRefreshData(); }, 10 * 1000);
+  }
+
+
+  async getBatteryHealth() {
+    return await DeviceUtils.readBatteryHealth(this, this.brandName);
   }
 
   async checkAndRefreshData() {

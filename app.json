@@ -11,7 +11,12 @@
     "en": "Stellantis Vehicles"
   },
   "description": {
-    "en": "Connect your Stellantis car and give insight to you"
+    "en": "Connect your Stellantis car and give insight to you",
+    "nl": "Koppel je Stellantis-auto en krijg inzicht in je auto",
+    "de": "Verbinden Sie Ihr Stellantis-Fahrzeug und erhalten Sie Einblick in Ihr Auto",
+    "fr": "Connectez votre véhicule Stellantis et gardez un œil sur votre voiture",
+    "no": "Koble til Stellantis-bilen din og få innsikt i bilen",
+    "da": "Tilslut din Stellantis-bil og få indsigt i din bil"
   },
   "category": [
     "appliances"
@@ -55,58 +60,103 @@
       {
         "id": "newtrip_mycitroen",
         "title": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "titleFormatted": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "tokens": [
           {
             "name": "duration",
             "title": {
-              "en": "duration seconds"
+              "en": "duration seconds",
+              "nl": "duur in seconden",
+              "de": "Dauer in Sekunden",
+              "fr": "durée en secondes",
+              "no": "varighet i sekunder",
+              "da": "varighed i sekunder"
             },
             "type": "number"
           },
           {
             "name": "distance",
             "title": {
-              "en": "distance"
+              "en": "distance",
+              "nl": "afstand",
+              "de": "Strecke",
+              "fr": "distance",
+              "no": "distanse",
+              "da": "afstand"
             },
             "type": "number"
           },
           {
             "name": "startedAt",
             "title": {
-              "en": "startedAt"
+              "en": "startedAt",
+              "nl": "gestart om",
+              "de": "Start",
+              "fr": "début",
+              "no": "startet",
+              "da": "startet"
             },
             "type": "string"
           },
           {
             "name": "stoppedAt",
             "title": {
-              "en": "stoppedAt"
+              "en": "stoppedAt",
+              "nl": "gestopt om",
+              "de": "Ende",
+              "fr": "fin",
+              "no": "stoppet",
+              "da": "stoppet"
             },
             "type": "string"
           },
           {
             "name": "energyConsumption",
             "title": {
-              "en": "energyConsumption"
+              "en": "energyConsumption",
+              "nl": "energieverbruik",
+              "de": "Energieverbrauch",
+              "fr": "consommation d'énergie",
+              "no": "energiforbruk",
+              "da": "energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "energyConsumptionAvg",
             "title": {
-              "en": "energyConsumptionAvg"
+              "en": "energyConsumptionAvg",
+              "nl": "gemiddeld energieverbruik",
+              "de": "durchschnittlicher Energieverbrauch",
+              "fr": "consommation d'énergie moyenne",
+              "no": "gjennomsnittlig energiforbruk",
+              "da": "gennemsnitligt energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "SpeedAvg",
             "title": {
-              "en": "SpeedAvg"
+              "en": "SpeedAvg",
+              "nl": "gemiddelde snelheid",
+              "de": "Durchschnittsgeschwindigkeit",
+              "fr": "vitesse moyenne",
+              "no": "gjennomsnittsfart",
+              "da": "gennemsnitshastighed"
             },
             "type": "number"
           }
@@ -122,58 +172,103 @@
       {
         "id": "newtrip_myds",
         "title": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "titleFormatted": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "tokens": [
           {
             "name": "duration",
             "title": {
-              "en": "duration seconds"
+              "en": "duration seconds",
+              "nl": "duur in seconden",
+              "de": "Dauer in Sekunden",
+              "fr": "durée en secondes",
+              "no": "varighet i sekunder",
+              "da": "varighed i sekunder"
             },
             "type": "number"
           },
           {
             "name": "distance",
             "title": {
-              "en": "distance"
+              "en": "distance",
+              "nl": "afstand",
+              "de": "Strecke",
+              "fr": "distance",
+              "no": "distanse",
+              "da": "afstand"
             },
             "type": "number"
           },
           {
             "name": "startedAt",
             "title": {
-              "en": "startedAt"
+              "en": "startedAt",
+              "nl": "gestart om",
+              "de": "Start",
+              "fr": "début",
+              "no": "startet",
+              "da": "startet"
             },
             "type": "string"
           },
           {
             "name": "stoppedAt",
             "title": {
-              "en": "stoppedAt"
+              "en": "stoppedAt",
+              "nl": "gestopt om",
+              "de": "Ende",
+              "fr": "fin",
+              "no": "stoppet",
+              "da": "stoppet"
             },
             "type": "string"
           },
           {
             "name": "energyConsumption",
             "title": {
-              "en": "energyConsumption"
+              "en": "energyConsumption",
+              "nl": "energieverbruik",
+              "de": "Energieverbrauch",
+              "fr": "consommation d'énergie",
+              "no": "energiforbruk",
+              "da": "energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "energyConsumptionAvg",
             "title": {
-              "en": "energyConsumptionAvg"
+              "en": "energyConsumptionAvg",
+              "nl": "gemiddeld energieverbruik",
+              "de": "durchschnittlicher Energieverbrauch",
+              "fr": "consommation d'énergie moyenne",
+              "no": "gjennomsnittlig energiforbruk",
+              "da": "gennemsnitligt energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "SpeedAvg",
             "title": {
-              "en": "SpeedAvg"
+              "en": "SpeedAvg",
+              "nl": "gemiddelde snelheid",
+              "de": "Durchschnittsgeschwindigkeit",
+              "fr": "vitesse moyenne",
+              "no": "gjennomsnittsfart",
+              "da": "gennemsnitshastighed"
             },
             "type": "number"
           }
@@ -189,58 +284,103 @@
       {
         "id": "newtrip_myopel",
         "title": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "titleFormatted": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "tokens": [
           {
             "name": "duration",
             "title": {
-              "en": "duration seconds"
+              "en": "duration seconds",
+              "nl": "duur in seconden",
+              "de": "Dauer in Sekunden",
+              "fr": "durée en secondes",
+              "no": "varighet i sekunder",
+              "da": "varighed i sekunder"
             },
             "type": "number"
           },
           {
             "name": "distance",
             "title": {
-              "en": "distance"
+              "en": "distance",
+              "nl": "afstand",
+              "de": "Strecke",
+              "fr": "distance",
+              "no": "distanse",
+              "da": "afstand"
             },
             "type": "number"
           },
           {
             "name": "startedAt",
             "title": {
-              "en": "startedAt"
+              "en": "startedAt",
+              "nl": "gestart om",
+              "de": "Start",
+              "fr": "début",
+              "no": "startet",
+              "da": "startet"
             },
             "type": "string"
           },
           {
             "name": "stoppedAt",
             "title": {
-              "en": "stoppedAt"
+              "en": "stoppedAt",
+              "nl": "gestopt om",
+              "de": "Ende",
+              "fr": "fin",
+              "no": "stoppet",
+              "da": "stoppet"
             },
             "type": "string"
           },
           {
             "name": "energyConsumption",
             "title": {
-              "en": "energyConsumption"
+              "en": "energyConsumption",
+              "nl": "energieverbruik",
+              "de": "Energieverbrauch",
+              "fr": "consommation d'énergie",
+              "no": "energiforbruk",
+              "da": "energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "energyConsumptionAvg",
             "title": {
-              "en": "energyConsumptionAvg"
+              "en": "energyConsumptionAvg",
+              "nl": "gemiddeld energieverbruik",
+              "de": "durchschnittlicher Energieverbrauch",
+              "fr": "consommation d'énergie moyenne",
+              "no": "gjennomsnittlig energiforbruk",
+              "da": "gennemsnitligt energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "SpeedAvg",
             "title": {
-              "en": "SpeedAvg"
+              "en": "SpeedAvg",
+              "nl": "gemiddelde snelheid",
+              "de": "Durchschnittsgeschwindigkeit",
+              "fr": "vitesse moyenne",
+              "no": "gjennomsnittsfart",
+              "da": "gennemsnitshastighed"
             },
             "type": "number"
           }
@@ -256,58 +396,103 @@
       {
         "id": "newtrip_mypeugeot",
         "title": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "titleFormatted": {
-          "en": "New trip available"
+          "en": "New trip available",
+          "nl": "Nieuwe rit beschikbaar",
+          "de": "Neue Fahrt verfügbar",
+          "fr": "Nouveau trajet disponible",
+          "no": "Ny tur tilgjengelig",
+          "da": "Ny tur tilgængelig"
         },
         "tokens": [
           {
             "name": "duration",
             "title": {
-              "en": "duration seconds"
+              "en": "duration seconds",
+              "nl": "duur in seconden",
+              "de": "Dauer in Sekunden",
+              "fr": "durée en secondes",
+              "no": "varighet i sekunder",
+              "da": "varighed i sekunder"
             },
             "type": "number"
           },
           {
             "name": "distance",
             "title": {
-              "en": "distance"
+              "en": "distance",
+              "nl": "afstand",
+              "de": "Strecke",
+              "fr": "distance",
+              "no": "distanse",
+              "da": "afstand"
             },
             "type": "number"
           },
           {
             "name": "startedAt",
             "title": {
-              "en": "startedAt"
+              "en": "startedAt",
+              "nl": "gestart om",
+              "de": "Start",
+              "fr": "début",
+              "no": "startet",
+              "da": "startet"
             },
             "type": "string"
           },
           {
             "name": "stoppedAt",
             "title": {
-              "en": "stoppedAt"
+              "en": "stoppedAt",
+              "nl": "gestopt om",
+              "de": "Ende",
+              "fr": "fin",
+              "no": "stoppet",
+              "da": "stoppet"
             },
             "type": "string"
           },
           {
             "name": "energyConsumption",
             "title": {
-              "en": "energyConsumption"
+              "en": "energyConsumption",
+              "nl": "energieverbruik",
+              "de": "Energieverbrauch",
+              "fr": "consommation d'énergie",
+              "no": "energiforbruk",
+              "da": "energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "energyConsumptionAvg",
             "title": {
-              "en": "energyConsumptionAvg"
+              "en": "energyConsumptionAvg",
+              "nl": "gemiddeld energieverbruik",
+              "de": "durchschnittlicher Energieverbrauch",
+              "fr": "consommation d'énergie moyenne",
+              "no": "gjennomsnittlig energiforbruk",
+              "da": "gennemsnitligt energiforbrug"
             },
             "type": "number"
           },
           {
             "name": "SpeedAvg",
             "title": {
-              "en": "SpeedAvg"
+              "en": "SpeedAvg",
+              "nl": "gemiddelde snelheid",
+              "de": "Durchschnittsgeschwindigkeit",
+              "fr": "vitesse moyenne",
+              "no": "gjennomsnittsfart",
+              "da": "gennemsnitshastighed"
             },
             "type": "number"
           }
@@ -321,15 +506,799 @@
         ]
       }
     ],
+    "conditions": [
+      {
+        "id": "remoteservice_mycitroen",
+        "title": {
+          "en": "Remote service is available",
+          "nl": "Remote service is beschikbaar",
+          "de": "Remote-Dienst ist verfügbar",
+          "fr": "Le service à distance est disponible",
+          "no": "Fjerntjeneste er tilgjengelig",
+          "da": "Fjerntjeneste er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Remote service [[service]] is available",
+          "nl": "Remote service [[service]] is beschikbaar",
+          "de": "Remote-Dienst [[service]] ist verfügbar",
+          "fr": "Le service à distance [[service]] est disponible",
+          "no": "Fjerntjenesten [[service]] er tilgjengelig",
+          "da": "Fjerntjenesten [[service]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks whether the subscription of this car includes the service",
+          "nl": "Controleert of het abonnement van deze auto de service bevat",
+          "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
+          "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
+          "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          },
+          {
+            "name": "service",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "NAS01",
+                "label": {
+                  "en": "Air conditioning (preconditioning)",
+                  "nl": "Airco (voorconditionering)",
+                  "de": "Klimaanlage (Vorklimatisierung)",
+                  "fr": "Climatisation (préconditionnement)",
+                  "no": "Klimaanlegg (forhåndsklimatisering)",
+                  "da": "Klimaanlæg (forvarmning)"
+                }
+              },
+              {
+                "id": "NBM01",
+                "label": {
+                  "en": "Charging control (also wake-up)",
+                  "nl": "Laadcontrole (ook wake-up)",
+                  "de": "Laderegelung (auch Aufwecken)",
+                  "fr": "Contrôle de la charge (aussi le réveil)",
+                  "no": "Ladekontroll (også vekking)",
+                  "da": "Opladningsstyring (også vækning)"
+                }
+              },
+              {
+                "id": "NCG01",
+                "label": {
+                  "en": "Battery durability advice",
+                  "nl": "Advies accuduurzaamheid",
+                  "de": "Hinweise zur Batterielebensdauer",
+                  "fr": "Conseils de durabilité de la batterie",
+                  "no": "Råd om batteriets levetid",
+                  "da": "Råd om batteriets holdbarhed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "servicecode_mycitroen",
+        "title": {
+          "en": "Service code is available",
+          "nl": "Servicecode is beschikbaar",
+          "de": "Dienstcode ist verfügbar",
+          "fr": "Le code de service est disponible",
+          "no": "Tjenestekode er tilgjengelig",
+          "da": "Servicekode er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Service code [[code]] is available",
+          "nl": "Servicecode [[code]] is beschikbaar",
+          "de": "Dienstcode [[code]] ist verfügbar",
+          "fr": "Le code de service [[code]] est disponible",
+          "no": "Tjenestekoden [[code]] er tilgjengelig",
+          "da": "Servicekoden [[code]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
+          "nl": "Controleert een servicecode uit de logregel 'Remote services for …' (bijvoorbeeld NAS01)",
+          "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
+          "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
+          "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          },
+          {
+            "name": "code",
+            "type": "text",
+            "placeholder": {
+              "en": "NAS01",
+              "nl": "NAS01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "remoteservice_myds",
+        "title": {
+          "en": "Remote service is available",
+          "nl": "Remote service is beschikbaar",
+          "de": "Remote-Dienst ist verfügbar",
+          "fr": "Le service à distance est disponible",
+          "no": "Fjerntjeneste er tilgjengelig",
+          "da": "Fjerntjeneste er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Remote service [[service]] is available",
+          "nl": "Remote service [[service]] is beschikbaar",
+          "de": "Remote-Dienst [[service]] ist verfügbar",
+          "fr": "Le service à distance [[service]] est disponible",
+          "no": "Fjerntjenesten [[service]] er tilgjengelig",
+          "da": "Fjerntjenesten [[service]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks whether the subscription of this car includes the service",
+          "nl": "Controleert of het abonnement van deze auto de service bevat",
+          "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
+          "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
+          "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          },
+          {
+            "name": "service",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "NAS01",
+                "label": {
+                  "en": "Air conditioning (preconditioning)",
+                  "nl": "Airco (voorconditionering)",
+                  "de": "Klimaanlage (Vorklimatisierung)",
+                  "fr": "Climatisation (préconditionnement)",
+                  "no": "Klimaanlegg (forhåndsklimatisering)",
+                  "da": "Klimaanlæg (forvarmning)"
+                }
+              },
+              {
+                "id": "NBM01",
+                "label": {
+                  "en": "Charging control (also wake-up)",
+                  "nl": "Laadcontrole (ook wake-up)",
+                  "de": "Laderegelung (auch Aufwecken)",
+                  "fr": "Contrôle de la charge (aussi le réveil)",
+                  "no": "Ladekontroll (også vekking)",
+                  "da": "Opladningsstyring (også vækning)"
+                }
+              },
+              {
+                "id": "NCG01",
+                "label": {
+                  "en": "Battery durability advice",
+                  "nl": "Advies accuduurzaamheid",
+                  "de": "Hinweise zur Batterielebensdauer",
+                  "fr": "Conseils de durabilité de la batterie",
+                  "no": "Råd om batteriets levetid",
+                  "da": "Råd om batteriets holdbarhed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "servicecode_myds",
+        "title": {
+          "en": "Service code is available",
+          "nl": "Servicecode is beschikbaar",
+          "de": "Dienstcode ist verfügbar",
+          "fr": "Le code de service est disponible",
+          "no": "Tjenestekode er tilgjengelig",
+          "da": "Servicekode er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Service code [[code]] is available",
+          "nl": "Servicecode [[code]] is beschikbaar",
+          "de": "Dienstcode [[code]] ist verfügbar",
+          "fr": "Le code de service [[code]] est disponible",
+          "no": "Tjenestekoden [[code]] er tilgjengelig",
+          "da": "Servicekoden [[code]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
+          "nl": "Controleert een servicecode uit de logregel 'Remote services for …' (bijvoorbeeld NAS01)",
+          "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
+          "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
+          "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          },
+          {
+            "name": "code",
+            "type": "text",
+            "placeholder": {
+              "en": "NAS01",
+              "nl": "NAS01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "remoteservice_myopel",
+        "title": {
+          "en": "Remote service is available",
+          "nl": "Remote service is beschikbaar",
+          "de": "Remote-Dienst ist verfügbar",
+          "fr": "Le service à distance est disponible",
+          "no": "Fjerntjeneste er tilgjengelig",
+          "da": "Fjerntjeneste er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Remote service [[service]] is available",
+          "nl": "Remote service [[service]] is beschikbaar",
+          "de": "Remote-Dienst [[service]] ist verfügbar",
+          "fr": "Le service à distance [[service]] est disponible",
+          "no": "Fjerntjenesten [[service]] er tilgjengelig",
+          "da": "Fjerntjenesten [[service]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks whether the subscription of this car includes the service",
+          "nl": "Controleert of het abonnement van deze auto de service bevat",
+          "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
+          "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
+          "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          },
+          {
+            "name": "service",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "NAS01",
+                "label": {
+                  "en": "Air conditioning (preconditioning)",
+                  "nl": "Airco (voorconditionering)",
+                  "de": "Klimaanlage (Vorklimatisierung)",
+                  "fr": "Climatisation (préconditionnement)",
+                  "no": "Klimaanlegg (forhåndsklimatisering)",
+                  "da": "Klimaanlæg (forvarmning)"
+                }
+              },
+              {
+                "id": "NBM01",
+                "label": {
+                  "en": "Charging control (also wake-up)",
+                  "nl": "Laadcontrole (ook wake-up)",
+                  "de": "Laderegelung (auch Aufwecken)",
+                  "fr": "Contrôle de la charge (aussi le réveil)",
+                  "no": "Ladekontroll (også vekking)",
+                  "da": "Opladningsstyring (også vækning)"
+                }
+              },
+              {
+                "id": "NCG01",
+                "label": {
+                  "en": "Battery durability advice",
+                  "nl": "Advies accuduurzaamheid",
+                  "de": "Hinweise zur Batterielebensdauer",
+                  "fr": "Conseils de durabilité de la batterie",
+                  "no": "Råd om batteriets levetid",
+                  "da": "Råd om batteriets holdbarhed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "servicecode_myopel",
+        "title": {
+          "en": "Service code is available",
+          "nl": "Servicecode is beschikbaar",
+          "de": "Dienstcode ist verfügbar",
+          "fr": "Le code de service est disponible",
+          "no": "Tjenestekode er tilgjengelig",
+          "da": "Servicekode er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Service code [[code]] is available",
+          "nl": "Servicecode [[code]] is beschikbaar",
+          "de": "Dienstcode [[code]] ist verfügbar",
+          "fr": "Le code de service [[code]] est disponible",
+          "no": "Tjenestekoden [[code]] er tilgjengelig",
+          "da": "Servicekoden [[code]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
+          "nl": "Controleert een servicecode uit de logregel 'Remote services for …' (bijvoorbeeld NAS01)",
+          "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
+          "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
+          "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          },
+          {
+            "name": "code",
+            "type": "text",
+            "placeholder": {
+              "en": "NAS01",
+              "nl": "NAS01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "remoteservice_mypeugeot",
+        "title": {
+          "en": "Remote service is available",
+          "nl": "Remote service is beschikbaar",
+          "de": "Remote-Dienst ist verfügbar",
+          "fr": "Le service à distance est disponible",
+          "no": "Fjerntjeneste er tilgjengelig",
+          "da": "Fjerntjeneste er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Remote service [[service]] is available",
+          "nl": "Remote service [[service]] is beschikbaar",
+          "de": "Remote-Dienst [[service]] ist verfügbar",
+          "fr": "Le service à distance [[service]] est disponible",
+          "no": "Fjerntjenesten [[service]] er tilgjengelig",
+          "da": "Fjerntjenesten [[service]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks whether the subscription of this car includes the service",
+          "nl": "Controleert of het abonnement van deze auto de service bevat",
+          "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
+          "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
+          "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          },
+          {
+            "name": "service",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "NAS01",
+                "label": {
+                  "en": "Air conditioning (preconditioning)",
+                  "nl": "Airco (voorconditionering)",
+                  "de": "Klimaanlage (Vorklimatisierung)",
+                  "fr": "Climatisation (préconditionnement)",
+                  "no": "Klimaanlegg (forhåndsklimatisering)",
+                  "da": "Klimaanlæg (forvarmning)"
+                }
+              },
+              {
+                "id": "NBM01",
+                "label": {
+                  "en": "Charging control (also wake-up)",
+                  "nl": "Laadcontrole (ook wake-up)",
+                  "de": "Laderegelung (auch Aufwecken)",
+                  "fr": "Contrôle de la charge (aussi le réveil)",
+                  "no": "Ladekontroll (også vekking)",
+                  "da": "Opladningsstyring (også vækning)"
+                }
+              },
+              {
+                "id": "NCG01",
+                "label": {
+                  "en": "Battery durability advice",
+                  "nl": "Advies accuduurzaamheid",
+                  "de": "Hinweise zur Batterielebensdauer",
+                  "fr": "Conseils de durabilité de la batterie",
+                  "no": "Råd om batteriets levetid",
+                  "da": "Råd om batteriets holdbarhed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "servicecode_mypeugeot",
+        "title": {
+          "en": "Service code is available",
+          "nl": "Servicecode is beschikbaar",
+          "de": "Dienstcode ist verfügbar",
+          "fr": "Le code de service est disponible",
+          "no": "Tjenestekode er tilgjengelig",
+          "da": "Servicekode er tilgængelig"
+        },
+        "titleFormatted": {
+          "en": "Service code [[code]] is available",
+          "nl": "Servicecode [[code]] is beschikbaar",
+          "de": "Dienstcode [[code]] ist verfügbar",
+          "fr": "Le code de service [[code]] est disponible",
+          "no": "Tjenestekoden [[code]] er tilgjengelig",
+          "da": "Servicekoden [[code]] er tilgængelig"
+        },
+        "hint": {
+          "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
+          "nl": "Controleert een servicecode uit de logregel 'Remote services for …' (bijvoorbeeld NAS01)",
+          "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
+          "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
+          "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          },
+          {
+            "name": "code",
+            "type": "text",
+            "placeholder": {
+              "en": "NAS01",
+              "nl": "NAS01"
+            }
+          }
+        ]
+      }
+    ],
     "actions": [
       {
         "id": "updatevehiclestatus_mycitroen",
         "title": {
-          "en": "Update Vehicle Status"
+          "en": "Update Vehicle Status",
+          "nl": "Voertuigstatus bijwerken",
+          "de": "Fahrzeugstatus aktualisieren",
+          "fr": "Mettre à jour l'état du véhicule",
+          "no": "Oppdater kjøretøystatus",
+          "da": "Opdater køretøjsstatus"
         },
         "hint": {
-          "en": "Force an update if you need the update now"
+          "en": "Force an update if you need the update now",
+          "nl": "Forceer een update als je de gegevens nu nodig hebt",
+          "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
+          "fr": "Force une mise à jour si vous avez besoin des données maintenant",
+          "no": "Tving en oppdatering hvis du trenger dataene nå",
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "startairco_mycitroen",
+        "title": {
+          "en": "Start air conditioning",
+          "nl": "Airco starten",
+          "de": "Klimaanlage starten",
+          "fr": "Démarrer la climatisation",
+          "no": "Start klimaanlegget",
+          "da": "Start klimaanlægget"
+        },
+        "hint": {
+          "en": "Start the air conditioning (preconditioning) of the car now",
+          "nl": "Start nu de airco (voorconditionering) van de auto",
+          "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
+          "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
+          "da": "Start bilens klimaanlæg (forvarmning) nu"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "stopairco_mycitroen",
+        "title": {
+          "en": "Stop air conditioning",
+          "nl": "Airco stoppen",
+          "de": "Klimaanlage stoppen",
+          "fr": "Arrêter la climatisation",
+          "no": "Stopp klimaanlegget",
+          "da": "Stop klimaanlægget"
+        },
+        "hint": {
+          "en": "Stop the air conditioning (preconditioning) of the car",
+          "nl": "Stop de airco (voorconditionering) van de auto",
+          "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Arrête la climatisation (préconditionnement) du véhicule",
+          "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
+          "da": "Stop bilens klimaanlæg (forvarmning)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "startcharging_mycitroen",
+        "title": {
+          "en": "Start charging",
+          "nl": "Laden starten",
+          "de": "Laden starten",
+          "fr": "Démarrer la charge",
+          "no": "Start lading",
+          "da": "Start opladning"
+        },
+        "hint": {
+          "en": "Start charging now (the car must be plugged in)",
+          "nl": "Start nu met laden (de auto moet aangesloten zijn)",
+          "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
+          "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
+          "no": "Start lading nå (bilen må være koblet til)",
+          "da": "Start opladning nu (bilen skal være tilsluttet)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "stopcharging_mycitroen",
+        "title": {
+          "en": "Stop charging",
+          "nl": "Laden stoppen",
+          "de": "Laden stoppen",
+          "fr": "Arrêter la charge",
+          "no": "Stopp lading",
+          "da": "Stop opladning"
+        },
+        "hint": {
+          "en": "Stop charging (postpones the start to the programmed charging time)",
+          "nl": "Stop het laden (stelt de start uit tot de ingestelde laadtijd)",
+          "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
+          "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
+          "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "wakeup_mycitroen",
+        "title": {
+          "en": "Wake up car",
+          "nl": "Auto wakker maken",
+          "de": "Fahrzeug aufwecken",
+          "fr": "Réveiller le véhicule",
+          "no": "Vekk bilen",
+          "da": "Væk bilen"
+        },
+        "hint": {
+          "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
+          "nl": "Maak de auto wakker en ververs de status (max 6 per 20 minuten)",
+          "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
+          "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
+          "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "lockdoors_mycitroen",
+        "title": {
+          "en": "Lock doors",
+          "nl": "Deuren vergrendelen",
+          "de": "Türen verriegeln",
+          "fr": "Verrouiller les portes",
+          "no": "Lås dørene",
+          "da": "Lås dørene"
+        },
+        "hint": {
+          "en": "Lock all doors (only if the car supports it)",
+          "nl": "Vergrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "unlockdoors_mycitroen",
+        "title": {
+          "en": "Unlock doors",
+          "nl": "Deuren ontgrendelen",
+          "de": "Türen entriegeln",
+          "fr": "Déverrouiller les portes",
+          "no": "Lås opp dørene",
+          "da": "Lås dørene op"
+        },
+        "hint": {
+          "en": "Unlock all doors (only if the car supports it)",
+          "nl": "Ontgrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "horn_mycitroen",
+        "title": {
+          "en": "Honk horn",
+          "nl": "Claxon",
+          "de": "Hupe betätigen",
+          "fr": "Klaxonner",
+          "no": "Tut med hornet",
+          "da": "Tut med hornet"
+        },
+        "hint": {
+          "en": "Sound the horn twice (only if the car supports it)",
+          "nl": "Laat de claxon twee keer klinken (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
+          "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "lights_mycitroen",
+        "title": {
+          "en": "Flash lights",
+          "nl": "Lichten knipperen",
+          "de": "Lichter blinken lassen",
+          "fr": "Faire clignoter les feux",
+          "no": "Blink med lysene",
+          "da": "Blink med lygterne"
+        },
+        "hint": {
+          "en": "Flash the lights for 10 seconds (only if the car supports it)",
+          "nl": "Laat de lichten 10 seconden knipperen (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
+          "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "logbatteryadvice_mycitroen",
+        "title": {
+          "en": "Log battery durability advice",
+          "nl": "Accuduurzaamheidsadvies loggen",
+          "de": "Hinweise zur Batterielebensdauer protokollieren",
+          "fr": "Journaliser les conseils de durabilité de la batterie",
+          "no": "Logg råd om batteriets levetid",
+          "da": "Log råd om batteriets holdbarhed"
+        },
+        "hint": {
+          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
+          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
+          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
+          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
+          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
+          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyCitroen"
+          }
+        ]
+      },
+      {
+        "id": "getbatteryhealth_mycitroen",
+        "title": {
+          "en": "Get battery health",
+          "nl": "Accugezondheid ophalen",
+          "de": "Batteriezustand abrufen",
+          "fr": "Récupérer l'état de santé de la batterie",
+          "no": "Hent batterihelse",
+          "da": "Hent batterisundhed"
+        },
+        "hint": {
+          "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
+          "nl": "Leest de accugezondheid (state of health) van de auto uit. Geeft tokens terug en kan daarom alleen in een Advanced Flow worden gebruikt",
+          "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
+          "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
+          "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+        },
+        "tokens": [
+          {
+            "name": "battery_health",
+            "type": "number",
+            "title": {
+              "en": "Battery health (%)",
+              "nl": "Accugezondheid (%)",
+              "de": "Batteriezustand (%)",
+              "fr": "État de santé de la batterie (%)",
+              "no": "Batterihelse (%)",
+              "da": "Batterisundhed (%)"
+            }
+          },
+          {
+            "name": "battery_health_updated",
+            "type": "string",
+            "title": {
+              "en": "Battery health measured at",
+              "nl": "Accugezondheid gemeten op",
+              "de": "Batteriezustand gemessen am",
+              "fr": "État de santé mesuré le",
+              "no": "Batterihelse målt",
+              "da": "Batterisundhed målt"
+            }
+          }
+        ],
         "args": [
           {
             "type": "device",
@@ -341,11 +1310,333 @@
       {
         "id": "updatevehiclestatus_myds",
         "title": {
-          "en": "Update Vehicle Status"
+          "en": "Update Vehicle Status",
+          "nl": "Voertuigstatus bijwerken",
+          "de": "Fahrzeugstatus aktualisieren",
+          "fr": "Mettre à jour l'état du véhicule",
+          "no": "Oppdater kjøretøystatus",
+          "da": "Opdater køretøjsstatus"
         },
         "hint": {
-          "en": "Force an update if you need the update now"
+          "en": "Force an update if you need the update now",
+          "nl": "Forceer een update als je de gegevens nu nodig hebt",
+          "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
+          "fr": "Force une mise à jour si vous avez besoin des données maintenant",
+          "no": "Tving en oppdatering hvis du trenger dataene nå",
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "startairco_myds",
+        "title": {
+          "en": "Start air conditioning",
+          "nl": "Airco starten",
+          "de": "Klimaanlage starten",
+          "fr": "Démarrer la climatisation",
+          "no": "Start klimaanlegget",
+          "da": "Start klimaanlægget"
+        },
+        "hint": {
+          "en": "Start the air conditioning (preconditioning) of the car now",
+          "nl": "Start nu de airco (voorconditionering) van de auto",
+          "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
+          "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
+          "da": "Start bilens klimaanlæg (forvarmning) nu"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "stopairco_myds",
+        "title": {
+          "en": "Stop air conditioning",
+          "nl": "Airco stoppen",
+          "de": "Klimaanlage stoppen",
+          "fr": "Arrêter la climatisation",
+          "no": "Stopp klimaanlegget",
+          "da": "Stop klimaanlægget"
+        },
+        "hint": {
+          "en": "Stop the air conditioning (preconditioning) of the car",
+          "nl": "Stop de airco (voorconditionering) van de auto",
+          "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Arrête la climatisation (préconditionnement) du véhicule",
+          "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
+          "da": "Stop bilens klimaanlæg (forvarmning)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "startcharging_myds",
+        "title": {
+          "en": "Start charging",
+          "nl": "Laden starten",
+          "de": "Laden starten",
+          "fr": "Démarrer la charge",
+          "no": "Start lading",
+          "da": "Start opladning"
+        },
+        "hint": {
+          "en": "Start charging now (the car must be plugged in)",
+          "nl": "Start nu met laden (de auto moet aangesloten zijn)",
+          "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
+          "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
+          "no": "Start lading nå (bilen må være koblet til)",
+          "da": "Start opladning nu (bilen skal være tilsluttet)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "stopcharging_myds",
+        "title": {
+          "en": "Stop charging",
+          "nl": "Laden stoppen",
+          "de": "Laden stoppen",
+          "fr": "Arrêter la charge",
+          "no": "Stopp lading",
+          "da": "Stop opladning"
+        },
+        "hint": {
+          "en": "Stop charging (postpones the start to the programmed charging time)",
+          "nl": "Stop het laden (stelt de start uit tot de ingestelde laadtijd)",
+          "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
+          "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
+          "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "wakeup_myds",
+        "title": {
+          "en": "Wake up car",
+          "nl": "Auto wakker maken",
+          "de": "Fahrzeug aufwecken",
+          "fr": "Réveiller le véhicule",
+          "no": "Vekk bilen",
+          "da": "Væk bilen"
+        },
+        "hint": {
+          "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
+          "nl": "Maak de auto wakker en ververs de status (max 6 per 20 minuten)",
+          "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
+          "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
+          "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "lockdoors_myds",
+        "title": {
+          "en": "Lock doors",
+          "nl": "Deuren vergrendelen",
+          "de": "Türen verriegeln",
+          "fr": "Verrouiller les portes",
+          "no": "Lås dørene",
+          "da": "Lås dørene"
+        },
+        "hint": {
+          "en": "Lock all doors (only if the car supports it)",
+          "nl": "Vergrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "unlockdoors_myds",
+        "title": {
+          "en": "Unlock doors",
+          "nl": "Deuren ontgrendelen",
+          "de": "Türen entriegeln",
+          "fr": "Déverrouiller les portes",
+          "no": "Lås opp dørene",
+          "da": "Lås dørene op"
+        },
+        "hint": {
+          "en": "Unlock all doors (only if the car supports it)",
+          "nl": "Ontgrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "horn_myds",
+        "title": {
+          "en": "Honk horn",
+          "nl": "Claxon",
+          "de": "Hupe betätigen",
+          "fr": "Klaxonner",
+          "no": "Tut med hornet",
+          "da": "Tut med hornet"
+        },
+        "hint": {
+          "en": "Sound the horn twice (only if the car supports it)",
+          "nl": "Laat de claxon twee keer klinken (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
+          "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "lights_myds",
+        "title": {
+          "en": "Flash lights",
+          "nl": "Lichten knipperen",
+          "de": "Lichter blinken lassen",
+          "fr": "Faire clignoter les feux",
+          "no": "Blink med lysene",
+          "da": "Blink med lygterne"
+        },
+        "hint": {
+          "en": "Flash the lights for 10 seconds (only if the car supports it)",
+          "nl": "Laat de lichten 10 seconden knipperen (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
+          "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "logbatteryadvice_myds",
+        "title": {
+          "en": "Log battery durability advice",
+          "nl": "Accuduurzaamheidsadvies loggen",
+          "de": "Hinweise zur Batterielebensdauer protokollieren",
+          "fr": "Journaliser les conseils de durabilité de la batterie",
+          "no": "Logg råd om batteriets levetid",
+          "da": "Log råd om batteriets holdbarhed"
+        },
+        "hint": {
+          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
+          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
+          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
+          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
+          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
+          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyDS"
+          }
+        ]
+      },
+      {
+        "id": "getbatteryhealth_myds",
+        "title": {
+          "en": "Get battery health",
+          "nl": "Accugezondheid ophalen",
+          "de": "Batteriezustand abrufen",
+          "fr": "Récupérer l'état de santé de la batterie",
+          "no": "Hent batterihelse",
+          "da": "Hent batterisundhed"
+        },
+        "hint": {
+          "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
+          "nl": "Leest de accugezondheid (state of health) van de auto uit. Geeft tokens terug en kan daarom alleen in een Advanced Flow worden gebruikt",
+          "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
+          "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
+          "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+        },
+        "tokens": [
+          {
+            "name": "battery_health",
+            "type": "number",
+            "title": {
+              "en": "Battery health (%)",
+              "nl": "Accugezondheid (%)",
+              "de": "Batteriezustand (%)",
+              "fr": "État de santé de la batterie (%)",
+              "no": "Batterihelse (%)",
+              "da": "Batterisundhed (%)"
+            }
+          },
+          {
+            "name": "battery_health_updated",
+            "type": "string",
+            "title": {
+              "en": "Battery health measured at",
+              "nl": "Accugezondheid gemeten op",
+              "de": "Batteriezustand gemessen am",
+              "fr": "État de santé mesuré le",
+              "no": "Batterihelse målt",
+              "da": "Batterisundhed målt"
+            }
+          }
+        ],
         "args": [
           {
             "type": "device",
@@ -357,11 +1648,333 @@
       {
         "id": "updatevehiclestatus_myopel",
         "title": {
-          "en": "Update Vehicle Status"
+          "en": "Update Vehicle Status",
+          "nl": "Voertuigstatus bijwerken",
+          "de": "Fahrzeugstatus aktualisieren",
+          "fr": "Mettre à jour l'état du véhicule",
+          "no": "Oppdater kjøretøystatus",
+          "da": "Opdater køretøjsstatus"
         },
         "hint": {
-          "en": "Force an update if you need the update now"
+          "en": "Force an update if you need the update now",
+          "nl": "Forceer een update als je de gegevens nu nodig hebt",
+          "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
+          "fr": "Force une mise à jour si vous avez besoin des données maintenant",
+          "no": "Tving en oppdatering hvis du trenger dataene nå",
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "startairco_myopel",
+        "title": {
+          "en": "Start air conditioning",
+          "nl": "Airco starten",
+          "de": "Klimaanlage starten",
+          "fr": "Démarrer la climatisation",
+          "no": "Start klimaanlegget",
+          "da": "Start klimaanlægget"
+        },
+        "hint": {
+          "en": "Start the air conditioning (preconditioning) of the car now",
+          "nl": "Start nu de airco (voorconditionering) van de auto",
+          "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
+          "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
+          "da": "Start bilens klimaanlæg (forvarmning) nu"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "stopairco_myopel",
+        "title": {
+          "en": "Stop air conditioning",
+          "nl": "Airco stoppen",
+          "de": "Klimaanlage stoppen",
+          "fr": "Arrêter la climatisation",
+          "no": "Stopp klimaanlegget",
+          "da": "Stop klimaanlægget"
+        },
+        "hint": {
+          "en": "Stop the air conditioning (preconditioning) of the car",
+          "nl": "Stop de airco (voorconditionering) van de auto",
+          "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Arrête la climatisation (préconditionnement) du véhicule",
+          "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
+          "da": "Stop bilens klimaanlæg (forvarmning)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "startcharging_myopel",
+        "title": {
+          "en": "Start charging",
+          "nl": "Laden starten",
+          "de": "Laden starten",
+          "fr": "Démarrer la charge",
+          "no": "Start lading",
+          "da": "Start opladning"
+        },
+        "hint": {
+          "en": "Start charging now (the car must be plugged in)",
+          "nl": "Start nu met laden (de auto moet aangesloten zijn)",
+          "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
+          "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
+          "no": "Start lading nå (bilen må være koblet til)",
+          "da": "Start opladning nu (bilen skal være tilsluttet)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "stopcharging_myopel",
+        "title": {
+          "en": "Stop charging",
+          "nl": "Laden stoppen",
+          "de": "Laden stoppen",
+          "fr": "Arrêter la charge",
+          "no": "Stopp lading",
+          "da": "Stop opladning"
+        },
+        "hint": {
+          "en": "Stop charging (postpones the start to the programmed charging time)",
+          "nl": "Stop het laden (stelt de start uit tot de ingestelde laadtijd)",
+          "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
+          "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
+          "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "wakeup_myopel",
+        "title": {
+          "en": "Wake up car",
+          "nl": "Auto wakker maken",
+          "de": "Fahrzeug aufwecken",
+          "fr": "Réveiller le véhicule",
+          "no": "Vekk bilen",
+          "da": "Væk bilen"
+        },
+        "hint": {
+          "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
+          "nl": "Maak de auto wakker en ververs de status (max 6 per 20 minuten)",
+          "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
+          "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
+          "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "lockdoors_myopel",
+        "title": {
+          "en": "Lock doors",
+          "nl": "Deuren vergrendelen",
+          "de": "Türen verriegeln",
+          "fr": "Verrouiller les portes",
+          "no": "Lås dørene",
+          "da": "Lås dørene"
+        },
+        "hint": {
+          "en": "Lock all doors (only if the car supports it)",
+          "nl": "Vergrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "unlockdoors_myopel",
+        "title": {
+          "en": "Unlock doors",
+          "nl": "Deuren ontgrendelen",
+          "de": "Türen entriegeln",
+          "fr": "Déverrouiller les portes",
+          "no": "Lås opp dørene",
+          "da": "Lås dørene op"
+        },
+        "hint": {
+          "en": "Unlock all doors (only if the car supports it)",
+          "nl": "Ontgrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "horn_myopel",
+        "title": {
+          "en": "Honk horn",
+          "nl": "Claxon",
+          "de": "Hupe betätigen",
+          "fr": "Klaxonner",
+          "no": "Tut med hornet",
+          "da": "Tut med hornet"
+        },
+        "hint": {
+          "en": "Sound the horn twice (only if the car supports it)",
+          "nl": "Laat de claxon twee keer klinken (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
+          "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "lights_myopel",
+        "title": {
+          "en": "Flash lights",
+          "nl": "Lichten knipperen",
+          "de": "Lichter blinken lassen",
+          "fr": "Faire clignoter les feux",
+          "no": "Blink med lysene",
+          "da": "Blink med lygterne"
+        },
+        "hint": {
+          "en": "Flash the lights for 10 seconds (only if the car supports it)",
+          "nl": "Laat de lichten 10 seconden knipperen (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
+          "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "logbatteryadvice_myopel",
+        "title": {
+          "en": "Log battery durability advice",
+          "nl": "Accuduurzaamheidsadvies loggen",
+          "de": "Hinweise zur Batterielebensdauer protokollieren",
+          "fr": "Journaliser les conseils de durabilité de la batterie",
+          "no": "Logg råd om batteriets levetid",
+          "da": "Log råd om batteriets holdbarhed"
+        },
+        "hint": {
+          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
+          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
+          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
+          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
+          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
+          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyOpel"
+          }
+        ]
+      },
+      {
+        "id": "getbatteryhealth_myopel",
+        "title": {
+          "en": "Get battery health",
+          "nl": "Accugezondheid ophalen",
+          "de": "Batteriezustand abrufen",
+          "fr": "Récupérer l'état de santé de la batterie",
+          "no": "Hent batterihelse",
+          "da": "Hent batterisundhed"
+        },
+        "hint": {
+          "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
+          "nl": "Leest de accugezondheid (state of health) van de auto uit. Geeft tokens terug en kan daarom alleen in een Advanced Flow worden gebruikt",
+          "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
+          "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
+          "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+        },
+        "tokens": [
+          {
+            "name": "battery_health",
+            "type": "number",
+            "title": {
+              "en": "Battery health (%)",
+              "nl": "Accugezondheid (%)",
+              "de": "Batteriezustand (%)",
+              "fr": "État de santé de la batterie (%)",
+              "no": "Batterihelse (%)",
+              "da": "Batterisundhed (%)"
+            }
+          },
+          {
+            "name": "battery_health_updated",
+            "type": "string",
+            "title": {
+              "en": "Battery health measured at",
+              "nl": "Accugezondheid gemeten op",
+              "de": "Batteriezustand gemessen am",
+              "fr": "État de santé mesuré le",
+              "no": "Batterihelse målt",
+              "da": "Batterisundhed målt"
+            }
+          }
+        ],
         "args": [
           {
             "type": "device",
@@ -373,11 +1986,333 @@
       {
         "id": "updatevehiclestatus_mypeugeot",
         "title": {
-          "en": "Update Vehicle Status"
+          "en": "Update Vehicle Status",
+          "nl": "Voertuigstatus bijwerken",
+          "de": "Fahrzeugstatus aktualisieren",
+          "fr": "Mettre à jour l'état du véhicule",
+          "no": "Oppdater kjøretøystatus",
+          "da": "Opdater køretøjsstatus"
         },
         "hint": {
-          "en": "Force an update if you need the update now"
+          "en": "Force an update if you need the update now",
+          "nl": "Forceer een update als je de gegevens nu nodig hebt",
+          "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
+          "fr": "Force une mise à jour si vous avez besoin des données maintenant",
+          "no": "Tving en oppdatering hvis du trenger dataene nå",
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "startairco_mypeugeot",
+        "title": {
+          "en": "Start air conditioning",
+          "nl": "Airco starten",
+          "de": "Klimaanlage starten",
+          "fr": "Démarrer la climatisation",
+          "no": "Start klimaanlegget",
+          "da": "Start klimaanlægget"
+        },
+        "hint": {
+          "en": "Start the air conditioning (preconditioning) of the car now",
+          "nl": "Start nu de airco (voorconditionering) van de auto",
+          "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
+          "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
+          "da": "Start bilens klimaanlæg (forvarmning) nu"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "stopairco_mypeugeot",
+        "title": {
+          "en": "Stop air conditioning",
+          "nl": "Airco stoppen",
+          "de": "Klimaanlage stoppen",
+          "fr": "Arrêter la climatisation",
+          "no": "Stopp klimaanlegget",
+          "da": "Stop klimaanlægget"
+        },
+        "hint": {
+          "en": "Stop the air conditioning (preconditioning) of the car",
+          "nl": "Stop de airco (voorconditionering) van de auto",
+          "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
+          "fr": "Arrête la climatisation (préconditionnement) du véhicule",
+          "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
+          "da": "Stop bilens klimaanlæg (forvarmning)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "startcharging_mypeugeot",
+        "title": {
+          "en": "Start charging",
+          "nl": "Laden starten",
+          "de": "Laden starten",
+          "fr": "Démarrer la charge",
+          "no": "Start lading",
+          "da": "Start opladning"
+        },
+        "hint": {
+          "en": "Start charging now (the car must be plugged in)",
+          "nl": "Start nu met laden (de auto moet aangesloten zijn)",
+          "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
+          "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
+          "no": "Start lading nå (bilen må være koblet til)",
+          "da": "Start opladning nu (bilen skal være tilsluttet)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "stopcharging_mypeugeot",
+        "title": {
+          "en": "Stop charging",
+          "nl": "Laden stoppen",
+          "de": "Laden stoppen",
+          "fr": "Arrêter la charge",
+          "no": "Stopp lading",
+          "da": "Stop opladning"
+        },
+        "hint": {
+          "en": "Stop charging (postpones the start to the programmed charging time)",
+          "nl": "Stop het laden (stelt de start uit tot de ingestelde laadtijd)",
+          "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
+          "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
+          "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "wakeup_mypeugeot",
+        "title": {
+          "en": "Wake up car",
+          "nl": "Auto wakker maken",
+          "de": "Fahrzeug aufwecken",
+          "fr": "Réveiller le véhicule",
+          "no": "Vekk bilen",
+          "da": "Væk bilen"
+        },
+        "hint": {
+          "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
+          "nl": "Maak de auto wakker en ververs de status (max 6 per 20 minuten)",
+          "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
+          "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
+          "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "lockdoors_mypeugeot",
+        "title": {
+          "en": "Lock doors",
+          "nl": "Deuren vergrendelen",
+          "de": "Türen verriegeln",
+          "fr": "Verrouiller les portes",
+          "no": "Lås dørene",
+          "da": "Lås dørene"
+        },
+        "hint": {
+          "en": "Lock all doors (only if the car supports it)",
+          "nl": "Vergrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "unlockdoors_mypeugeot",
+        "title": {
+          "en": "Unlock doors",
+          "nl": "Deuren ontgrendelen",
+          "de": "Türen entriegeln",
+          "fr": "Déverrouiller les portes",
+          "no": "Lås opp dørene",
+          "da": "Lås dørene op"
+        },
+        "hint": {
+          "en": "Unlock all doors (only if the car supports it)",
+          "nl": "Ontgrendel alle deuren (alleen als de auto dit ondersteunt)",
+          "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
+          "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "horn_mypeugeot",
+        "title": {
+          "en": "Honk horn",
+          "nl": "Claxon",
+          "de": "Hupe betätigen",
+          "fr": "Klaxonner",
+          "no": "Tut med hornet",
+          "da": "Tut med hornet"
+        },
+        "hint": {
+          "en": "Sound the horn twice (only if the car supports it)",
+          "nl": "Laat de claxon twee keer klinken (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
+          "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "lights_mypeugeot",
+        "title": {
+          "en": "Flash lights",
+          "nl": "Lichten knipperen",
+          "de": "Lichter blinken lassen",
+          "fr": "Faire clignoter les feux",
+          "no": "Blink med lysene",
+          "da": "Blink med lygterne"
+        },
+        "hint": {
+          "en": "Flash the lights for 10 seconds (only if the car supports it)",
+          "nl": "Laat de lichten 10 seconden knipperen (alleen als de auto dit ondersteunt)",
+          "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
+          "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
+          "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "logbatteryadvice_mypeugeot",
+        "title": {
+          "en": "Log battery durability advice",
+          "nl": "Accuduurzaamheidsadvies loggen",
+          "de": "Hinweise zur Batterielebensdauer protokollieren",
+          "fr": "Journaliser les conseils de durabilité de la batterie",
+          "no": "Logg råd om batteriets levetid",
+          "da": "Log råd om batteriets holdbarhed"
+        },
+        "hint": {
+          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
+          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
+          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
+          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
+          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
+          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=MyPeugeot"
+          }
+        ]
+      },
+      {
+        "id": "getbatteryhealth_mypeugeot",
+        "title": {
+          "en": "Get battery health",
+          "nl": "Accugezondheid ophalen",
+          "de": "Batteriezustand abrufen",
+          "fr": "Récupérer l'état de santé de la batterie",
+          "no": "Hent batterihelse",
+          "da": "Hent batterisundhed"
+        },
+        "hint": {
+          "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
+          "nl": "Leest de accugezondheid (state of health) van de auto uit. Geeft tokens terug en kan daarom alleen in een Advanced Flow worden gebruikt",
+          "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
+          "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
+          "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+        },
+        "tokens": [
+          {
+            "name": "battery_health",
+            "type": "number",
+            "title": {
+              "en": "Battery health (%)",
+              "nl": "Accugezondheid (%)",
+              "de": "Batteriezustand (%)",
+              "fr": "État de santé de la batterie (%)",
+              "no": "Batterihelse (%)",
+              "da": "Batterisundhed (%)"
+            }
+          },
+          {
+            "name": "battery_health_updated",
+            "type": "string",
+            "title": {
+              "en": "Battery health measured at",
+              "nl": "Accugezondheid gemeten op",
+              "de": "Batteriezustand gemessen am",
+              "fr": "État de santé mesuré le",
+              "no": "Batterihelse målt",
+              "da": "Batterisundhed målt"
+            }
+          }
+        ],
         "args": [
           {
             "type": "device",
@@ -435,7 +2370,12 @@
           "id": "debug_vehicle",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Vehicle"
+            "en": "Debug Information Vehicle",
+            "nl": "Debuginformatie voertuig",
+            "de": "Debug-Informationen Fahrzeug",
+            "fr": "Informations de débogage du véhicule",
+            "no": "Feilsøkingsinformasjon kjøretøy",
+            "da": "Fejlfindingsoplysninger køretøj"
           },
           "value": ""
         },
@@ -443,7 +2383,12 @@
           "id": "debug_vehiclestatus",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Status"
+            "en": "Debug Information Status",
+            "nl": "Debuginformatie status",
+            "de": "Debug-Informationen Status",
+            "fr": "Informations de débogage de l'état",
+            "no": "Feilsøkingsinformasjon status",
+            "da": "Fejlfindingsoplysninger status"
           },
           "value": ""
         },
@@ -451,7 +2396,54 @@
           "id": "debug_vehiclemaintenance",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Maintenance"
+            "en": "Debug Information Maintenance",
+            "nl": "Debuginformatie onderhoud",
+            "de": "Debug-Informationen Wartung",
+            "fr": "Informations de débogage de l'entretien",
+            "no": "Feilsøkingsinformasjon service",
+            "da": "Fejlfindingsoplysninger service"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_remoteservices",
+          "type": "textarea",
+          "label": {
+            "en": "Remote services of this car",
+            "nl": "Remote services van deze auto",
+            "de": "Remote-Dienste dieses Fahrzeugs",
+            "fr": "Services à distance de ce véhicule",
+            "no": "Fjerntjenester for denne bilen",
+            "da": "Fjerntjenester for denne bil"
+          },
+          "hint": {
+            "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
+            "nl": "Servicecodes van deze auto. Deel deze tekst als je ondersteuning voor meer auto's wilt (bevat geen VIN).",
+            "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
+            "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
+            "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_batteryadvice",
+          "type": "textarea",
+          "label": {
+            "en": "Battery durability advice (raw data)",
+            "nl": "Accuduurzaamheidsadvies (ruwe data)",
+            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
+            "fr": "Conseils de durabilité de la batterie (données brutes)",
+            "no": "Råd om batteriets levetid (rådata)",
+            "da": "Råd om batteriets holdbarhed (rådata)"
+          },
+          "hint": {
+            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
+            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
+            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
+            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
+            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
+            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
@@ -503,7 +2495,12 @@
           "id": "debug_vehicle",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Vehicle"
+            "en": "Debug Information Vehicle",
+            "nl": "Debuginformatie voertuig",
+            "de": "Debug-Informationen Fahrzeug",
+            "fr": "Informations de débogage du véhicule",
+            "no": "Feilsøkingsinformasjon kjøretøy",
+            "da": "Fejlfindingsoplysninger køretøj"
           },
           "value": ""
         },
@@ -511,7 +2508,12 @@
           "id": "debug_vehiclestatus",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Status"
+            "en": "Debug Information Status",
+            "nl": "Debuginformatie status",
+            "de": "Debug-Informationen Status",
+            "fr": "Informations de débogage de l'état",
+            "no": "Feilsøkingsinformasjon status",
+            "da": "Fejlfindingsoplysninger status"
           },
           "value": ""
         },
@@ -519,7 +2521,54 @@
           "id": "debug_vehiclemaintenance",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Maintenance"
+            "en": "Debug Information Maintenance",
+            "nl": "Debuginformatie onderhoud",
+            "de": "Debug-Informationen Wartung",
+            "fr": "Informations de débogage de l'entretien",
+            "no": "Feilsøkingsinformasjon service",
+            "da": "Fejlfindingsoplysninger service"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_remoteservices",
+          "type": "textarea",
+          "label": {
+            "en": "Remote services of this car",
+            "nl": "Remote services van deze auto",
+            "de": "Remote-Dienste dieses Fahrzeugs",
+            "fr": "Services à distance de ce véhicule",
+            "no": "Fjerntjenester for denne bilen",
+            "da": "Fjerntjenester for denne bil"
+          },
+          "hint": {
+            "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
+            "nl": "Servicecodes van deze auto. Deel deze tekst als je ondersteuning voor meer auto's wilt (bevat geen VIN).",
+            "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
+            "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
+            "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_batteryadvice",
+          "type": "textarea",
+          "label": {
+            "en": "Battery durability advice (raw data)",
+            "nl": "Accuduurzaamheidsadvies (ruwe data)",
+            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
+            "fr": "Conseils de durabilité de la batterie (données brutes)",
+            "no": "Råd om batteriets levetid (rådata)",
+            "da": "Råd om batteriets holdbarhed (rådata)"
+          },
+          "hint": {
+            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
+            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
+            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
+            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
+            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
+            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
@@ -571,7 +2620,12 @@
           "id": "debug_vehicle",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Vehicle"
+            "en": "Debug Information Vehicle",
+            "nl": "Debuginformatie voertuig",
+            "de": "Debug-Informationen Fahrzeug",
+            "fr": "Informations de débogage du véhicule",
+            "no": "Feilsøkingsinformasjon kjøretøy",
+            "da": "Fejlfindingsoplysninger køretøj"
           },
           "value": ""
         },
@@ -579,7 +2633,12 @@
           "id": "debug_vehiclestatus",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Status"
+            "en": "Debug Information Status",
+            "nl": "Debuginformatie status",
+            "de": "Debug-Informationen Status",
+            "fr": "Informations de débogage de l'état",
+            "no": "Feilsøkingsinformasjon status",
+            "da": "Fejlfindingsoplysninger status"
           },
           "value": ""
         },
@@ -587,7 +2646,54 @@
           "id": "debug_vehiclemaintenance",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Maintenance"
+            "en": "Debug Information Maintenance",
+            "nl": "Debuginformatie onderhoud",
+            "de": "Debug-Informationen Wartung",
+            "fr": "Informations de débogage de l'entretien",
+            "no": "Feilsøkingsinformasjon service",
+            "da": "Fejlfindingsoplysninger service"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_remoteservices",
+          "type": "textarea",
+          "label": {
+            "en": "Remote services of this car",
+            "nl": "Remote services van deze auto",
+            "de": "Remote-Dienste dieses Fahrzeugs",
+            "fr": "Services à distance de ce véhicule",
+            "no": "Fjerntjenester for denne bilen",
+            "da": "Fjerntjenester for denne bil"
+          },
+          "hint": {
+            "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
+            "nl": "Servicecodes van deze auto. Deel deze tekst als je ondersteuning voor meer auto's wilt (bevat geen VIN).",
+            "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
+            "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
+            "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_batteryadvice",
+          "type": "textarea",
+          "label": {
+            "en": "Battery durability advice (raw data)",
+            "nl": "Accuduurzaamheidsadvies (ruwe data)",
+            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
+            "fr": "Conseils de durabilité de la batterie (données brutes)",
+            "no": "Råd om batteriets levetid (rådata)",
+            "da": "Råd om batteriets holdbarhed (rådata)"
+          },
+          "hint": {
+            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
+            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
+            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
+            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
+            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
+            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
@@ -639,7 +2745,12 @@
           "id": "debug_vehicle",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Vehicle"
+            "en": "Debug Information Vehicle",
+            "nl": "Debuginformatie voertuig",
+            "de": "Debug-Informationen Fahrzeug",
+            "fr": "Informations de débogage du véhicule",
+            "no": "Feilsøkingsinformasjon kjøretøy",
+            "da": "Fejlfindingsoplysninger køretøj"
           },
           "value": ""
         },
@@ -647,7 +2758,12 @@
           "id": "debug_vehiclestatus",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Status"
+            "en": "Debug Information Status",
+            "nl": "Debuginformatie status",
+            "de": "Debug-Informationen Status",
+            "fr": "Informations de débogage de l'état",
+            "no": "Feilsøkingsinformasjon status",
+            "da": "Fejlfindingsoplysninger status"
           },
           "value": ""
         },
@@ -655,7 +2771,54 @@
           "id": "debug_vehiclemaintenance",
           "type": "textarea",
           "label": {
-            "en": "Debug Information Maintenance"
+            "en": "Debug Information Maintenance",
+            "nl": "Debuginformatie onderhoud",
+            "de": "Debug-Informationen Wartung",
+            "fr": "Informations de débogage de l'entretien",
+            "no": "Feilsøkingsinformasjon service",
+            "da": "Fejlfindingsoplysninger service"
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_remoteservices",
+          "type": "textarea",
+          "label": {
+            "en": "Remote services of this car",
+            "nl": "Remote services van deze auto",
+            "de": "Remote-Dienste dieses Fahrzeugs",
+            "fr": "Services à distance de ce véhicule",
+            "no": "Fjerntjenester for denne bilen",
+            "da": "Fjerntjenester for denne bil"
+          },
+          "hint": {
+            "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
+            "nl": "Servicecodes van deze auto. Deel deze tekst als je ondersteuning voor meer auto's wilt (bevat geen VIN).",
+            "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
+            "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
+            "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+          },
+          "value": ""
+        },
+        {
+          "id": "debug_batteryadvice",
+          "type": "textarea",
+          "label": {
+            "en": "Battery durability advice (raw data)",
+            "nl": "Accuduurzaamheidsadvies (ruwe data)",
+            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
+            "fr": "Conseils de durabilité de la batterie (données brutes)",
+            "no": "Råd om batteriets levetid (rådata)",
+            "da": "Råd om batteriets holdbarhed (rådata)"
+          },
+          "hint": {
+            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
+            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
+            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
+            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
+            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
+            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
@@ -667,11 +2830,19 @@
       "type": "boolean",
       "title": {
         "en": "Airconditioning",
-        "nl": "Airconditioning"
+        "nl": "Airconditioning",
+        "de": "Klimaanlage",
+        "fr": "Climatisation",
+        "no": "Klimaanlegg",
+        "da": "Klimaanlæg"
       },
       "desc": {
         "en": "Airconditioning",
-        "nl": "Airconditioning"
+        "nl": "Airconditioning",
+        "de": "Klimaanlage",
+        "fr": "Climatisation",
+        "no": "Klimaanlegg",
+        "da": "Klimaanlæg"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -679,15 +2850,50 @@
       "insights": true,
       "icon": "/assets/icons/fan.svg"
     },
+    "measure_battery_health": {
+      "type": "number",
+      "title": {
+        "en": "Battery health (SoH)",
+        "nl": "Accugezondheid (SoH)",
+        "de": "Batteriezustand (SoH)",
+        "fr": "État de santé de la batterie (SoH)",
+        "no": "Batterihelse (SoH)",
+        "da": "Batterisundhed (SoH)"
+      },
+      "desc": {
+        "en": "State of health of the traction battery, as reported by the car",
+        "nl": "Gezondheid (state of health) van de tractiebatterij, zoals de auto die doorgeeft",
+        "de": "Zustand (State of Health) der Antriebsbatterie, wie vom Fahrzeug gemeldet",
+        "fr": "État de santé (State of Health) de la batterie de traction, tel que communiqué par le véhicule",
+        "no": "Helsetilstand (state of health) for trekkbatteriet, slik bilen rapporterer den",
+        "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": "%",
+      "decimals": 0,
+      "min": 0,
+      "max": 100
+    },
     "measure_lastrefresh": {
       "type": "string",
       "title": {
         "en": "Last Refresh",
-        "nl": "Laatste vernieuwing"
+        "nl": "Laatste vernieuwing",
+        "de": "Letzte Aktualisierung",
+        "fr": "Dernière actualisation",
+        "no": "Siste oppdatering",
+        "da": "Seneste opdatering"
       },
       "desc": {
         "en": "Last Refresh",
-        "nl": "Laatste vernieuwing"
+        "nl": "Laatste vernieuwing",
+        "de": "Letzte Aktualisierung",
+        "fr": "Dernière actualisation",
+        "no": "Siste oppdatering",
+        "da": "Seneste opdatering"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -699,11 +2905,19 @@
       "type": "number",
       "title": {
         "en": "Maintenance days",
-        "nl": "Onderhoud dagen"
+        "nl": "Onderhoud dagen",
+        "de": "Wartung in Tagen",
+        "fr": "Entretien (jours)",
+        "no": "Service (dager)",
+        "da": "Service (dage)"
       },
       "desc": {
         "en": "Next maintenance in days",
-        "nl": "Volgende onderhoudsbeurt in dagen"
+        "nl": "Volgende onderhoudsbeurt in dagen",
+        "de": "Nächste Wartung in Tagen",
+        "fr": "Prochain entretien en jours",
+        "no": "Neste service om dager",
+        "da": "Næste service om dage"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -715,11 +2929,19 @@
       "type": "number",
       "title": {
         "en": "Maintenance milage",
-        "nl": "Onderhoud km"
+        "nl": "Onderhoud km",
+        "de": "Wartung in km",
+        "fr": "Entretien (km)",
+        "no": "Service (km)",
+        "da": "Service (km)"
       },
       "desc": {
         "en": "Next maintenance in milages",
-        "nl": "Volgende onderhoudsbeurt in kilometers"
+        "nl": "Volgende onderhoudsbeurt in kilometers",
+        "de": "Nächste Wartung in Kilometern",
+        "fr": "Prochain entretien en kilomètres",
+        "no": "Neste service om kilometer",
+        "da": "Næste service om kilometer"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -732,11 +2954,19 @@
       "type": "number",
       "title": {
         "en": "Odometer",
-        "nl": "Kilometerstand"
+        "nl": "Kilometerstand",
+        "de": "Kilometerstand",
+        "fr": "Compteur kilométrique",
+        "no": "Kilometerteller",
+        "da": "Kilometertæller"
       },
       "desc": {
         "en": "Total distance travelled",
-        "nl": "Totale afgelegde afstand"
+        "nl": "Totale afgelegde afstand",
+        "de": "Insgesamt zurückgelegte Strecke",
+        "fr": "Distance totale parcourue",
+        "no": "Total tilbakelagt distanse",
+        "da": "Samlet tilbagelagt distance"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -749,11 +2979,19 @@
       "type": "number",
       "title": {
         "en": "Range",
-        "nl": "Actieradius"
+        "nl": "Actieradius",
+        "de": "Reichweite",
+        "fr": "Autonomie",
+        "no": "Rekkevidde",
+        "da": "Rækkevidde"
       },
       "desc": {
         "en": "Estimated remaining distance",
-        "nl": "Geschatte resterende afstand"
+        "nl": "Geschatte resterende afstand",
+        "de": "Geschätzte Restreichweite",
+        "fr": "Distance restante estimée",
+        "no": "Estimert gjenstående distanse",
+        "da": "Anslået resterende distance"
       },
       "uiComponent": "sensor",
       "getable": true,

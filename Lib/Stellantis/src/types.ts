@@ -287,6 +287,7 @@ export interface APIResponse<T = any> {
 export interface AuthData {
     brand: string;
     country: string;
+    locale: string;
     authCode: string;
     client_id: string;
     client_secret: string;
@@ -304,6 +305,7 @@ export interface TokenData {
     expiresAt: number;
     brand: string;
     country: string;
+    locale: string;
     client_id: string;
     client_secret: string;
     oauth_url: string;
