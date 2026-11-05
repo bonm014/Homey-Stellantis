@@ -55,5 +55,8 @@
   },
   "1.5.3": {
     "en": "Opel check on missing brandname"
+  },
+  "2.0.0": {
+    "en": "Remote Services added, multilingual"
   }
 }

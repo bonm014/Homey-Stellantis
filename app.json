@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.martech.stellantisvehicles",
-  "version": "1.5.3",
+  "version": "2.0.0",
   "compatibility": ">=12.4.5",
   "sdk": 3,
   "platforms": [
@@ -1230,32 +1230,6 @@
         ]
       },
       {
-        "id": "logbatteryadvice_mycitroen",
-        "title": {
-          "en": "Log battery durability advice",
-          "nl": "Accuduurzaamheidsadvies loggen",
-          "de": "Hinweise zur Batterielebensdauer protokollieren",
-          "fr": "Journaliser les conseils de durabilité de la batterie",
-          "no": "Logg råd om batteriets levetid",
-          "da": "Log råd om batteriets holdbarhed"
-        },
-        "hint": {
-          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
-          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
-          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
-          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
-          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
-          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=MyCitroen"
-          }
-        ]
-      },
-      {
         "id": "getbatteryhealth_mycitroen",
         "title": {
           "en": "Get battery health",
@@ -1558,32 +1532,6 @@
           "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
           "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
           "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=MyDS"
-          }
-        ]
-      },
-      {
-        "id": "logbatteryadvice_myds",
-        "title": {
-          "en": "Log battery durability advice",
-          "nl": "Accuduurzaamheidsadvies loggen",
-          "de": "Hinweise zur Batterielebensdauer protokollieren",
-          "fr": "Journaliser les conseils de durabilité de la batterie",
-          "no": "Logg råd om batteriets levetid",
-          "da": "Log råd om batteriets holdbarhed"
-        },
-        "hint": {
-          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
-          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
-          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
-          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
-          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
-          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
         },
         "args": [
           {
@@ -1906,32 +1854,6 @@
         ]
       },
       {
-        "id": "logbatteryadvice_myopel",
-        "title": {
-          "en": "Log battery durability advice",
-          "nl": "Accuduurzaamheidsadvies loggen",
-          "de": "Hinweise zur Batterielebensdauer protokollieren",
-          "fr": "Journaliser les conseils de durabilité de la batterie",
-          "no": "Logg råd om batteriets levetid",
-          "da": "Log råd om batteriets holdbarhed"
-        },
-        "hint": {
-          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
-          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
-          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
-          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
-          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
-          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=MyOpel"
-          }
-        ]
-      },
-      {
         "id": "getbatteryhealth_myopel",
         "title": {
           "en": "Get battery health",
@@ -2244,32 +2166,6 @@
         ]
       },
       {
-        "id": "logbatteryadvice_mypeugeot",
-        "title": {
-          "en": "Log battery durability advice",
-          "nl": "Accuduurzaamheidsadvies loggen",
-          "de": "Hinweise zur Batterielebensdauer protokollieren",
-          "fr": "Journaliser les conseils de durabilité de la batterie",
-          "no": "Logg råd om batteriets levetid",
-          "da": "Log råd om batteriets holdbarhed"
-        },
-        "hint": {
-          "en": "Writes the raw battery durability advice data of this car to the log and the advanced settings (to build Flow tokens on later)",
-          "nl": "Schrijft de ruwe gegevens over het accuduurzaamheidsadvies van deze auto naar de log en de geavanceerde instellingen (om er later Flow-tokens van te maken)",
-          "de": "Schreibt die Rohdaten zu den Hinweisen zur Batterielebensdauer dieses Fahrzeugs ins Protokoll und in die erweiterten Einstellungen (um später Flow-Tokens daraus zu erstellen)",
-          "fr": "Écrit les données brutes des conseils de durabilité de la batterie de ce véhicule dans le journal et les réglages avancés (pour créer des jetons de Flow par la suite)",
-          "no": "Skriver rådata om batteriets levetid for denne bilen til loggen og de avanserte innstillingene (for å lage Flow-tokens senere)",
-          "da": "Skriver rådata om batteriets holdbarhed for denne bil til loggen og de avancerede indstillinger (for senere at lave Flow-tokens)"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=MyPeugeot"
-          }
-        ]
-      },
-      {
         "id": "getbatteryhealth_mypeugeot",
         "title": {
           "en": "Get battery health",
@@ -2425,27 +2321,6 @@
             "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
           },
           "value": ""
-        },
-        {
-          "id": "debug_batteryadvice",
-          "type": "textarea",
-          "label": {
-            "en": "Battery durability advice (raw data)",
-            "nl": "Accuduurzaamheidsadvies (ruwe data)",
-            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
-            "fr": "Conseils de durabilité de la batterie (données brutes)",
-            "no": "Råd om batteriets levetid (rådata)",
-            "da": "Råd om batteriets holdbarhed (rådata)"
-          },
-          "hint": {
-            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
-            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
-            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
-            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
-            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
-            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
-          },
-          "value": ""
         }
       ]
     },
@@ -2548,27 +2423,6 @@
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
             "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
-          },
-          "value": ""
-        },
-        {
-          "id": "debug_batteryadvice",
-          "type": "textarea",
-          "label": {
-            "en": "Battery durability advice (raw data)",
-            "nl": "Accuduurzaamheidsadvies (ruwe data)",
-            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
-            "fr": "Conseils de durabilité de la batterie (données brutes)",
-            "no": "Råd om batteriets levetid (rådata)",
-            "da": "Råd om batteriets holdbarhed (rådata)"
-          },
-          "hint": {
-            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
-            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
-            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
-            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
-            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
-            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
@@ -2675,27 +2529,6 @@
             "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
           },
           "value": ""
-        },
-        {
-          "id": "debug_batteryadvice",
-          "type": "textarea",
-          "label": {
-            "en": "Battery durability advice (raw data)",
-            "nl": "Accuduurzaamheidsadvies (ruwe data)",
-            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
-            "fr": "Conseils de durabilité de la batterie (données brutes)",
-            "no": "Råd om batteriets levetid (rådata)",
-            "da": "Råd om batteriets holdbarhed (rådata)"
-          },
-          "hint": {
-            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
-            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
-            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
-            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
-            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
-            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
-          },
-          "value": ""
         }
       ]
     },
@@ -2798,27 +2631,6 @@
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
             "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
-          },
-          "value": ""
-        },
-        {
-          "id": "debug_batteryadvice",
-          "type": "textarea",
-          "label": {
-            "en": "Battery durability advice (raw data)",
-            "nl": "Accuduurzaamheidsadvies (ruwe data)",
-            "de": "Hinweise zur Batterielebensdauer (Rohdaten)",
-            "fr": "Conseils de durabilité de la batterie (données brutes)",
-            "no": "Råd om batteriets levetid (rådata)",
-            "da": "Råd om batteriets holdbarhed (rådata)"
-          },
-          "hint": {
-            "en": "Filled by the Flow action 'Log battery durability advice'. Share this text so the advice can be turned into Flow tokens (it contains no VIN).",
-            "nl": "Gevuld door de Flow-actie 'Accuduurzaamheidsadvies loggen'. Deel deze tekst zodat het advies tot Flow-tokens kan worden gemaakt (bevat geen VIN).",
-            "de": "Wird von der Flow-Aktion 'Hinweise zur Batterielebensdauer protokollieren' gefüllt. Teilen Sie diesen Text, damit daraus Flow-Tokens erstellt werden können (enthält keine FIN).",
-            "fr": "Rempli par l'action de Flow « Journaliser les conseils de durabilité de la batterie ». Partagez ce texte pour que les conseils puissent devenir des jetons de Flow (sans VIN).",
-            "no": "Fylles av Flow-handlingen «Logg råd om batteriets levetid». Del denne teksten slik at rådet kan gjøres om til Flow-tokens (inneholder ikke VIN).",
-            "da": "Udfyldes af Flow-handlingen 'Log råd om batteriets holdbarhed'. Del denne tekst, så rådet kan blive til Flow-tokens (indeholder ikke VIN)."
           },
           "value": ""
         }
