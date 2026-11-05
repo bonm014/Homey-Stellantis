@@ -6,7 +6,8 @@
     "de": "Kilometerstand",
     "fr": "Compteur kilométrique",
     "no": "Kilometerteller",
-    "da": "Kilometertæller"
+    "da": "Kilometertæller",
+    "sv": "Vägmätare"
   },
   "desc": {
     "en": "Total distance travelled",
@@ -14,7 +15,8 @@
     "de": "Insgesamt zurückgelegte Strecke",
     "fr": "Distance totale parcourue",
     "no": "Total tilbakelagt distanse",
-    "da": "Samlet tilbagelagt distance"
+    "da": "Samlet tilbagelagt distance",
+    "sv": "Total körsträcka"
   },
   "uiComponent": "sensor",
   "getable": true,

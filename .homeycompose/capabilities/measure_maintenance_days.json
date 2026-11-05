@@ -6,7 +6,8 @@
     "de": "Wartung in Tagen",
     "fr": "Entretien (jours)",
     "no": "Service (dager)",
-    "da": "Service (dage)"
+    "da": "Service (dage)",
+    "sv": "Dagar till underhåll"
   },
   "desc": {
     "en": "Next maintenance in days",
@@ -14,7 +15,8 @@
     "de": "Nächste Wartung in Tagen",
     "fr": "Prochain entretien en jours",
     "no": "Neste service om dager",
-    "da": "Næste service om dage"
+    "da": "Næste service om dage",
+    "sv": "Nästa underhåll om antal dagar"
   },
   "uiComponent": "sensor",
   "getable": true,

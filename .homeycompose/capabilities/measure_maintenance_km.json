@@ -6,7 +6,8 @@
     "de": "Wartung in km",
     "fr": "Entretien (km)",
     "no": "Service (km)",
-    "da": "Service (km)"
+    "da": "Service (km)",
+    "sv": "Kilometer till underhåll"
   },
   "desc": {
     "en": "Next maintenance in milages",
@@ -14,7 +15,8 @@
     "de": "Nächste Wartung in Kilometern",
     "fr": "Prochain entretien en kilomètres",
     "no": "Neste service om kilometer",
-    "da": "Næste service om kilometer"
+    "da": "Næste service om kilometer",
+    "sv": "Nästa underhåll om antal kilometer"
   },
   "uiComponent": "sensor",
   "getable": true,

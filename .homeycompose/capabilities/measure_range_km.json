@@ -6,7 +6,8 @@
     "de": "Reichweite",
     "fr": "Autonomie",
     "no": "Rekkevidde",
-    "da": "Rækkevidde"
+    "da": "Rækkevidde",
+    "sv": "Räckvidd"
   },
   "desc": {
     "en": "Estimated remaining distance",
@@ -14,7 +15,8 @@
     "de": "Geschätzte Restreichweite",
     "fr": "Distance restante estimée",
     "no": "Estimert gjenstående distanse",
-    "da": "Anslået resterende distance"
+    "da": "Anslået resterende distance",
+    "sv": "Beräknad återstående körsträcka"
   },
   "uiComponent": "sensor",
   "getable": true,

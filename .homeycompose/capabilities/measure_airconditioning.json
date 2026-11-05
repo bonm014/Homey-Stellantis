@@ -6,7 +6,8 @@
     "de": "Klimaanlage",
     "fr": "Climatisation",
     "no": "Klimaanlegg",
-    "da": "Klimaanlæg"
+    "da": "Klimaanlæg",
+    "sv": "Klimatanläggning"
   },
   "desc": {
     "en": "Airconditioning",
@@ -14,7 +15,8 @@
     "de": "Klimaanlage",
     "fr": "Climatisation",
     "no": "Klimaanlegg",
-    "da": "Klimaanlæg"
+    "da": "Klimaanlæg",
+    "sv": "Klimatanläggning"
   },
   "uiComponent": "sensor",
   "getable": true,

@@ -6,7 +6,8 @@
     "de": "Letzte Aktualisierung",
     "fr": "Dernière actualisation",
     "no": "Siste oppdatering",
-    "da": "Seneste opdatering"
+    "da": "Seneste opdatering",
+    "sv": "Senaste uppdatering"
   },
   "desc": {
     "en": "Last Refresh",
@@ -14,7 +15,8 @@
     "de": "Letzte Aktualisierung",
     "fr": "Dernière actualisation",
     "no": "Siste oppdatering",
-    "da": "Seneste opdatering"
+    "da": "Seneste opdatering",
+    "sv": "Senaste uppdatering"
   },
   "uiComponent": "sensor",
   "getable": true,

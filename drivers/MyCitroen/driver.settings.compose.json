@@ -8,7 +8,8 @@
       "de": "Debug-Informationen Fahrzeug",
       "fr": "Informations de débogage du véhicule",
       "no": "Feilsøkingsinformasjon kjøretøy",
-      "da": "Fejlfindingsoplysninger køretøj"
+      "da": "Fejlfindingsoplysninger køretøj",
+      "sv": "Felsökningsinformation fordon"
     },
     "value": ""
   },
@@ -21,7 +22,8 @@
       "de": "Debug-Informationen Status",
       "fr": "Informations de débogage de l'état",
       "no": "Feilsøkingsinformasjon status",
-      "da": "Fejlfindingsoplysninger status"
+      "da": "Fejlfindingsoplysninger status",
+      "sv": "Felsökningsinformation status"
     },
     "value": ""
   },
@@ -34,7 +36,8 @@
       "de": "Debug-Informationen Wartung",
       "fr": "Informations de débogage de l'entretien",
       "no": "Feilsøkingsinformasjon service",
-      "da": "Fejlfindingsoplysninger service"
+      "da": "Fejlfindingsoplysninger service",
+      "sv": "Felsökningsinformation underhåll"
     },
     "value": ""
   },
@@ -47,7 +50,8 @@
       "de": "Remote-Dienste dieses Fahrzeugs",
       "fr": "Services à distance de ce véhicule",
       "no": "Fjerntjenester for denne bilen",
-      "da": "Fjerntjenester for denne bil"
+      "da": "Fjerntjenester for denne bil",
+      "sv": "Fjärrtjänster för den här bilen"
     },
     "hint": {
       "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
@@ -55,7 +59,8 @@
       "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
       "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
       "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
-      "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+      "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer).",
+      "sv": "Tjänstekoder för den här bilen. Dela gärna den här texten om du vill ha stöd för fler bilar (den innehåller inget VIN)."
     },
     "value": ""
   }

@@ -16,7 +16,8 @@
     "de": "Verbinden Sie Ihr Stellantis-Fahrzeug und erhalten Sie Einblick in Ihr Auto",
     "fr": "Connectez votre véhicule Stellantis et gardez un œil sur votre voiture",
     "no": "Koble til Stellantis-bilen din og få innsikt i bilen",
-    "da": "Tilslut din Stellantis-bil og få indsigt i din bil"
+    "da": "Tilslut din Stellantis-bil og få indsigt i din bil",
+    "sv": "Anslut din Stellantis-bil och få insyn i din bil"
   },
   "category": [
     "appliances"
@@ -65,7 +66,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "titleFormatted": {
           "en": "New trip available",
@@ -73,7 +75,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "tokens": [
           {
@@ -84,7 +87,8 @@
               "de": "Dauer in Sekunden",
               "fr": "durée en secondes",
               "no": "varighet i sekunder",
-              "da": "varighed i sekunder"
+              "da": "varighed i sekunder",
+              "sv": "varaktighet i sekunder"
             },
             "type": "number"
           },
@@ -96,7 +100,8 @@
               "de": "Strecke",
               "fr": "distance",
               "no": "distanse",
-              "da": "afstand"
+              "da": "afstand",
+              "sv": "sträcka"
             },
             "type": "number"
           },
@@ -108,7 +113,8 @@
               "de": "Start",
               "fr": "début",
               "no": "startet",
-              "da": "startet"
+              "da": "startet",
+              "sv": "startade"
             },
             "type": "string"
           },
@@ -120,7 +126,8 @@
               "de": "Ende",
               "fr": "fin",
               "no": "stoppet",
-              "da": "stoppet"
+              "da": "stoppet",
+              "sv": "stoppade"
             },
             "type": "string"
           },
@@ -132,7 +139,8 @@
               "de": "Energieverbrauch",
               "fr": "consommation d'énergie",
               "no": "energiforbruk",
-              "da": "energiforbrug"
+              "da": "energiforbrug",
+              "sv": "energiförbrukning"
             },
             "type": "number"
           },
@@ -144,7 +152,8 @@
               "de": "durchschnittlicher Energieverbrauch",
               "fr": "consommation d'énergie moyenne",
               "no": "gjennomsnittlig energiforbruk",
-              "da": "gennemsnitligt energiforbrug"
+              "da": "gennemsnitligt energiforbrug",
+              "sv": "genomsnittlig energiförbrukning"
             },
             "type": "number"
           },
@@ -156,7 +165,8 @@
               "de": "Durchschnittsgeschwindigkeit",
               "fr": "vitesse moyenne",
               "no": "gjennomsnittsfart",
-              "da": "gennemsnitshastighed"
+              "da": "gennemsnitshastighed",
+              "sv": "medelhastighet"
             },
             "type": "number"
           }
@@ -177,7 +187,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "titleFormatted": {
           "en": "New trip available",
@@ -185,7 +196,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "tokens": [
           {
@@ -196,7 +208,8 @@
               "de": "Dauer in Sekunden",
               "fr": "durée en secondes",
               "no": "varighet i sekunder",
-              "da": "varighed i sekunder"
+              "da": "varighed i sekunder",
+              "sv": "varaktighet i sekunder"
             },
             "type": "number"
           },
@@ -208,7 +221,8 @@
               "de": "Strecke",
               "fr": "distance",
               "no": "distanse",
-              "da": "afstand"
+              "da": "afstand",
+              "sv": "sträcka"
             },
             "type": "number"
           },
@@ -220,7 +234,8 @@
               "de": "Start",
               "fr": "début",
               "no": "startet",
-              "da": "startet"
+              "da": "startet",
+              "sv": "startade"
             },
             "type": "string"
           },
@@ -232,7 +247,8 @@
               "de": "Ende",
               "fr": "fin",
               "no": "stoppet",
-              "da": "stoppet"
+              "da": "stoppet",
+              "sv": "stoppade"
             },
             "type": "string"
           },
@@ -244,7 +260,8 @@
               "de": "Energieverbrauch",
               "fr": "consommation d'énergie",
               "no": "energiforbruk",
-              "da": "energiforbrug"
+              "da": "energiforbrug",
+              "sv": "energiförbrukning"
             },
             "type": "number"
           },
@@ -256,7 +273,8 @@
               "de": "durchschnittlicher Energieverbrauch",
               "fr": "consommation d'énergie moyenne",
               "no": "gjennomsnittlig energiforbruk",
-              "da": "gennemsnitligt energiforbrug"
+              "da": "gennemsnitligt energiforbrug",
+              "sv": "genomsnittlig energiförbrukning"
             },
             "type": "number"
           },
@@ -268,7 +286,8 @@
               "de": "Durchschnittsgeschwindigkeit",
               "fr": "vitesse moyenne",
               "no": "gjennomsnittsfart",
-              "da": "gennemsnitshastighed"
+              "da": "gennemsnitshastighed",
+              "sv": "medelhastighet"
             },
             "type": "number"
           }
@@ -289,7 +308,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "titleFormatted": {
           "en": "New trip available",
@@ -297,7 +317,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "tokens": [
           {
@@ -308,7 +329,8 @@
               "de": "Dauer in Sekunden",
               "fr": "durée en secondes",
               "no": "varighet i sekunder",
-              "da": "varighed i sekunder"
+              "da": "varighed i sekunder",
+              "sv": "varaktighet i sekunder"
             },
             "type": "number"
           },
@@ -320,7 +342,8 @@
               "de": "Strecke",
               "fr": "distance",
               "no": "distanse",
-              "da": "afstand"
+              "da": "afstand",
+              "sv": "sträcka"
             },
             "type": "number"
           },
@@ -332,7 +355,8 @@
               "de": "Start",
               "fr": "début",
               "no": "startet",
-              "da": "startet"
+              "da": "startet",
+              "sv": "startade"
             },
             "type": "string"
           },
@@ -344,7 +368,8 @@
               "de": "Ende",
               "fr": "fin",
               "no": "stoppet",
-              "da": "stoppet"
+              "da": "stoppet",
+              "sv": "stoppade"
             },
             "type": "string"
           },
@@ -356,7 +381,8 @@
               "de": "Energieverbrauch",
               "fr": "consommation d'énergie",
               "no": "energiforbruk",
-              "da": "energiforbrug"
+              "da": "energiforbrug",
+              "sv": "energiförbrukning"
             },
             "type": "number"
           },
@@ -368,7 +394,8 @@
               "de": "durchschnittlicher Energieverbrauch",
               "fr": "consommation d'énergie moyenne",
               "no": "gjennomsnittlig energiforbruk",
-              "da": "gennemsnitligt energiforbrug"
+              "da": "gennemsnitligt energiforbrug",
+              "sv": "genomsnittlig energiförbrukning"
             },
             "type": "number"
           },
@@ -380,7 +407,8 @@
               "de": "Durchschnittsgeschwindigkeit",
               "fr": "vitesse moyenne",
               "no": "gjennomsnittsfart",
-              "da": "gennemsnitshastighed"
+              "da": "gennemsnitshastighed",
+              "sv": "medelhastighet"
             },
             "type": "number"
           }
@@ -401,7 +429,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "titleFormatted": {
           "en": "New trip available",
@@ -409,7 +438,8 @@
           "de": "Neue Fahrt verfügbar",
           "fr": "Nouveau trajet disponible",
           "no": "Ny tur tilgjengelig",
-          "da": "Ny tur tilgængelig"
+          "da": "Ny tur tilgængelig",
+          "sv": "Ny resa tillgänglig"
         },
         "tokens": [
           {
@@ -420,7 +450,8 @@
               "de": "Dauer in Sekunden",
               "fr": "durée en secondes",
               "no": "varighet i sekunder",
-              "da": "varighed i sekunder"
+              "da": "varighed i sekunder",
+              "sv": "varaktighet i sekunder"
             },
             "type": "number"
           },
@@ -432,7 +463,8 @@
               "de": "Strecke",
               "fr": "distance",
               "no": "distanse",
-              "da": "afstand"
+              "da": "afstand",
+              "sv": "sträcka"
             },
             "type": "number"
           },
@@ -444,7 +476,8 @@
               "de": "Start",
               "fr": "début",
               "no": "startet",
-              "da": "startet"
+              "da": "startet",
+              "sv": "startade"
             },
             "type": "string"
           },
@@ -456,7 +489,8 @@
               "de": "Ende",
               "fr": "fin",
               "no": "stoppet",
-              "da": "stoppet"
+              "da": "stoppet",
+              "sv": "stoppade"
             },
             "type": "string"
           },
@@ -468,7 +502,8 @@
               "de": "Energieverbrauch",
               "fr": "consommation d'énergie",
               "no": "energiforbruk",
-              "da": "energiforbrug"
+              "da": "energiforbrug",
+              "sv": "energiförbrukning"
             },
             "type": "number"
           },
@@ -480,7 +515,8 @@
               "de": "durchschnittlicher Energieverbrauch",
               "fr": "consommation d'énergie moyenne",
               "no": "gjennomsnittlig energiforbruk",
-              "da": "gennemsnitligt energiforbrug"
+              "da": "gennemsnitligt energiforbrug",
+              "sv": "genomsnittlig energiförbrukning"
             },
             "type": "number"
           },
@@ -492,7 +528,8 @@
               "de": "Durchschnittsgeschwindigkeit",
               "fr": "vitesse moyenne",
               "no": "gjennomsnittsfart",
-              "da": "gennemsnitshastighed"
+              "da": "gennemsnitshastighed",
+              "sv": "medelhastighet"
             },
             "type": "number"
           }
@@ -515,7 +552,8 @@
           "de": "Remote-Dienst ist verfügbar",
           "fr": "Le service à distance est disponible",
           "no": "Fjerntjeneste er tilgjengelig",
-          "da": "Fjerntjeneste er tilgængelig"
+          "da": "Fjerntjeneste er tilgængelig",
+          "sv": "Fjärrtjänst är tillgänglig"
         },
         "titleFormatted": {
           "en": "Remote service [[service]] is available",
@@ -523,7 +561,8 @@
           "de": "Remote-Dienst [[service]] ist verfügbar",
           "fr": "Le service à distance [[service]] est disponible",
           "no": "Fjerntjenesten [[service]] er tilgjengelig",
-          "da": "Fjerntjenesten [[service]] er tilgængelig"
+          "da": "Fjerntjenesten [[service]] er tilgængelig",
+          "sv": "Fjärrtjänsten [[service]] är tillgänglig"
         },
         "hint": {
           "en": "Checks whether the subscription of this car includes the service",
@@ -531,7 +570,8 @@
           "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
           "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
           "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
-          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten",
+          "sv": "Kontrollerar om den här bilens abonnemang omfattar tjänsten"
         },
         "args": [
           {
@@ -551,7 +591,8 @@
                   "de": "Klimaanlage (Vorklimatisierung)",
                   "fr": "Climatisation (préconditionnement)",
                   "no": "Klimaanlegg (forhåndsklimatisering)",
-                  "da": "Klimaanlæg (forvarmning)"
+                  "da": "Klimaanlæg (forvarmning)",
+                  "sv": "Klimatanläggning (förkonditionering)"
                 }
               },
               {
@@ -562,7 +603,8 @@
                   "de": "Laderegelung (auch Aufwecken)",
                   "fr": "Contrôle de la charge (aussi le réveil)",
                   "no": "Ladekontroll (også vekking)",
-                  "da": "Opladningsstyring (også vækning)"
+                  "da": "Opladningsstyring (også vækning)",
+                  "sv": "Laddstyrning (även väckning)"
                 }
               },
               {
@@ -573,7 +615,8 @@
                   "de": "Hinweise zur Batterielebensdauer",
                   "fr": "Conseils de durabilité de la batterie",
                   "no": "Råd om batteriets levetid",
-                  "da": "Råd om batteriets holdbarhed"
+                  "da": "Råd om batteriets holdbarhed",
+                  "sv": "Råd om batteriets livslängd"
                 }
               }
             ]
@@ -588,7 +631,8 @@
           "de": "Dienstcode ist verfügbar",
           "fr": "Le code de service est disponible",
           "no": "Tjenestekode er tilgjengelig",
-          "da": "Servicekode er tilgængelig"
+          "da": "Servicekode er tilgængelig",
+          "sv": "Tjänstekod är tillgänglig"
         },
         "titleFormatted": {
           "en": "Service code [[code]] is available",
@@ -596,7 +640,8 @@
           "de": "Dienstcode [[code]] ist verfügbar",
           "fr": "Le code de service [[code]] est disponible",
           "no": "Tjenestekoden [[code]] er tilgjengelig",
-          "da": "Servicekoden [[code]] er tilgængelig"
+          "da": "Servicekoden [[code]] er tilgængelig",
+          "sv": "Tjänstekoden [[code]] är tillgänglig"
         },
         "hint": {
           "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
@@ -604,7 +649,8 @@
           "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
           "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
           "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
-          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)",
+          "sv": "Kontrollerar en tjänstekod från loggraden 'Remote services for …' (till exempel NAS01)"
         },
         "args": [
           {
@@ -630,7 +676,8 @@
           "de": "Remote-Dienst ist verfügbar",
           "fr": "Le service à distance est disponible",
           "no": "Fjerntjeneste er tilgjengelig",
-          "da": "Fjerntjeneste er tilgængelig"
+          "da": "Fjerntjeneste er tilgængelig",
+          "sv": "Fjärrtjänst är tillgänglig"
         },
         "titleFormatted": {
           "en": "Remote service [[service]] is available",
@@ -638,7 +685,8 @@
           "de": "Remote-Dienst [[service]] ist verfügbar",
           "fr": "Le service à distance [[service]] est disponible",
           "no": "Fjerntjenesten [[service]] er tilgjengelig",
-          "da": "Fjerntjenesten [[service]] er tilgængelig"
+          "da": "Fjerntjenesten [[service]] er tilgængelig",
+          "sv": "Fjärrtjänsten [[service]] är tillgänglig"
         },
         "hint": {
           "en": "Checks whether the subscription of this car includes the service",
@@ -646,7 +694,8 @@
           "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
           "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
           "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
-          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten",
+          "sv": "Kontrollerar om den här bilens abonnemang omfattar tjänsten"
         },
         "args": [
           {
@@ -666,7 +715,8 @@
                   "de": "Klimaanlage (Vorklimatisierung)",
                   "fr": "Climatisation (préconditionnement)",
                   "no": "Klimaanlegg (forhåndsklimatisering)",
-                  "da": "Klimaanlæg (forvarmning)"
+                  "da": "Klimaanlæg (forvarmning)",
+                  "sv": "Klimatanläggning (förkonditionering)"
                 }
               },
               {
@@ -677,7 +727,8 @@
                   "de": "Laderegelung (auch Aufwecken)",
                   "fr": "Contrôle de la charge (aussi le réveil)",
                   "no": "Ladekontroll (også vekking)",
-                  "da": "Opladningsstyring (også vækning)"
+                  "da": "Opladningsstyring (også vækning)",
+                  "sv": "Laddstyrning (även väckning)"
                 }
               },
               {
@@ -688,7 +739,8 @@
                   "de": "Hinweise zur Batterielebensdauer",
                   "fr": "Conseils de durabilité de la batterie",
                   "no": "Råd om batteriets levetid",
-                  "da": "Råd om batteriets holdbarhed"
+                  "da": "Råd om batteriets holdbarhed",
+                  "sv": "Råd om batteriets livslängd"
                 }
               }
             ]
@@ -703,7 +755,8 @@
           "de": "Dienstcode ist verfügbar",
           "fr": "Le code de service est disponible",
           "no": "Tjenestekode er tilgjengelig",
-          "da": "Servicekode er tilgængelig"
+          "da": "Servicekode er tilgængelig",
+          "sv": "Tjänstekod är tillgänglig"
         },
         "titleFormatted": {
           "en": "Service code [[code]] is available",
@@ -711,7 +764,8 @@
           "de": "Dienstcode [[code]] ist verfügbar",
           "fr": "Le code de service [[code]] est disponible",
           "no": "Tjenestekoden [[code]] er tilgjengelig",
-          "da": "Servicekoden [[code]] er tilgængelig"
+          "da": "Servicekoden [[code]] er tilgængelig",
+          "sv": "Tjänstekoden [[code]] är tillgänglig"
         },
         "hint": {
           "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
@@ -719,7 +773,8 @@
           "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
           "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
           "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
-          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)",
+          "sv": "Kontrollerar en tjänstekod från loggraden 'Remote services for …' (till exempel NAS01)"
         },
         "args": [
           {
@@ -745,7 +800,8 @@
           "de": "Remote-Dienst ist verfügbar",
           "fr": "Le service à distance est disponible",
           "no": "Fjerntjeneste er tilgjengelig",
-          "da": "Fjerntjeneste er tilgængelig"
+          "da": "Fjerntjeneste er tilgængelig",
+          "sv": "Fjärrtjänst är tillgänglig"
         },
         "titleFormatted": {
           "en": "Remote service [[service]] is available",
@@ -753,7 +809,8 @@
           "de": "Remote-Dienst [[service]] ist verfügbar",
           "fr": "Le service à distance [[service]] est disponible",
           "no": "Fjerntjenesten [[service]] er tilgjengelig",
-          "da": "Fjerntjenesten [[service]] er tilgængelig"
+          "da": "Fjerntjenesten [[service]] er tilgængelig",
+          "sv": "Fjärrtjänsten [[service]] är tillgänglig"
         },
         "hint": {
           "en": "Checks whether the subscription of this car includes the service",
@@ -761,7 +818,8 @@
           "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
           "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
           "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
-          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten",
+          "sv": "Kontrollerar om den här bilens abonnemang omfattar tjänsten"
         },
         "args": [
           {
@@ -781,7 +839,8 @@
                   "de": "Klimaanlage (Vorklimatisierung)",
                   "fr": "Climatisation (préconditionnement)",
                   "no": "Klimaanlegg (forhåndsklimatisering)",
-                  "da": "Klimaanlæg (forvarmning)"
+                  "da": "Klimaanlæg (forvarmning)",
+                  "sv": "Klimatanläggning (förkonditionering)"
                 }
               },
               {
@@ -792,7 +851,8 @@
                   "de": "Laderegelung (auch Aufwecken)",
                   "fr": "Contrôle de la charge (aussi le réveil)",
                   "no": "Ladekontroll (også vekking)",
-                  "da": "Opladningsstyring (også vækning)"
+                  "da": "Opladningsstyring (også vækning)",
+                  "sv": "Laddstyrning (även väckning)"
                 }
               },
               {
@@ -803,7 +863,8 @@
                   "de": "Hinweise zur Batterielebensdauer",
                   "fr": "Conseils de durabilité de la batterie",
                   "no": "Råd om batteriets levetid",
-                  "da": "Råd om batteriets holdbarhed"
+                  "da": "Råd om batteriets holdbarhed",
+                  "sv": "Råd om batteriets livslängd"
                 }
               }
             ]
@@ -818,7 +879,8 @@
           "de": "Dienstcode ist verfügbar",
           "fr": "Le code de service est disponible",
           "no": "Tjenestekode er tilgjengelig",
-          "da": "Servicekode er tilgængelig"
+          "da": "Servicekode er tilgængelig",
+          "sv": "Tjänstekod är tillgänglig"
         },
         "titleFormatted": {
           "en": "Service code [[code]] is available",
@@ -826,7 +888,8 @@
           "de": "Dienstcode [[code]] ist verfügbar",
           "fr": "Le code de service [[code]] est disponible",
           "no": "Tjenestekoden [[code]] er tilgjengelig",
-          "da": "Servicekoden [[code]] er tilgængelig"
+          "da": "Servicekoden [[code]] er tilgængelig",
+          "sv": "Tjänstekoden [[code]] är tillgänglig"
         },
         "hint": {
           "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
@@ -834,7 +897,8 @@
           "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
           "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
           "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
-          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)",
+          "sv": "Kontrollerar en tjänstekod från loggraden 'Remote services for …' (till exempel NAS01)"
         },
         "args": [
           {
@@ -860,7 +924,8 @@
           "de": "Remote-Dienst ist verfügbar",
           "fr": "Le service à distance est disponible",
           "no": "Fjerntjeneste er tilgjengelig",
-          "da": "Fjerntjeneste er tilgængelig"
+          "da": "Fjerntjeneste er tilgængelig",
+          "sv": "Fjärrtjänst är tillgänglig"
         },
         "titleFormatted": {
           "en": "Remote service [[service]] is available",
@@ -868,7 +933,8 @@
           "de": "Remote-Dienst [[service]] ist verfügbar",
           "fr": "Le service à distance [[service]] est disponible",
           "no": "Fjerntjenesten [[service]] er tilgjengelig",
-          "da": "Fjerntjenesten [[service]] er tilgængelig"
+          "da": "Fjerntjenesten [[service]] er tilgængelig",
+          "sv": "Fjärrtjänsten [[service]] är tillgänglig"
         },
         "hint": {
           "en": "Checks whether the subscription of this car includes the service",
@@ -876,7 +942,8 @@
           "de": "Prüft, ob das Abonnement dieses Fahrzeugs den Dienst enthält",
           "fr": "Vérifie si l'abonnement de ce véhicule inclut le service",
           "no": "Sjekker om abonnementet til denne bilen inneholder tjenesten",
-          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten"
+          "da": "Kontrollerer, om denne bils abonnement omfatter tjenesten",
+          "sv": "Kontrollerar om den här bilens abonnemang omfattar tjänsten"
         },
         "args": [
           {
@@ -896,7 +963,8 @@
                   "de": "Klimaanlage (Vorklimatisierung)",
                   "fr": "Climatisation (préconditionnement)",
                   "no": "Klimaanlegg (forhåndsklimatisering)",
-                  "da": "Klimaanlæg (forvarmning)"
+                  "da": "Klimaanlæg (forvarmning)",
+                  "sv": "Klimatanläggning (förkonditionering)"
                 }
               },
               {
@@ -907,7 +975,8 @@
                   "de": "Laderegelung (auch Aufwecken)",
                   "fr": "Contrôle de la charge (aussi le réveil)",
                   "no": "Ladekontroll (også vekking)",
-                  "da": "Opladningsstyring (også vækning)"
+                  "da": "Opladningsstyring (også vækning)",
+                  "sv": "Laddstyrning (även väckning)"
                 }
               },
               {
@@ -918,7 +987,8 @@
                   "de": "Hinweise zur Batterielebensdauer",
                   "fr": "Conseils de durabilité de la batterie",
                   "no": "Råd om batteriets levetid",
-                  "da": "Råd om batteriets holdbarhed"
+                  "da": "Råd om batteriets holdbarhed",
+                  "sv": "Råd om batteriets livslängd"
                 }
               }
             ]
@@ -933,7 +1003,8 @@
           "de": "Dienstcode ist verfügbar",
           "fr": "Le code de service est disponible",
           "no": "Tjenestekode er tilgjengelig",
-          "da": "Servicekode er tilgængelig"
+          "da": "Servicekode er tilgængelig",
+          "sv": "Tjänstekod är tillgänglig"
         },
         "titleFormatted": {
           "en": "Service code [[code]] is available",
@@ -941,7 +1012,8 @@
           "de": "Dienstcode [[code]] ist verfügbar",
           "fr": "Le code de service [[code]] est disponible",
           "no": "Tjenestekoden [[code]] er tilgjengelig",
-          "da": "Servicekoden [[code]] er tilgængelig"
+          "da": "Servicekoden [[code]] er tilgængelig",
+          "sv": "Tjänstekoden [[code]] är tillgänglig"
         },
         "hint": {
           "en": "Checks a service code from the log line 'Remote services for …' (for example NAS01)",
@@ -949,7 +1021,8 @@
           "de": "Prüft einen Dienstcode aus der Protokollzeile „Remote services for …“ (zum Beispiel NAS01)",
           "fr": "Vérifie un code de service de la ligne de journal « Remote services for … » (par exemple NAS01)",
           "no": "Sjekker en tjenestekode fra loggslinjen «Remote services for …» (for eksempel NAS01)",
-          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)"
+          "da": "Kontrollerer en servicekode fra logliniens «Remote services for …» (for eksempel NAS01)",
+          "sv": "Kontrollerar en tjänstekod från loggraden 'Remote services for …' (till exempel NAS01)"
         },
         "args": [
           {
@@ -977,7 +1050,8 @@
           "de": "Fahrzeugstatus aktualisieren",
           "fr": "Mettre à jour l'état du véhicule",
           "no": "Oppdater kjøretøystatus",
-          "da": "Opdater køretøjsstatus"
+          "da": "Opdater køretøjsstatus",
+          "sv": "Uppdatera fordonsstatus"
         },
         "hint": {
           "en": "Force an update if you need the update now",
@@ -985,7 +1059,8 @@
           "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
           "fr": "Force une mise à jour si vous avez besoin des données maintenant",
           "no": "Tving en oppdatering hvis du trenger dataene nå",
-          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu",
+          "sv": "Tvinga fram en uppdatering om du behöver den direkt"
         },
         "args": [
           {
@@ -1003,7 +1078,8 @@
           "de": "Klimaanlage starten",
           "fr": "Démarrer la climatisation",
           "no": "Start klimaanlegget",
-          "da": "Start klimaanlægget"
+          "da": "Start klimaanlægget",
+          "sv": "Starta klimatanläggningen"
         },
         "hint": {
           "en": "Start the air conditioning (preconditioning) of the car now",
@@ -1011,7 +1087,8 @@
           "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
           "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
-          "da": "Start bilens klimaanlæg (forvarmning) nu"
+          "da": "Start bilens klimaanlæg (forvarmning) nu",
+          "sv": "Starta bilens klimatanläggning (förkonditionering) nu"
         },
         "args": [
           {
@@ -1029,7 +1106,8 @@
           "de": "Klimaanlage stoppen",
           "fr": "Arrêter la climatisation",
           "no": "Stopp klimaanlegget",
-          "da": "Stop klimaanlægget"
+          "da": "Stop klimaanlægget",
+          "sv": "Stäng av klimatanläggningen"
         },
         "hint": {
           "en": "Stop the air conditioning (preconditioning) of the car",
@@ -1037,7 +1115,8 @@
           "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Arrête la climatisation (préconditionnement) du véhicule",
           "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
-          "da": "Stop bilens klimaanlæg (forvarmning)"
+          "da": "Stop bilens klimaanlæg (forvarmning)",
+          "sv": "Stäng av bilens klimatanläggning (förkonditionering)"
         },
         "args": [
           {
@@ -1055,7 +1134,8 @@
           "de": "Laden starten",
           "fr": "Démarrer la charge",
           "no": "Start lading",
-          "da": "Start opladning"
+          "da": "Start opladning",
+          "sv": "Starta laddning"
         },
         "hint": {
           "en": "Start charging now (the car must be plugged in)",
@@ -1063,7 +1143,8 @@
           "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
           "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
           "no": "Start lading nå (bilen må være koblet til)",
-          "da": "Start opladning nu (bilen skal være tilsluttet)"
+          "da": "Start opladning nu (bilen skal være tilsluttet)",
+          "sv": "Starta laddningen nu (bilen måste vara inkopplad)"
         },
         "args": [
           {
@@ -1081,7 +1162,8 @@
           "de": "Laden stoppen",
           "fr": "Arrêter la charge",
           "no": "Stopp lading",
-          "da": "Stop opladning"
+          "da": "Stop opladning",
+          "sv": "Stoppa laddning"
         },
         "hint": {
           "en": "Stop charging (postpones the start to the programmed charging time)",
@@ -1089,7 +1171,8 @@
           "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
           "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
           "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
-          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)",
+          "sv": "Stoppa laddningen (skjuter upp starten till den programmerade laddningstiden)"
         },
         "args": [
           {
@@ -1107,7 +1190,8 @@
           "de": "Fahrzeug aufwecken",
           "fr": "Réveiller le véhicule",
           "no": "Vekk bilen",
-          "da": "Væk bilen"
+          "da": "Væk bilen",
+          "sv": "Väck bilen"
         },
         "hint": {
           "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
@@ -1115,7 +1199,8 @@
           "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
           "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
           "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
-          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)",
+          "sv": "Väck bilen och uppdatera status (högst 6 per 20 minuter)"
         },
         "args": [
           {
@@ -1133,7 +1218,8 @@
           "de": "Türen verriegeln",
           "fr": "Verrouiller les portes",
           "no": "Lås dørene",
-          "da": "Lås dørene"
+          "da": "Lås dørene",
+          "sv": "Lås dörrarna"
         },
         "hint": {
           "en": "Lock all doors (only if the car supports it)",
@@ -1141,7 +1227,8 @@
           "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)",
+          "sv": "Lås alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1159,7 +1246,8 @@
           "de": "Türen entriegeln",
           "fr": "Déverrouiller les portes",
           "no": "Lås opp dørene",
-          "da": "Lås dørene op"
+          "da": "Lås dørene op",
+          "sv": "Lås upp dörrarna"
         },
         "hint": {
           "en": "Unlock all doors (only if the car supports it)",
@@ -1167,7 +1255,8 @@
           "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)",
+          "sv": "Lås upp alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1185,7 +1274,8 @@
           "de": "Hupe betätigen",
           "fr": "Klaxonner",
           "no": "Tut med hornet",
-          "da": "Tut med hornet"
+          "da": "Tut med hornet",
+          "sv": "Tuta"
         },
         "hint": {
           "en": "Sound the horn twice (only if the car supports it)",
@@ -1193,7 +1283,8 @@
           "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
           "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
-          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)",
+          "sv": "Tuta två gånger (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1211,7 +1302,8 @@
           "de": "Lichter blinken lassen",
           "fr": "Faire clignoter les feux",
           "no": "Blink med lysene",
-          "da": "Blink med lygterne"
+          "da": "Blink med lygterne",
+          "sv": "Blinka med ljuset"
         },
         "hint": {
           "en": "Flash the lights for 10 seconds (only if the car supports it)",
@@ -1219,7 +1311,8 @@
           "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
           "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
-          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)",
+          "sv": "Blinka med ljuset i 10 sekunder (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1237,7 +1330,8 @@
           "de": "Batteriezustand abrufen",
           "fr": "Récupérer l'état de santé de la batterie",
           "no": "Hent batterihelse",
-          "da": "Hent batterisundhed"
+          "da": "Hent batterisundhed",
+          "sv": "Hämta batterihälsa"
         },
         "hint": {
           "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
@@ -1245,7 +1339,8 @@
           "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
           "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
           "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
-          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow",
+          "sv": "Läser av bilens batterihälsa (state of health). Returnerar tokens och kan därför bara användas i ett Advanced Flow"
         },
         "tokens": [
           {
@@ -1257,7 +1352,8 @@
               "de": "Batteriezustand (%)",
               "fr": "État de santé de la batterie (%)",
               "no": "Batterihelse (%)",
-              "da": "Batterisundhed (%)"
+              "da": "Batterisundhed (%)",
+              "sv": "Batterihälsa (%)"
             }
           },
           {
@@ -1269,7 +1365,8 @@
               "de": "Batteriezustand gemessen am",
               "fr": "État de santé mesuré le",
               "no": "Batterihelse målt",
-              "da": "Batterisundhed målt"
+              "da": "Batterisundhed målt",
+              "sv": "Batterihälsa uppmätt"
             }
           }
         ],
@@ -1289,7 +1386,8 @@
           "de": "Fahrzeugstatus aktualisieren",
           "fr": "Mettre à jour l'état du véhicule",
           "no": "Oppdater kjøretøystatus",
-          "da": "Opdater køretøjsstatus"
+          "da": "Opdater køretøjsstatus",
+          "sv": "Uppdatera fordonsstatus"
         },
         "hint": {
           "en": "Force an update if you need the update now",
@@ -1297,7 +1395,8 @@
           "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
           "fr": "Force une mise à jour si vous avez besoin des données maintenant",
           "no": "Tving en oppdatering hvis du trenger dataene nå",
-          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu",
+          "sv": "Tvinga fram en uppdatering om du behöver den direkt"
         },
         "args": [
           {
@@ -1315,7 +1414,8 @@
           "de": "Klimaanlage starten",
           "fr": "Démarrer la climatisation",
           "no": "Start klimaanlegget",
-          "da": "Start klimaanlægget"
+          "da": "Start klimaanlægget",
+          "sv": "Starta klimatanläggningen"
         },
         "hint": {
           "en": "Start the air conditioning (preconditioning) of the car now",
@@ -1323,7 +1423,8 @@
           "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
           "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
-          "da": "Start bilens klimaanlæg (forvarmning) nu"
+          "da": "Start bilens klimaanlæg (forvarmning) nu",
+          "sv": "Starta bilens klimatanläggning (förkonditionering) nu"
         },
         "args": [
           {
@@ -1341,7 +1442,8 @@
           "de": "Klimaanlage stoppen",
           "fr": "Arrêter la climatisation",
           "no": "Stopp klimaanlegget",
-          "da": "Stop klimaanlægget"
+          "da": "Stop klimaanlægget",
+          "sv": "Stäng av klimatanläggningen"
         },
         "hint": {
           "en": "Stop the air conditioning (preconditioning) of the car",
@@ -1349,7 +1451,8 @@
           "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Arrête la climatisation (préconditionnement) du véhicule",
           "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
-          "da": "Stop bilens klimaanlæg (forvarmning)"
+          "da": "Stop bilens klimaanlæg (forvarmning)",
+          "sv": "Stäng av bilens klimatanläggning (förkonditionering)"
         },
         "args": [
           {
@@ -1367,7 +1470,8 @@
           "de": "Laden starten",
           "fr": "Démarrer la charge",
           "no": "Start lading",
-          "da": "Start opladning"
+          "da": "Start opladning",
+          "sv": "Starta laddning"
         },
         "hint": {
           "en": "Start charging now (the car must be plugged in)",
@@ -1375,7 +1479,8 @@
           "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
           "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
           "no": "Start lading nå (bilen må være koblet til)",
-          "da": "Start opladning nu (bilen skal være tilsluttet)"
+          "da": "Start opladning nu (bilen skal være tilsluttet)",
+          "sv": "Starta laddningen nu (bilen måste vara inkopplad)"
         },
         "args": [
           {
@@ -1393,7 +1498,8 @@
           "de": "Laden stoppen",
           "fr": "Arrêter la charge",
           "no": "Stopp lading",
-          "da": "Stop opladning"
+          "da": "Stop opladning",
+          "sv": "Stoppa laddning"
         },
         "hint": {
           "en": "Stop charging (postpones the start to the programmed charging time)",
@@ -1401,7 +1507,8 @@
           "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
           "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
           "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
-          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)",
+          "sv": "Stoppa laddningen (skjuter upp starten till den programmerade laddningstiden)"
         },
         "args": [
           {
@@ -1419,7 +1526,8 @@
           "de": "Fahrzeug aufwecken",
           "fr": "Réveiller le véhicule",
           "no": "Vekk bilen",
-          "da": "Væk bilen"
+          "da": "Væk bilen",
+          "sv": "Väck bilen"
         },
         "hint": {
           "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
@@ -1427,7 +1535,8 @@
           "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
           "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
           "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
-          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)",
+          "sv": "Väck bilen och uppdatera status (högst 6 per 20 minuter)"
         },
         "args": [
           {
@@ -1445,7 +1554,8 @@
           "de": "Türen verriegeln",
           "fr": "Verrouiller les portes",
           "no": "Lås dørene",
-          "da": "Lås dørene"
+          "da": "Lås dørene",
+          "sv": "Lås dörrarna"
         },
         "hint": {
           "en": "Lock all doors (only if the car supports it)",
@@ -1453,7 +1563,8 @@
           "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)",
+          "sv": "Lås alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1471,7 +1582,8 @@
           "de": "Türen entriegeln",
           "fr": "Déverrouiller les portes",
           "no": "Lås opp dørene",
-          "da": "Lås dørene op"
+          "da": "Lås dørene op",
+          "sv": "Lås upp dörrarna"
         },
         "hint": {
           "en": "Unlock all doors (only if the car supports it)",
@@ -1479,7 +1591,8 @@
           "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)",
+          "sv": "Lås upp alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1497,7 +1610,8 @@
           "de": "Hupe betätigen",
           "fr": "Klaxonner",
           "no": "Tut med hornet",
-          "da": "Tut med hornet"
+          "da": "Tut med hornet",
+          "sv": "Tuta"
         },
         "hint": {
           "en": "Sound the horn twice (only if the car supports it)",
@@ -1505,7 +1619,8 @@
           "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
           "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
-          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)",
+          "sv": "Tuta två gånger (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1523,7 +1638,8 @@
           "de": "Lichter blinken lassen",
           "fr": "Faire clignoter les feux",
           "no": "Blink med lysene",
-          "da": "Blink med lygterne"
+          "da": "Blink med lygterne",
+          "sv": "Blinka med ljuset"
         },
         "hint": {
           "en": "Flash the lights for 10 seconds (only if the car supports it)",
@@ -1531,7 +1647,8 @@
           "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
           "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
-          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)",
+          "sv": "Blinka med ljuset i 10 sekunder (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1549,7 +1666,8 @@
           "de": "Batteriezustand abrufen",
           "fr": "Récupérer l'état de santé de la batterie",
           "no": "Hent batterihelse",
-          "da": "Hent batterisundhed"
+          "da": "Hent batterisundhed",
+          "sv": "Hämta batterihälsa"
         },
         "hint": {
           "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
@@ -1557,7 +1675,8 @@
           "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
           "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
           "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
-          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow",
+          "sv": "Läser av bilens batterihälsa (state of health). Returnerar tokens och kan därför bara användas i ett Advanced Flow"
         },
         "tokens": [
           {
@@ -1569,7 +1688,8 @@
               "de": "Batteriezustand (%)",
               "fr": "État de santé de la batterie (%)",
               "no": "Batterihelse (%)",
-              "da": "Batterisundhed (%)"
+              "da": "Batterisundhed (%)",
+              "sv": "Batterihälsa (%)"
             }
           },
           {
@@ -1581,7 +1701,8 @@
               "de": "Batteriezustand gemessen am",
               "fr": "État de santé mesuré le",
               "no": "Batterihelse målt",
-              "da": "Batterisundhed målt"
+              "da": "Batterisundhed målt",
+              "sv": "Batterihälsa uppmätt"
             }
           }
         ],
@@ -1601,7 +1722,8 @@
           "de": "Fahrzeugstatus aktualisieren",
           "fr": "Mettre à jour l'état du véhicule",
           "no": "Oppdater kjøretøystatus",
-          "da": "Opdater køretøjsstatus"
+          "da": "Opdater køretøjsstatus",
+          "sv": "Uppdatera fordonsstatus"
         },
         "hint": {
           "en": "Force an update if you need the update now",
@@ -1609,7 +1731,8 @@
           "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
           "fr": "Force une mise à jour si vous avez besoin des données maintenant",
           "no": "Tving en oppdatering hvis du trenger dataene nå",
-          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu",
+          "sv": "Tvinga fram en uppdatering om du behöver den direkt"
         },
         "args": [
           {
@@ -1627,7 +1750,8 @@
           "de": "Klimaanlage starten",
           "fr": "Démarrer la climatisation",
           "no": "Start klimaanlegget",
-          "da": "Start klimaanlægget"
+          "da": "Start klimaanlægget",
+          "sv": "Starta klimatanläggningen"
         },
         "hint": {
           "en": "Start the air conditioning (preconditioning) of the car now",
@@ -1635,7 +1759,8 @@
           "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
           "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
-          "da": "Start bilens klimaanlæg (forvarmning) nu"
+          "da": "Start bilens klimaanlæg (forvarmning) nu",
+          "sv": "Starta bilens klimatanläggning (förkonditionering) nu"
         },
         "args": [
           {
@@ -1653,7 +1778,8 @@
           "de": "Klimaanlage stoppen",
           "fr": "Arrêter la climatisation",
           "no": "Stopp klimaanlegget",
-          "da": "Stop klimaanlægget"
+          "da": "Stop klimaanlægget",
+          "sv": "Stäng av klimatanläggningen"
         },
         "hint": {
           "en": "Stop the air conditioning (preconditioning) of the car",
@@ -1661,7 +1787,8 @@
           "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Arrête la climatisation (préconditionnement) du véhicule",
           "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
-          "da": "Stop bilens klimaanlæg (forvarmning)"
+          "da": "Stop bilens klimaanlæg (forvarmning)",
+          "sv": "Stäng av bilens klimatanläggning (förkonditionering)"
         },
         "args": [
           {
@@ -1679,7 +1806,8 @@
           "de": "Laden starten",
           "fr": "Démarrer la charge",
           "no": "Start lading",
-          "da": "Start opladning"
+          "da": "Start opladning",
+          "sv": "Starta laddning"
         },
         "hint": {
           "en": "Start charging now (the car must be plugged in)",
@@ -1687,7 +1815,8 @@
           "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
           "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
           "no": "Start lading nå (bilen må være koblet til)",
-          "da": "Start opladning nu (bilen skal være tilsluttet)"
+          "da": "Start opladning nu (bilen skal være tilsluttet)",
+          "sv": "Starta laddningen nu (bilen måste vara inkopplad)"
         },
         "args": [
           {
@@ -1705,7 +1834,8 @@
           "de": "Laden stoppen",
           "fr": "Arrêter la charge",
           "no": "Stopp lading",
-          "da": "Stop opladning"
+          "da": "Stop opladning",
+          "sv": "Stoppa laddning"
         },
         "hint": {
           "en": "Stop charging (postpones the start to the programmed charging time)",
@@ -1713,7 +1843,8 @@
           "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
           "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
           "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
-          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)",
+          "sv": "Stoppa laddningen (skjuter upp starten till den programmerade laddningstiden)"
         },
         "args": [
           {
@@ -1731,7 +1862,8 @@
           "de": "Fahrzeug aufwecken",
           "fr": "Réveiller le véhicule",
           "no": "Vekk bilen",
-          "da": "Væk bilen"
+          "da": "Væk bilen",
+          "sv": "Väck bilen"
         },
         "hint": {
           "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
@@ -1739,7 +1871,8 @@
           "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
           "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
           "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
-          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)",
+          "sv": "Väck bilen och uppdatera status (högst 6 per 20 minuter)"
         },
         "args": [
           {
@@ -1757,7 +1890,8 @@
           "de": "Türen verriegeln",
           "fr": "Verrouiller les portes",
           "no": "Lås dørene",
-          "da": "Lås dørene"
+          "da": "Lås dørene",
+          "sv": "Lås dörrarna"
         },
         "hint": {
           "en": "Lock all doors (only if the car supports it)",
@@ -1765,7 +1899,8 @@
           "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)",
+          "sv": "Lås alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1783,7 +1918,8 @@
           "de": "Türen entriegeln",
           "fr": "Déverrouiller les portes",
           "no": "Lås opp dørene",
-          "da": "Lås dørene op"
+          "da": "Lås dørene op",
+          "sv": "Lås upp dörrarna"
         },
         "hint": {
           "en": "Unlock all doors (only if the car supports it)",
@@ -1791,7 +1927,8 @@
           "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)",
+          "sv": "Lås upp alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1809,7 +1946,8 @@
           "de": "Hupe betätigen",
           "fr": "Klaxonner",
           "no": "Tut med hornet",
-          "da": "Tut med hornet"
+          "da": "Tut med hornet",
+          "sv": "Tuta"
         },
         "hint": {
           "en": "Sound the horn twice (only if the car supports it)",
@@ -1817,7 +1955,8 @@
           "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
           "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
-          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)",
+          "sv": "Tuta två gånger (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1835,7 +1974,8 @@
           "de": "Lichter blinken lassen",
           "fr": "Faire clignoter les feux",
           "no": "Blink med lysene",
-          "da": "Blink med lygterne"
+          "da": "Blink med lygterne",
+          "sv": "Blinka med ljuset"
         },
         "hint": {
           "en": "Flash the lights for 10 seconds (only if the car supports it)",
@@ -1843,7 +1983,8 @@
           "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
           "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
-          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)",
+          "sv": "Blinka med ljuset i 10 sekunder (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -1861,7 +2002,8 @@
           "de": "Batteriezustand abrufen",
           "fr": "Récupérer l'état de santé de la batterie",
           "no": "Hent batterihelse",
-          "da": "Hent batterisundhed"
+          "da": "Hent batterisundhed",
+          "sv": "Hämta batterihälsa"
         },
         "hint": {
           "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
@@ -1869,7 +2011,8 @@
           "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
           "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
           "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
-          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow",
+          "sv": "Läser av bilens batterihälsa (state of health). Returnerar tokens och kan därför bara användas i ett Advanced Flow"
         },
         "tokens": [
           {
@@ -1881,7 +2024,8 @@
               "de": "Batteriezustand (%)",
               "fr": "État de santé de la batterie (%)",
               "no": "Batterihelse (%)",
-              "da": "Batterisundhed (%)"
+              "da": "Batterisundhed (%)",
+              "sv": "Batterihälsa (%)"
             }
           },
           {
@@ -1893,7 +2037,8 @@
               "de": "Batteriezustand gemessen am",
               "fr": "État de santé mesuré le",
               "no": "Batterihelse målt",
-              "da": "Batterisundhed målt"
+              "da": "Batterisundhed målt",
+              "sv": "Batterihälsa uppmätt"
             }
           }
         ],
@@ -1913,7 +2058,8 @@
           "de": "Fahrzeugstatus aktualisieren",
           "fr": "Mettre à jour l'état du véhicule",
           "no": "Oppdater kjøretøystatus",
-          "da": "Opdater køretøjsstatus"
+          "da": "Opdater køretøjsstatus",
+          "sv": "Uppdatera fordonsstatus"
         },
         "hint": {
           "en": "Force an update if you need the update now",
@@ -1921,7 +2067,8 @@
           "de": "Erzwingt eine Aktualisierung, wenn Sie die Daten jetzt benötigen",
           "fr": "Force une mise à jour si vous avez besoin des données maintenant",
           "no": "Tving en oppdatering hvis du trenger dataene nå",
-          "da": "Gennemtving en opdatering, hvis du har brug for data nu"
+          "da": "Gennemtving en opdatering, hvis du har brug for data nu",
+          "sv": "Tvinga fram en uppdatering om du behöver den direkt"
         },
         "args": [
           {
@@ -1939,7 +2086,8 @@
           "de": "Klimaanlage starten",
           "fr": "Démarrer la climatisation",
           "no": "Start klimaanlegget",
-          "da": "Start klimaanlægget"
+          "da": "Start klimaanlægget",
+          "sv": "Starta klimatanläggningen"
         },
         "hint": {
           "en": "Start the air conditioning (preconditioning) of the car now",
@@ -1947,7 +2095,8 @@
           "de": "Startet jetzt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Démarre maintenant la climatisation (préconditionnement) du véhicule",
           "no": "Starter bilens klimaanlegg (forhåndsklimatisering) nå",
-          "da": "Start bilens klimaanlæg (forvarmning) nu"
+          "da": "Start bilens klimaanlæg (forvarmning) nu",
+          "sv": "Starta bilens klimatanläggning (förkonditionering) nu"
         },
         "args": [
           {
@@ -1965,7 +2114,8 @@
           "de": "Klimaanlage stoppen",
           "fr": "Arrêter la climatisation",
           "no": "Stopp klimaanlegget",
-          "da": "Stop klimaanlægget"
+          "da": "Stop klimaanlægget",
+          "sv": "Stäng av klimatanläggningen"
         },
         "hint": {
           "en": "Stop the air conditioning (preconditioning) of the car",
@@ -1973,7 +2123,8 @@
           "de": "Stoppt die Klimaanlage (Vorklimatisierung) des Fahrzeugs",
           "fr": "Arrête la climatisation (préconditionnement) du véhicule",
           "no": "Stopper bilens klimaanlegg (forhåndsklimatisering)",
-          "da": "Stop bilens klimaanlæg (forvarmning)"
+          "da": "Stop bilens klimaanlæg (forvarmning)",
+          "sv": "Stäng av bilens klimatanläggning (förkonditionering)"
         },
         "args": [
           {
@@ -1991,7 +2142,8 @@
           "de": "Laden starten",
           "fr": "Démarrer la charge",
           "no": "Start lading",
-          "da": "Start opladning"
+          "da": "Start opladning",
+          "sv": "Starta laddning"
         },
         "hint": {
           "en": "Start charging now (the car must be plugged in)",
@@ -1999,7 +2151,8 @@
           "de": "Startet den Ladevorgang jetzt (das Fahrzeug muss angeschlossen sein)",
           "fr": "Démarre la charge maintenant (le véhicule doit être branché)",
           "no": "Start lading nå (bilen må være koblet til)",
-          "da": "Start opladning nu (bilen skal være tilsluttet)"
+          "da": "Start opladning nu (bilen skal være tilsluttet)",
+          "sv": "Starta laddningen nu (bilen måste vara inkopplad)"
         },
         "args": [
           {
@@ -2017,7 +2170,8 @@
           "de": "Laden stoppen",
           "fr": "Arrêter la charge",
           "no": "Stopp lading",
-          "da": "Stop opladning"
+          "da": "Stop opladning",
+          "sv": "Stoppa laddning"
         },
         "hint": {
           "en": "Stop charging (postpones the start to the programmed charging time)",
@@ -2025,7 +2179,8 @@
           "de": "Stoppt den Ladevorgang (verschiebt den Start auf die programmierte Ladezeit)",
           "fr": "Arrête la charge (reporte le démarrage à l'heure de charge programmée)",
           "no": "Stopp lading (utsetter starten til den programmerte ladetiden)",
-          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)"
+          "da": "Stop opladning (udskyder starten til det programmerede ladetidspunkt)",
+          "sv": "Stoppa laddningen (skjuter upp starten till den programmerade laddningstiden)"
         },
         "args": [
           {
@@ -2043,7 +2198,8 @@
           "de": "Fahrzeug aufwecken",
           "fr": "Réveiller le véhicule",
           "no": "Vekk bilen",
-          "da": "Væk bilen"
+          "da": "Væk bilen",
+          "sv": "Väck bilen"
         },
         "hint": {
           "en": "Wake up the car and refresh the status (max 6 per 20 minutes)",
@@ -2051,7 +2207,8 @@
           "de": "Weckt das Fahrzeug auf und aktualisiert den Status (max. 6 pro 20 Minuten)",
           "fr": "Réveille le véhicule et actualise l'état (6 max. par période de 20 minutes)",
           "no": "Vekker bilen og oppdaterer status (maks. 6 per 20 minutter)",
-          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)"
+          "da": "Vækker bilen og opdaterer status (maks. 6 pr. 20 minutter)",
+          "sv": "Väck bilen och uppdatera status (högst 6 per 20 minuter)"
         },
         "args": [
           {
@@ -2069,7 +2226,8 @@
           "de": "Türen verriegeln",
           "fr": "Verrouiller les portes",
           "no": "Lås dørene",
-          "da": "Lås dørene"
+          "da": "Lås dørene",
+          "sv": "Lås dörrarna"
         },
         "hint": {
           "en": "Lock all doors (only if the car supports it)",
@@ -2077,7 +2235,8 @@
           "de": "Verriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Verrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene (kun hvis bilen understøtter det)",
+          "sv": "Lås alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -2095,7 +2254,8 @@
           "de": "Türen entriegeln",
           "fr": "Déverrouiller les portes",
           "no": "Lås opp dørene",
-          "da": "Lås dørene op"
+          "da": "Lås dørene op",
+          "sv": "Lås upp dörrarna"
         },
         "hint": {
           "en": "Unlock all doors (only if the car supports it)",
@@ -2103,7 +2263,8 @@
           "de": "Entriegelt alle Türen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Déverrouille toutes les portes (uniquement si le véhicule le permet)",
           "no": "Låser opp alle dørene (bare hvis bilen støtter det)",
-          "da": "Låser alle dørene op (kun hvis bilen understøtter det)"
+          "da": "Låser alle dørene op (kun hvis bilen understøtter det)",
+          "sv": "Lås upp alla dörrar (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -2121,7 +2282,8 @@
           "de": "Hupe betätigen",
           "fr": "Klaxonner",
           "no": "Tut med hornet",
-          "da": "Tut med hornet"
+          "da": "Tut med hornet",
+          "sv": "Tuta"
         },
         "hint": {
           "en": "Sound the horn twice (only if the car supports it)",
@@ -2129,7 +2291,8 @@
           "de": "Lässt die Hupe zweimal ertönen (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait retentir le klaxon deux fois (uniquement si le véhicule le permet)",
           "no": "Lar hornet lyde to ganger (bare hvis bilen støtter det)",
-          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)"
+          "da": "Lader hornet lyde to gange (kun hvis bilen understøtter det)",
+          "sv": "Tuta två gånger (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -2147,7 +2310,8 @@
           "de": "Lichter blinken lassen",
           "fr": "Faire clignoter les feux",
           "no": "Blink med lysene",
-          "da": "Blink med lygterne"
+          "da": "Blink med lygterne",
+          "sv": "Blinka med ljuset"
         },
         "hint": {
           "en": "Flash the lights for 10 seconds (only if the car supports it)",
@@ -2155,7 +2319,8 @@
           "de": "Lässt die Lichter 10 Sekunden lang blinken (nur wenn das Fahrzeug dies unterstützt)",
           "fr": "Fait clignoter les feux pendant 10 secondes (uniquement si le véhicule le permet)",
           "no": "Blinker med lysene i 10 sekunder (bare hvis bilen støtter det)",
-          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)"
+          "da": "Blinker med lygterne i 10 sekunder (kun hvis bilen understøtter det)",
+          "sv": "Blinka med ljuset i 10 sekunder (endast om bilen stöder det)"
         },
         "args": [
           {
@@ -2173,7 +2338,8 @@
           "de": "Batteriezustand abrufen",
           "fr": "Récupérer l'état de santé de la batterie",
           "no": "Hent batterihelse",
-          "da": "Hent batterisundhed"
+          "da": "Hent batterisundhed",
+          "sv": "Hämta batterihälsa"
         },
         "hint": {
           "en": "Reads the battery health (state of health) of the car. Returns tokens, so it can only be used in an Advanced Flow",
@@ -2181,7 +2347,8 @@
           "de": "Liest den Batteriezustand (State of Health) des Fahrzeugs aus. Liefert Tokens und ist daher nur in einem Advanced Flow verwendbar",
           "fr": "Lit l'état de santé (State of Health) de la batterie du véhicule. Renvoie des jetons ; utilisable uniquement dans un Advanced Flow",
           "no": "Leser batterihelsen (state of health) til bilen. Returnerer tokens og kan derfor bare brukes i en Advanced Flow",
-          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow"
+          "da": "Læser bilens batterisundhed (state of health). Returnerer tokens og kan derfor kun bruges i et Advanced Flow",
+          "sv": "Läser av bilens batterihälsa (state of health). Returnerar tokens och kan därför bara användas i ett Advanced Flow"
         },
         "tokens": [
           {
@@ -2193,7 +2360,8 @@
               "de": "Batteriezustand (%)",
               "fr": "État de santé de la batterie (%)",
               "no": "Batterihelse (%)",
-              "da": "Batterisundhed (%)"
+              "da": "Batterisundhed (%)",
+              "sv": "Batterihälsa (%)"
             }
           },
           {
@@ -2205,7 +2373,8 @@
               "de": "Batteriezustand gemessen am",
               "fr": "État de santé mesuré le",
               "no": "Batterihelse målt",
-              "da": "Batterisundhed målt"
+              "da": "Batterisundhed målt",
+              "sv": "Batterihälsa uppmätt"
             }
           }
         ],
@@ -2271,7 +2440,8 @@
             "de": "Debug-Informationen Fahrzeug",
             "fr": "Informations de débogage du véhicule",
             "no": "Feilsøkingsinformasjon kjøretøy",
-            "da": "Fejlfindingsoplysninger køretøj"
+            "da": "Fejlfindingsoplysninger køretøj",
+            "sv": "Felsökningsinformation fordon"
           },
           "value": ""
         },
@@ -2284,7 +2454,8 @@
             "de": "Debug-Informationen Status",
             "fr": "Informations de débogage de l'état",
             "no": "Feilsøkingsinformasjon status",
-            "da": "Fejlfindingsoplysninger status"
+            "da": "Fejlfindingsoplysninger status",
+            "sv": "Felsökningsinformation status"
           },
           "value": ""
         },
@@ -2297,7 +2468,8 @@
             "de": "Debug-Informationen Wartung",
             "fr": "Informations de débogage de l'entretien",
             "no": "Feilsøkingsinformasjon service",
-            "da": "Fejlfindingsoplysninger service"
+            "da": "Fejlfindingsoplysninger service",
+            "sv": "Felsökningsinformation underhåll"
           },
           "value": ""
         },
@@ -2310,7 +2482,8 @@
             "de": "Remote-Dienste dieses Fahrzeugs",
             "fr": "Services à distance de ce véhicule",
             "no": "Fjerntjenester for denne bilen",
-            "da": "Fjerntjenester for denne bil"
+            "da": "Fjerntjenester for denne bil",
+            "sv": "Fjärrtjänster för den här bilen"
           },
           "hint": {
             "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
@@ -2318,7 +2491,8 @@
             "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
-            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer).",
+            "sv": "Tjänstekoder för den här bilen. Dela gärna den här texten om du vill ha stöd för fler bilar (den innehåller inget VIN)."
           },
           "value": ""
         }
@@ -2375,7 +2549,8 @@
             "de": "Debug-Informationen Fahrzeug",
             "fr": "Informations de débogage du véhicule",
             "no": "Feilsøkingsinformasjon kjøretøy",
-            "da": "Fejlfindingsoplysninger køretøj"
+            "da": "Fejlfindingsoplysninger køretøj",
+            "sv": "Felsökningsinformation fordon"
           },
           "value": ""
         },
@@ -2388,7 +2563,8 @@
             "de": "Debug-Informationen Status",
             "fr": "Informations de débogage de l'état",
             "no": "Feilsøkingsinformasjon status",
-            "da": "Fejlfindingsoplysninger status"
+            "da": "Fejlfindingsoplysninger status",
+            "sv": "Felsökningsinformation status"
           },
           "value": ""
         },
@@ -2401,7 +2577,8 @@
             "de": "Debug-Informationen Wartung",
             "fr": "Informations de débogage de l'entretien",
             "no": "Feilsøkingsinformasjon service",
-            "da": "Fejlfindingsoplysninger service"
+            "da": "Fejlfindingsoplysninger service",
+            "sv": "Felsökningsinformation underhåll"
           },
           "value": ""
         },
@@ -2414,7 +2591,8 @@
             "de": "Remote-Dienste dieses Fahrzeugs",
             "fr": "Services à distance de ce véhicule",
             "no": "Fjerntjenester for denne bilen",
-            "da": "Fjerntjenester for denne bil"
+            "da": "Fjerntjenester for denne bil",
+            "sv": "Fjärrtjänster för den här bilen"
           },
           "hint": {
             "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
@@ -2422,7 +2600,8 @@
             "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
-            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer).",
+            "sv": "Tjänstekoder för den här bilen. Dela gärna den här texten om du vill ha stöd för fler bilar (den innehåller inget VIN)."
           },
           "value": ""
         }
@@ -2479,7 +2658,8 @@
             "de": "Debug-Informationen Fahrzeug",
             "fr": "Informations de débogage du véhicule",
             "no": "Feilsøkingsinformasjon kjøretøy",
-            "da": "Fejlfindingsoplysninger køretøj"
+            "da": "Fejlfindingsoplysninger køretøj",
+            "sv": "Felsökningsinformation fordon"
           },
           "value": ""
         },
@@ -2492,7 +2672,8 @@
             "de": "Debug-Informationen Status",
             "fr": "Informations de débogage de l'état",
             "no": "Feilsøkingsinformasjon status",
-            "da": "Fejlfindingsoplysninger status"
+            "da": "Fejlfindingsoplysninger status",
+            "sv": "Felsökningsinformation status"
           },
           "value": ""
         },
@@ -2505,7 +2686,8 @@
             "de": "Debug-Informationen Wartung",
             "fr": "Informations de débogage de l'entretien",
             "no": "Feilsøkingsinformasjon service",
-            "da": "Fejlfindingsoplysninger service"
+            "da": "Fejlfindingsoplysninger service",
+            "sv": "Felsökningsinformation underhåll"
           },
           "value": ""
         },
@@ -2518,7 +2700,8 @@
             "de": "Remote-Dienste dieses Fahrzeugs",
             "fr": "Services à distance de ce véhicule",
             "no": "Fjerntjenester for denne bilen",
-            "da": "Fjerntjenester for denne bil"
+            "da": "Fjerntjenester for denne bil",
+            "sv": "Fjärrtjänster för den här bilen"
           },
           "hint": {
             "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
@@ -2526,7 +2709,8 @@
             "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
-            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer).",
+            "sv": "Tjänstekoder för den här bilen. Dela gärna den här texten om du vill ha stöd för fler bilar (den innehåller inget VIN)."
           },
           "value": ""
         }
@@ -2583,7 +2767,8 @@
             "de": "Debug-Informationen Fahrzeug",
             "fr": "Informations de débogage du véhicule",
             "no": "Feilsøkingsinformasjon kjøretøy",
-            "da": "Fejlfindingsoplysninger køretøj"
+            "da": "Fejlfindingsoplysninger køretøj",
+            "sv": "Felsökningsinformation fordon"
           },
           "value": ""
         },
@@ -2596,7 +2781,8 @@
             "de": "Debug-Informationen Status",
             "fr": "Informations de débogage de l'état",
             "no": "Feilsøkingsinformasjon status",
-            "da": "Fejlfindingsoplysninger status"
+            "da": "Fejlfindingsoplysninger status",
+            "sv": "Felsökningsinformation status"
           },
           "value": ""
         },
@@ -2609,7 +2795,8 @@
             "de": "Debug-Informationen Wartung",
             "fr": "Informations de débogage de l'entretien",
             "no": "Feilsøkingsinformasjon service",
-            "da": "Fejlfindingsoplysninger service"
+            "da": "Fejlfindingsoplysninger service",
+            "sv": "Felsökningsinformation underhåll"
           },
           "value": ""
         },
@@ -2622,7 +2809,8 @@
             "de": "Remote-Dienste dieses Fahrzeugs",
             "fr": "Services à distance de ce véhicule",
             "no": "Fjerntjenester for denne bilen",
-            "da": "Fjerntjenester for denne bil"
+            "da": "Fjerntjenester for denne bil",
+            "sv": "Fjärrtjänster för den här bilen"
           },
           "hint": {
             "en": "Service codes of this car. Please share this text if you want support for more cars (it contains no VIN).",
@@ -2630,7 +2818,8 @@
             "de": "Dienstcodes dieses Fahrzeugs. Teilen Sie diesen Text, wenn Sie Unterstützung für weitere Fahrzeuge wünschen (enthält keine VIN).",
             "fr": "Codes de service de ce véhicule. Partagez ce texte si vous souhaitez la prise en charge d'autres véhicules (il ne contient pas de VIN).",
             "no": "Tjenestekoder for denne bilen. Del denne teksten hvis du ønsker støtte for flere biler (inneholder ikke VIN).",
-            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer)."
+            "da": "Servicekoder for denne bil. Del denne tekst, hvis du ønsker understøttelse af flere biler (indeholder ikke stelnummer).",
+            "sv": "Tjänstekoder för den här bilen. Dela gärna den här texten om du vill ha stöd för fler bilar (den innehåller inget VIN)."
           },
           "value": ""
         }
@@ -2646,7 +2835,8 @@
         "de": "Klimaanlage",
         "fr": "Climatisation",
         "no": "Klimaanlegg",
-        "da": "Klimaanlæg"
+        "da": "Klimaanlæg",
+        "sv": "Klimatanläggning"
       },
       "desc": {
         "en": "Airconditioning",
@@ -2654,7 +2844,8 @@
         "de": "Klimaanlage",
         "fr": "Climatisation",
         "no": "Klimaanlegg",
-        "da": "Klimaanlæg"
+        "da": "Klimaanlæg",
+        "sv": "Klimatanläggning"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2670,7 +2861,8 @@
         "de": "Batteriezustand (SoH)",
         "fr": "État de santé de la batterie (SoH)",
         "no": "Batterihelse (SoH)",
-        "da": "Batterisundhed (SoH)"
+        "da": "Batterisundhed (SoH)",
+        "sv": "Batterihälsa (SoH)"
       },
       "desc": {
         "en": "State of health of the traction battery, as reported by the car",
@@ -2678,7 +2870,8 @@
         "de": "Zustand (State of Health) der Antriebsbatterie, wie vom Fahrzeug gemeldet",
         "fr": "État de santé (State of Health) de la batterie de traction, tel que communiqué par le véhicule",
         "no": "Helsetilstand (state of health) for trekkbatteriet, slik bilen rapporterer den",
-        "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den"
+        "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den",
+        "sv": "Hälsotillstånd (state of health) för dragbatteriet, enligt bilens rapportering"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2697,7 +2890,8 @@
         "de": "Letzte Aktualisierung",
         "fr": "Dernière actualisation",
         "no": "Siste oppdatering",
-        "da": "Seneste opdatering"
+        "da": "Seneste opdatering",
+        "sv": "Senaste uppdatering"
       },
       "desc": {
         "en": "Last Refresh",
@@ -2705,7 +2899,8 @@
         "de": "Letzte Aktualisierung",
         "fr": "Dernière actualisation",
         "no": "Siste oppdatering",
-        "da": "Seneste opdatering"
+        "da": "Seneste opdatering",
+        "sv": "Senaste uppdatering"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2721,7 +2916,8 @@
         "de": "Wartung in Tagen",
         "fr": "Entretien (jours)",
         "no": "Service (dager)",
-        "da": "Service (dage)"
+        "da": "Service (dage)",
+        "sv": "Dagar till underhåll"
       },
       "desc": {
         "en": "Next maintenance in days",
@@ -2729,7 +2925,8 @@
         "de": "Nächste Wartung in Tagen",
         "fr": "Prochain entretien en jours",
         "no": "Neste service om dager",
-        "da": "Næste service om dage"
+        "da": "Næste service om dage",
+        "sv": "Nästa underhåll om antal dagar"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2745,7 +2942,8 @@
         "de": "Wartung in km",
         "fr": "Entretien (km)",
         "no": "Service (km)",
-        "da": "Service (km)"
+        "da": "Service (km)",
+        "sv": "Kilometer till underhåll"
       },
       "desc": {
         "en": "Next maintenance in milages",
@@ -2753,7 +2951,8 @@
         "de": "Nächste Wartung in Kilometern",
         "fr": "Prochain entretien en kilomètres",
         "no": "Neste service om kilometer",
-        "da": "Næste service om kilometer"
+        "da": "Næste service om kilometer",
+        "sv": "Nästa underhåll om antal kilometer"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2770,7 +2969,8 @@
         "de": "Kilometerstand",
         "fr": "Compteur kilométrique",
         "no": "Kilometerteller",
-        "da": "Kilometertæller"
+        "da": "Kilometertæller",
+        "sv": "Vägmätare"
       },
       "desc": {
         "en": "Total distance travelled",
@@ -2778,7 +2978,8 @@
         "de": "Insgesamt zurückgelegte Strecke",
         "fr": "Distance totale parcourue",
         "no": "Total tilbakelagt distanse",
-        "da": "Samlet tilbagelagt distance"
+        "da": "Samlet tilbagelagt distance",
+        "sv": "Total körsträcka"
       },
       "uiComponent": "sensor",
       "getable": true,
@@ -2795,7 +2996,8 @@
         "de": "Reichweite",
         "fr": "Autonomie",
         "no": "Rekkevidde",
-        "da": "Rækkevidde"
+        "da": "Rækkevidde",
+        "sv": "Räckvidd"
       },
       "desc": {
         "en": "Estimated remaining distance",
@@ -2803,7 +3005,8 @@
         "de": "Geschätzte Restreichweite",
         "fr": "Distance restante estimée",
         "no": "Estimert gjenstående distanse",
-        "da": "Anslået resterende distance"
+        "da": "Anslået resterende distance",
+        "sv": "Beräknad återstående körsträcka"
       },
       "uiComponent": "sensor",
       "getable": true,

@@ -6,7 +6,8 @@
     "de": "Batteriezustand (SoH)",
     "fr": "État de santé de la batterie (SoH)",
     "no": "Batterihelse (SoH)",
-    "da": "Batterisundhed (SoH)"
+    "da": "Batterisundhed (SoH)",
+    "sv": "Batterihälsa (SoH)"
   },
   "desc": {
     "en": "State of health of the traction battery, as reported by the car",
@@ -14,7 +15,8 @@
     "de": "Zustand (State of Health) der Antriebsbatterie, wie vom Fahrzeug gemeldet",
     "fr": "État de santé (State of Health) de la batterie de traction, tel que communiqué par le véhicule",
     "no": "Helsetilstand (state of health) for trekkbatteriet, slik bilen rapporterer den",
-    "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den"
+    "da": "Sundhedstilstand (state of health) for traktionsbatteriet, som bilen rapporterer den",
+    "sv": "Hälsotillstånd (state of health) för dragbatteriet, enligt bilens rapportering"
   },
   "uiComponent": "sensor",
   "getable": true,
